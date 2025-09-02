@@ -21,5 +21,16 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
-
   uses-material-design: true
+
+  fonts:
+    - family: NanumBarunpen
+      fonts:
+        - asset: assets/fonts/NanumBarunpenB.ttf
+          weight: 700
+        - asset: assets/fonts/NanumBarunpenR.ttf
+          weight: 400
+
+    - family: RiaSans
+      fonts:
+        - asset: assets/fonts/RiaSans-Bold.ttf
