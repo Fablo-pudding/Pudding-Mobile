@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import '../../constants/color.dart';
+import '../../constants/text_style.dart';
+
+
+class DisableButton extends StatelessWidget {
+  const DisableButton({super.key,required this.text});
+final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: PuddingColor.gray200,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      width: 362,
+      height: 48,
+        child: Center(child: Text(text,style: PuddingTextStyle.button.copyWith(color: Colors.white),)),
+    );
+  }
+}
