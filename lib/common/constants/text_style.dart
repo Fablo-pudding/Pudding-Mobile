@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/core/constants/color.dart';
+import 'package:pudding/common/constants/color.dart';
 
 class PuddingTextStyle{
   static const TextStyle NanumBarunpenB = TextStyle(fontFamily: 'NanumBerunpenB', color: PuddingColor.brown);
