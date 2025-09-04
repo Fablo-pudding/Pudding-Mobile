@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/core/constants/color.dart';
-import 'package:pudding/core/constants/text_style.dart';
+import '../../constants/color.dart';
+import '../../constants/text_style.dart';
+
 
 class FullButton extends StatelessWidget {
   const FullButton({super.key,required this.text});
