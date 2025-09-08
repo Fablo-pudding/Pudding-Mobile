@@ -17,7 +17,7 @@ class PuddingTextStyle{
     fontWeight: FontWeight.w700,
   );
 
-  static TextStyle heading = NanumBarunpenB.copyWith(
+  static TextStyle heading3 = NanumBarunpenB.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
