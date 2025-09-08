@@ -37,4 +37,4 @@ flutter:
         - asset: assets/fonts/RiaSans-Bold.ttf
 
   assets:
-    - assets/img
+    - assets/img/

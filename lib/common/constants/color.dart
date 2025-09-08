@@ -9,6 +9,5 @@ abstract final class PuddingColor{
   static const Color gray200 = Color(0xFFDAD1BA);
   static const Color gray400 = Color(0xFFA19896);
 
-  static const Color black1 = Color(0xFF1B1D1F);
-  static const Color black2 = Color(0xFF000000);
+  static const Color black = Color(0xFF000000);
 }
