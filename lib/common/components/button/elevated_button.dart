@@ -4,13 +4,13 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingElevatedButton extends StatelessWidget {
-  final String text;
+  final Widget contents;
   final void Function()? onPressed;
 
   const PuddingElevatedButton({
     super.key,
-    required this.text,
-    this.onPressed,
+    required this.contents,
+    required this.onPressed,
   });
 
   @override
@@ -39,7 +39,7 @@ class PuddingElevatedButton extends StatelessWidget {
         textStyle: WidgetStateProperty.all(PuddingTextStyle.button),
         minimumSize: WidgetStateProperty.all(Size(80, 48)),
       ),
-      child: Text(text),
+      child: contents,
     );
   }
 }
