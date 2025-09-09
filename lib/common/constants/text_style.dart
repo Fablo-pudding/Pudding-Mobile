@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'color.dart';
+import 'package:pudding/common/constants/color.dart';
 
 class PuddingTextStyle{
   static const TextStyle NanumBarunpenB = TextStyle(fontFamily: 'NanumBerunpenB', color: PuddingColor.brown);
@@ -21,6 +21,7 @@ class PuddingTextStyle{
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
+  
   /// Body
   static TextStyle body1 = NanumBarunpenR.copyWith(
     fontSize: 14,
