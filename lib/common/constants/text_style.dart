@@ -21,7 +21,7 @@ class PuddingTextStyle{
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
-
+  
   /// Body
   static TextStyle body1 = NanumBarunpenR.copyWith(
     fontSize: 14,
