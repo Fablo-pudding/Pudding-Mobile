@@ -21,17 +21,30 @@ class _PuddingTabState extends State<PuddingTab>
 
   @override
   Widget build(BuildContext context) {
-    return TabBar(
-      labelColor: PuddingColor.brown,
-      unselectedLabelColor: PuddingColor.gray400,
-      labelStyle: PuddingTextStyle.heading2,
-      indicatorColor: PuddingColor.brown,
-      indicatorWeight: 1,
-      indicatorSize: TabBarIndicatorSize.tab,
-      controller: controller,
-      tabs: <Widget>[
-        Tab(child: Text('로그인'),),
-        Tab(child: Text('회원가입'),),
+    return  Column(
+      children: [
+        TabBar(
+              labelColor: PuddingColor.brown,
+              unselectedLabelColor: PuddingColor.gray400,
+              labelStyle: PuddingTextStyle.heading2,
+              indicatorColor: PuddingColor.brown,
+              indicatorWeight: 1,
+              indicatorSize: TabBarIndicatorSize.tab,
+              controller: controller,
+              tabs: <Widget>[
+                Tab(child: Text('로그인'),),
+                Tab(child: Text('회원가입'),),
+        ],
+    ),
+          Expanded(
+            child: TabBarView(
+              controller: controller,
+              children: const [
+                Center(child: Text('첫번째 페이지')),
+                Center(child: Text('두번째 페이지')),
+              ],
+            ),
+          ),
       ],
     );
   }
