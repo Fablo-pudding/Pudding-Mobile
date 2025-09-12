@@ -4,20 +4,12 @@ import 'package:pudding/common//constants/text_style.dart';
 
 class CheckModal extends StatelessWidget {
   final String message;
-  final String subMessage;
-  final Widget checkLeft;
-  final Widget checkRight;
-  final VoidCallback onLeftTap;
-  final VoidCallback onRightTap;
+  final VoidCallback onConfirm;
 
   const CheckModal({
     super.key,
     required this.message,
-    required this.subMessage,
-    required this.checkLeft,
-    required this.checkRight,
-    required this.onLeftTap,
-    required this.onRightTap,
+    required this.onConfirm
   });
 
   @override
@@ -27,7 +19,7 @@ class CheckModal extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,18 +31,42 @@ class CheckModal extends StatelessWidget {
               color: PuddingColor.black,
             ),
           ),
-          Text(
-            subMessage,
-            style: PuddingTextStyle.body1.copyWith(color: PuddingColor.gray400),
-          ),
           const SizedBox(height: 50),
-          Padding(
-            padding: const EdgeInsets.all(12),
+          const Divider(thickness: 1, height: 1, color: PuddingColor.gray400),
+          IntrinsicHeight(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                GestureDetector(onTap: onLeftTap, child: checkLeft),
-                GestureDetector(onTap: onRightTap, child: checkRight),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Text(
+                        '취소',
+                        textAlign: TextAlign.center,
+                        style: PuddingTextStyle.button.copyWith(
+                          color: PuddingColor.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(width: 1, color: PuddingColor.gray400),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: onConfirm,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Text(
+                        '확인',
+                        textAlign: TextAlign.center,
+                        style: PuddingTextStyle.button.copyWith(
+                          color: PuddingColor.brown,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
