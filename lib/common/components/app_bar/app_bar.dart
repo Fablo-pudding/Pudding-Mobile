@@ -2,41 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
-class PuddingAppBar extends StatelessWidget{
+class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leftWidget;
   final String title;
   final TextStyle? titleStyle;
-  final Widget? rightWidget;
+  final bool saveButton;
+  final VoidCallback? onSave;
 
   const PuddingAppBar({
     super.key,
     this.leftWidget,
     required this.title,
     this.titleStyle,
-    this.rightWidget,
+    this.saveButton = false,
+    this.onSave,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 54),
-      child: SizedBox(
-        height: 44,
-        child: Row(
-          children: [
-            leftWidget ?? const SizedBox(width: 24),
-            Expanded(
-              child: Center(
-                child: Text(
-                  title,
-                  style: titleStyle ?? PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
-                ),
-              ),
-            ),
-            rightWidget ?? const SizedBox(width: 24),
-          ],
-        ),
+    return AppBar(
+      backgroundColor: PuddingColor.background,
+      elevation: 0,
+      title: Text(
+        title,
+        style: titleStyle ?? PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
       ),
+      leading: leftWidget ?? const SizedBox(width: 24),
+      actions: saveButton
+          ? [
+        TextButton(
+          onPressed: onSave,
+          child: Text(
+            '저장',
+            style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.brown),
+          ),
+        )
+      ]
+          : [const SizedBox(width: 24)],
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(54);
 }
