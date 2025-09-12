@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/components/bottom_navigation_bar.dart';
 
 class PuddingMainApp extends StatefulWidget {
+  const PuddingMainApp({super.key});
+  
   @override
   _PuddingMainAppState createState() => _PuddingMainAppState();
 }
