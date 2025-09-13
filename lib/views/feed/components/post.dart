@@ -41,18 +41,19 @@ class PuddingPost extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: PuddingColor.gray400,
-                  child: profileImg.isNotEmpty
-                      ? Image.network(
+                  child: Image.network(
                     profileImg,
                     width: 60,
                     height: 60,
                     fit: BoxFit.cover,
-                  )
-                      : Icon(
-                    Symbols.person,
-                    fill: 1,
-                    color: PuddingColor.gray200,
-                    size: 50,
+                    errorBuilder: (context, error, StackTrace) {
+                      return Icon(
+                        Symbols.person,
+                        fill: 1,
+                        color: PuddingColor.gray200,
+                        size: 50,
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(width: 9),
