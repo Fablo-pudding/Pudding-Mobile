@@ -12,15 +12,15 @@ class PuddingMainFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PuddingAppBar(
+        leftWidget: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Symbols.arrow_back_ios),
+        ),
+        title: '피드',
+      ),
       body: Column(
         children: [
-          PuddingAppBar(
-            leftWidget: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Symbols.arrow_back_ios),
-            ),
-            title: '피드',
-          ),
 
           Expanded(
             child: ListView.separated(
