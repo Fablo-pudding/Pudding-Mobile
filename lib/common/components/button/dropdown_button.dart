@@ -60,7 +60,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 150,
+                  maxHeight: 145,
                 ),
                 isExpanded: true,
                 isDense: true,
@@ -75,7 +75,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                   icon: Icon(Icons.arrow_drop_down, size: 24),
                 ),
                 underline: SizedBox.shrink(),
-                style: PuddingTextStyle.body1.copyWith(
+                style: PuddingTextStyle.body3.copyWith(
                   color: PuddingColor.black,
                 ),
                 onChanged: (int? newValue) {
@@ -116,7 +116,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 150,
+                  maxHeight: 145,
                 ),
                 isExpanded: true,
                 isDense: true,
@@ -171,7 +171,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 150,
+                  maxHeight: 145,
                 ),
                 isExpanded: true,
                 isDense: true,
