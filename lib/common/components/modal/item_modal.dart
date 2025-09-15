@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/common//constants/color.dart';
-import 'package:pudding/common//constants/text_style.dart';
+import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemModal extends StatelessWidget {
@@ -16,15 +16,15 @@ class ItemModal extends StatelessWidget {
     return Dialog(
       backgroundColor: PuddingColor.background,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: BorderRadius.all(const Radius.circular(8)),
       ),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 18),
+            padding: const EdgeInsets.symmetric(vertical: 18),
             child: Text(
               '아이템을 획득하였습니다.',
               style: PuddingTextStyle.heading3.copyWith(
@@ -36,7 +36,7 @@ class ItemModal extends StatelessWidget {
           const SizedBox(height: 20),
           Divider(color: PuddingColor.gray400, thickness: 1),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 13),
+            padding: const EdgeInsets.symmetric(vertical: 13),
             child: GestureDetector(
               onTap: () {
                 Navigator.pop(context);
