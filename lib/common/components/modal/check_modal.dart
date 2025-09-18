@@ -4,7 +4,7 @@ import 'package:pudding/common//constants/text_style.dart';
 
 class CheckModal extends StatelessWidget {
   final String message;
-  final VoidCallback onConfirm;
+  final void Function()? onConfirm;
 
   const CheckModal({
     super.key,
