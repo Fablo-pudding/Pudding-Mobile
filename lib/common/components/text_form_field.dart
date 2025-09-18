@@ -64,6 +64,11 @@ final cousorColor = PuddingColor.brown;
               }
             return null;
          },
+          onChanged: (value){
+            setState(() {
+              errorIcon = value.isEmpty;
+            });
+          },
           decoration: InputDecoration(
             enabledBorder: enableBorder,
             focusedBorder: focusBorder,
