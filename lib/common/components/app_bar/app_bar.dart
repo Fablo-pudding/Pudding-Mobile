@@ -3,15 +3,15 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget? leftWidget;
+  final Widget? leading;
   final String title;
   final TextStyle? titleStyle;
   final bool saveButton;
-  final VoidCallback? onSave;
+  final void Function()? onSave;
 
   const PuddingAppBar({
     super.key,
-    this.leftWidget,
+    this.leading,
     required this.title,
     this.titleStyle,
     this.saveButton = false,
@@ -20,25 +20,32 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: PuddingColor.background,
-      elevation: 0,
-      title: Text(
-        title,
-        style: titleStyle ?? PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
+    return PreferredSize(
+      preferredSize: preferredSize,
+      child: AppBar(
+        backgroundColor: PuddingColor.background,
+        elevation: 0,
+        title: Text(
+          title,
+          style:
+              titleStyle ??
+              PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
+        ),
+        leading: leading,
+        actions: saveButton
+            ? [
+                TextButton(
+                  onPressed: onSave,
+                  child: Text(
+                    '저장',
+                    style: PuddingTextStyle.heading3.copyWith(
+                      color: PuddingColor.brown,
+                    ),
+                  ),
+                ),
+              ]
+            : null,
       ),
-      leading: leftWidget ?? const SizedBox(width: 24),
-      actions: saveButton
-          ? [
-        TextButton(
-          onPressed: onSave,
-          child: Text(
-            '저장',
-            style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.brown),
-          ),
-        )
-      ]
-          : [const SizedBox(width: 24)],
     );
   }
 
