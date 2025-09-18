@@ -55,6 +55,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
     switch (type) {
       case PuddingTextField.signup:
         return TextFormField(
+          style: PuddingTextStyle.body1,
           cursorColor: cousorColor,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: signupController,
@@ -97,6 +98,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
         );
       case PuddingTextField.signin:
         return TextFormField(
+          style: PuddingTextStyle.body1,
           cursorColor: cousorColor,
           obscureText: pwObsText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
