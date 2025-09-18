@@ -4,7 +4,7 @@ import 'package:pudding/common/constants/color.dart';
 class PuddingTextStyle{
   static const TextStyle NanumBarunpenB = TextStyle(fontFamily: 'NanumBerunpenB', color: PuddingColor.brown);
   static const TextStyle NanumBarunpenR = TextStyle(fontFamily: 'NanumBarunpenR', color: PuddingColor.brown);
-  static const TextStyle LotteriaChab = TextStyle(fontFamily: 'LiaSans-Bold', color: PuddingColor.brown);
+  static const TextStyle LotteriaChab = TextStyle(fontFamily: 'RiaSans', color: PuddingColor.brown);
 
   /// Heading
   static TextStyle heading1  = NanumBarunpenB.copyWith(
