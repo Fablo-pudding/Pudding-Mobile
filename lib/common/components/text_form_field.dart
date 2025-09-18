@@ -39,32 +39,32 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
     super.dispose();
   }
 
-  final enableBorder =  OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.white, width: 1));
+  final enableBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+    borderSide: BorderSide(color: PuddingColor.white, width: 1),
+  );
 
-  final focusBorder =  OutlineInputBorder(
+  final focusBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
     borderSide: BorderSide(color: PuddingColor.black, width: 1),
   );
 
-final cousorColor = PuddingColor.brown;
-
+  final cousorColor = PuddingColor.brown;
 
   Widget puddingEnum(PuddingTextField type) {
     switch (type) {
       case PuddingTextField.signup:
         return TextFormField(
-          cursorColor:cousorColor,
+          cursorColor: cousorColor,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: signupController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '아이디를 입력해주세요';
-              }
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return '아이디를 입력해주세요';
+            }
             return null;
-         },
-          onChanged: (value){
+          },
+          onChanged: (value) {
             setState(() {
               errorIcon = value.isEmpty;
             });
@@ -85,9 +85,14 @@ final cousorColor = PuddingColor.brown;
             hintStyle: PuddingTextStyle.body1.copyWith(
               color: PuddingColor.gray400,
             ),
-            suffixIcon: errorIcon ? IconButton( onPressed: () {
+            suffixIcon: errorIcon
+                ? IconButton(
+                    onPressed: () {
                       signupController.clear();
-                    }, icon: Icon(Symbols.cancel, color: Colors.red),): null,
+                    },
+                    icon: Icon(Symbols.cancel, color: Colors.red),
+                  )
+                : null,
           ),
         );
       case PuddingTextField.signin:
@@ -106,6 +111,14 @@ final cousorColor = PuddingColor.brown;
             hintStyle: PuddingTextStyle.body1.copyWith(
               color: PuddingColor.gray400,
             ),
+            suffixIcon: IconButton(
+              onPressed: () => setState(() => pwObsText = !pwObsText),
+              icon: Icon(
+                pwObsText
+                    ? Icons.visibility_outlined
+                    : Icons.visibility_off_outlined,
+              ),
+            ),
           ),
         );
       case PuddingTextField.write:
@@ -117,7 +130,7 @@ final cousorColor = PuddingColor.brown;
             ),
           ),
           child: TextFormField(
-            cursorColor:cousorColor,
+            cursorColor: cousorColor,
             controller: writeController,
             style: PuddingTextStyle.heading2,
             textAlign: TextAlign.center,
