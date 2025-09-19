@@ -137,13 +137,14 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
             style: PuddingTextStyle.heading2,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(0, 13, 50, 14),
+              contentPadding: EdgeInsets.symmetric(vertical: 15.5,horizontal: 60),
               border: InputBorder.none,
               filled: true,
               fillColor: PuddingColor.background,
               prefixIcon: IconButton(
                 onPressed: () {},
-                icon: Icon(Symbols.close),
+                icon: Icon(Symbols.close,color: PuddingColor.brown,),
+                padding: EdgeInsets.symmetric(horizontal: 20),
               ),
               hintText: widget.hintText,
               hintStyle: PuddingTextStyle.heading2.copyWith(
@@ -158,7 +159,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
           controller: commentController,
           style: PuddingTextStyle.body1,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.fromLTRB(20, 15, 15, 16),
+            contentPadding: EdgeInsets.symmetric(vertical: 13.5,horizontal: 20),
             enabledBorder: enableBorder,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
