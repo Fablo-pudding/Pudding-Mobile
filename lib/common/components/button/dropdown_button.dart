@@ -1,17 +1,24 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
+enum DropdownButtonType { years, months, days }
+
 class PuddingDropdownButton extends StatefulWidget {
-  const PuddingDropdownButton({super.key});
+  final DropdownButtonType dropdownButton;
+  const PuddingDropdownButton({super.key, required this.dropdownButton,});
 
   @override
   State<PuddingDropdownButton> createState() => _PuddingDropdownButtonState();
 }
 
 class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
-  final List<int> dropdownYears = [2006, 2007, 2008, 2009];
+  final List<int> dropdownYears = List.generate(
+    DateTime.now().year - 2006,
+        (index) => 2006 + index,
+  );
   final List<int> dropdownMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   final List<int> dropdownDays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
@@ -20,33 +27,11 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
   int? dropdownMonth;
   int? dropdownDay;
 
-  @override
-  Widget build(BuildContext context) {
-
-    int dayChoice() {
-      if (dropdownMonth == 2) {
-        if ((dropdownYear! % 4 == 0 && dropdownYear! % 100 != 0) || dropdownYear! % 400 == 0) {
-          return 29;
-        }
-         return 28;
-      }
-      if (dropdownMonth == 4 || dropdownMonth == 6 || dropdownMonth == 9 || dropdownMonth == 11) {
-        return 30;
-      } else {
-         return 31;
-      }
-    }
-    if ((dropdownDay ?? 0) > dayChoice()) {
-      dropdownDay = null;
-    }
-
-    final screenWidth = MediaQuery.of(context).size.width;
-    final margin = screenWidth * 0.03;
-    return Row(
-      children: [
-        Expanded(
+  Expanded puddingEnum(DropdownButtonType type) {
+    switch (type) {
+      case DropdownButtonType.years:
+        return Expanded(
           child: Container(
-            margin: EdgeInsets.only(right: margin),
             decoration: BoxDecoration(
               color: PuddingColor.white,
               borderRadius: BorderRadius.circular(8),
@@ -54,13 +39,13 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: MenuItemStyleData(height: 37.5),
+                menuItemStyleData: MenuItemStyleData(height: 28),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 145,
+                  maxHeight: 124,
                 ),
                 isExpanded: true,
                 isDense: true,
@@ -72,7 +57,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 ),
                 value: dropdownYear,
                 iconStyleData: IconStyleData(
-                  icon: Icon(Icons.arrow_drop_down, size: 24),
+                  icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
                 underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body3.copyWith(
@@ -81,7 +66,6 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 onChanged: (int? newValue) {
                   setState(() {
                     dropdownYear = newValue;
-                    dayChoice();
                   });
                 },
                 items: dropdownYears.map((year) {
@@ -99,10 +83,10 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
               ),
             ),
           ),
-        ),
-        Expanded(
+        );
+      case DropdownButtonType.months:
+        return Expanded(
           child: Container(
-            margin: EdgeInsets.only(right: margin),
             decoration: BoxDecoration(
               color: PuddingColor.white,
               borderRadius: BorderRadius.circular(8),
@@ -110,13 +94,13 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: MenuItemStyleData(height: 37.5),
+                menuItemStyleData: MenuItemStyleData(height: 30),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 145,
+                  maxHeight: 124,
                 ),
                 isExpanded: true,
                 isDense: true,
@@ -128,7 +112,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 ),
                 value: dropdownMonth,
                 iconStyleData: IconStyleData(
-                  icon: Icon(Icons.arrow_drop_down, size: 24),
+                  icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
                 underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body1.copyWith(
@@ -137,7 +121,6 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 onChanged: (int? newValue) {
                   setState(() {
                     dropdownMonth = newValue;
-                    dayChoice();
                   });
                 },
                 items: dropdownMonths.map((month) {
@@ -154,10 +137,10 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
               ),
             ),
           ),
-        ),
-        Expanded(
+        );
+      case DropdownButtonType.days:
+        return Expanded(
           child: Container(
-            margin: EdgeInsets.only(right: margin),
             decoration: BoxDecoration(
               color: PuddingColor.white,
               borderRadius: BorderRadius.circular(8),
@@ -165,13 +148,13 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: MenuItemStyleData(height: 37.5),
+                menuItemStyleData: MenuItemStyleData(height: 30),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: PuddingColor.white,
                   ),
-                  maxHeight: 145,
+                  maxHeight: 124,
                 ),
                 isExpanded: true,
                 isDense: true,
@@ -183,7 +166,7 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 ),
                 value: dropdownDay,
                 iconStyleData: IconStyleData(
-                  icon: Icon(Icons.arrow_drop_down, size: 24),
+                  icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
                 underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body1.copyWith(
@@ -192,7 +175,6 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
                 onChanged: (int? newValue) {
                   setState(() {
                     dropdownDay = newValue;
-                    dayChoice();
                   });
                 },
                 items: dropdownDays.map((day) {
@@ -209,7 +191,32 @@ class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
               ),
             ),
           ),
-        ),
+        );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    int dayChoice() {
+      if (dropdownMonth == 2) {
+        if ((dropdownYear! % 4 == 0 && dropdownYear! % 100 != 0) ||
+            dropdownYear! % 400 == 0) {
+          return 29;
+        }
+        return 28;
+      }
+      if (dropdownMonth == 4 || dropdownMonth == 6 || dropdownMonth == 9 || dropdownMonth == 11) {
+        return 30;
+      } else {
+        return 31;
+      }
+    }
+    if ((dropdownDay ?? 0) > dayChoice()) {
+      dropdownDay = null;
+    }
+    return Row(
+      children: [
+        puddingEnum(widget.dropdownButton),
       ],
     );
   }
