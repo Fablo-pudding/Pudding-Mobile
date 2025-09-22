@@ -3,18 +3,18 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
-enum PuddingTextField { signup, signin, write, comment }
+enum PuddingTextFormFieldType { signup, signin, write, comment }
 
 class PuddingTextFormField extends StatefulWidget {
   final String hintText;
   final String? title;
-  final PuddingTextField textField;
+  final PuddingTextFormFieldType textFormField;
 
   const PuddingTextFormField({
     super.key,
     required this.hintText,
     this.title,
-    required this.textField,
+    required this.textFormField,
   });
 
   @override
@@ -51,9 +51,9 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
 
   final cousorColor = PuddingColor.brown;
 
-  Widget puddingEnum(PuddingTextField type) {
+  Widget puddingEnum(PuddingTextFormFieldType type) {
     switch (type) {
-      case PuddingTextField.signup:
+      case PuddingTextFormFieldType.signup:
         return TextFormField(
           style: PuddingTextStyle.body1,
           cursorColor: cousorColor,
@@ -96,7 +96,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
                 : null,
           ),
         );
-      case PuddingTextField.signin:
+      case PuddingTextFormFieldType.signin:
         return TextFormField(
           style: PuddingTextStyle.body1,
           cursorColor: cousorColor,
@@ -123,7 +123,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
             ),
           ),
         );
-      case PuddingTextField.write:
+      case PuddingTextFormFieldType.write:
         return Container(
           decoration: BoxDecoration(
             border: Border(
@@ -153,7 +153,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
             ),
           ),
         );
-      case PuddingTextField.comment:
+      case PuddingTextFormFieldType.comment:
         return TextFormField(
           cursorColor: cousorColor,
           controller: commentController,
@@ -193,7 +193,7 @@ class _PuddingTextFormFieldState extends State<PuddingTextFormField> {
           if (widget.title != null)
             Text(widget.title!, style: PuddingTextStyle.heading3),
           const SizedBox(height: 8),
-          puddingEnum(widget.textField),
+          puddingEnum(widget.textFormField),
         ],
       ),
     );
