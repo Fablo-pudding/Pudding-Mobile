@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/common/utils/format.dart';
 
 class TimeDisplayBanner extends StatelessWidget {
-  final double? height;
   final int timeInSeconds;
 
   const TimeDisplayBanner({
     super.key,
-    this.height,
     required this.timeInSeconds,
   });
-
-  String _formatTime(int seconds) {
-    final hours = seconds ~/ 3600;
-    final minutes = (seconds % 3600) ~/ 60;
-    return '$hours:${minutes.toString().padLeft(2, '0')}';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +17,7 @@ class TimeDisplayBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
         width: double.infinity,
-        height: height ?? 68,
+        height: 68,
         decoration: BoxDecoration(
           color: PuddingColor.main,
           borderRadius: BorderRadius.circular(12),
@@ -52,7 +45,7 @@ class TimeDisplayBanner extends StatelessWidget {
                 ],
               ),
               Text(
-                _formatTime(timeInSeconds),
+                Format.time(timeInSeconds),
                 style: PuddingTextStyle.heading1.copyWith(
                   color: PuddingColor.brown,
                 ),
