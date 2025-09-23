@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
@@ -43,19 +44,12 @@ class _PuddingStopWatchState extends State<PuddingStopWatch> {
   Widget build(BuildContext context) {
     final buttonText = isRunning ? '공부 중단하기' : '공부 시작하기';
 
-    return ElevatedButton(
+    return PuddingElevatedButton(
+      backgroundColor: PuddingColor.brown,
       onPressed: isRunning ? _stop : _start,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: PuddingColor.brown,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
       child: Text(
         buttonText,
-        style: PuddingTextStyle.body1.copyWith(
-          color: PuddingColor.background,
-        ),
+        style: PuddingTextStyle.body1.copyWith(color: PuddingColor.background),
       ),
     );
   }

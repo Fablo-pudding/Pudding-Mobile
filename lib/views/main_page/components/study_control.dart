@@ -6,12 +6,7 @@ import 'package:pudding/views/main_page/components/stopwatch.dart';
 import 'package:pudding/views/main_page/components/time_display.dart';
 
 class StudyControlBanner extends StatefulWidget {
-  final double? height;
-
-  const StudyControlBanner({
-    super.key,
-    this.height
-  });
+  const StudyControlBanner({super.key,});
 
   @override
   State<StudyControlBanner> createState() => _StudyControlBannerState();
@@ -28,7 +23,7 @@ class _StudyControlBannerState extends State<StudyControlBanner> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
             width: double.infinity,
-            height: widget.height ?? 160,
+            height: 160,
             decoration: BoxDecoration(
               color: const Color(0xFFFFE875),
               borderRadius: BorderRadius.circular(12),
@@ -70,7 +65,7 @@ class _StudyControlBannerState extends State<StudyControlBanner> {
           ),
         ),
         const SizedBox(height: 16),
-        TimeDisplayBanner(timeInSeconds: _timeInSeconds),
+       TimeDisplayBanner(timeInSeconds: _timeInSeconds),
       ],
     );
   }
