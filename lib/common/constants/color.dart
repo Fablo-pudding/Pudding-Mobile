@@ -7,6 +7,7 @@ abstract final class PuddingColor{
   static const Color red = Color(0xFFFF6161);
   static const Color white = Color(0xFFFFFFFF);
   static const Color yellow = Color(0xFFECDB90);
+  static const Color lightYellow = Color(0xFFFFF0A3);
 
   static const Color gray200 = Color(0xFFDAD1BA);
   static const Color gray400 = Color(0xFFA19896);
