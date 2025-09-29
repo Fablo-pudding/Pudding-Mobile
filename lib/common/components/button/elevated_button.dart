@@ -6,11 +6,13 @@ import 'package:pudding/common/constants/text_style.dart';
 class PuddingElevatedButton extends StatelessWidget {
   final Widget child;
   final void Function()? onPressed;
+  final Color? backgroundColor;
 
   const PuddingElevatedButton({
     super.key,
     required this.child,
     required this.onPressed,
+    this.backgroundColor,
   });
 
   @override
@@ -19,7 +21,7 @@ class PuddingElevatedButton extends StatelessWidget {
         WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.disabled)) return PuddingColor.gray200;
           if (states.contains(WidgetState.pressed)) return PuddingColor.yellow;
-          return PuddingColor.main;
+          return backgroundColor ?? PuddingColor.main;
         });
     final buttonForegroundColor =
         WidgetStateProperty.resolveWith<Color>((states) {
@@ -27,8 +29,8 @@ class PuddingElevatedButton extends StatelessWidget {
           if (states.contains(WidgetState.pressed)) return  PuddingColor.brown;
           return PuddingColor.brown;
         });
-    
-  return ElevatedButton(
+
+    return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: buttonBackgroundColor,
@@ -37,7 +39,7 @@ class PuddingElevatedButton extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         textStyle: WidgetStateProperty.all(PuddingTextStyle.button),
-        minimumSize: WidgetStateProperty.all(Size(80, 48)),
+        minimumSize: WidgetStateProperty.all(const Size(80, 48)),
       ),
       child: child,
     );
