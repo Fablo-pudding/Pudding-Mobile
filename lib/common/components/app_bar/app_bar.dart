@@ -6,16 +6,12 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final String title;
   final TextStyle? titleStyle;
-  final bool saveButton;
-  final void Function()? onSave;
 
   const PuddingAppBar({
     super.key,
     this.leading,
     required this.title,
     this.titleStyle,
-    this.saveButton = false,
-    this.onSave,
   });
 
   @override
@@ -32,19 +28,6 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
               PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
         ),
         leading: leading,
-        actions: saveButton
-            ? [
-                TextButton(
-                  onPressed: onSave,
-                  child: Text(
-                    '저장',
-                    style: PuddingTextStyle.heading3.copyWith(
-                      color: PuddingColor.brown,
-                    ),
-                  ),
-                ),
-              ]
-            : null,
       ),
     );
   }
