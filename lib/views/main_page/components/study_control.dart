@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/main_page/components/stopwatch.dart';
 import 'package:pudding/views/main_page/components/time_display.dart';
@@ -55,7 +56,7 @@ class _StudyControlBannerState extends State<StudyControlBanner> {
                   top: 0,
                   right: -10,
                   child: SvgPicture.asset(
-                    'assets/img/pudding.svg',
+                    PuddingAssets.pudding,
                     width: 190,
                     height: 190,
                   ),
