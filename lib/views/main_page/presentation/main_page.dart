@@ -12,11 +12,10 @@ class PuddingMainPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            const SizedBox(height: 16),
-            const StudyControlBanner(),
-            const SizedBox(height: 16),
-            const _QuestionBanner(),
+          spacing: 16,
+          children: const [
+            StudyControlBanner(),
+            _QuestionBanner(),
           ],
         ),
       ),
