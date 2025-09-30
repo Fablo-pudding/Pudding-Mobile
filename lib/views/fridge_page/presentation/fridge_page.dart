@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/fridge_page/components/ingredient_item.dart';
 import 'package:pudding/common/components/app_bar';
@@ -19,9 +20,9 @@ class PuddingFridgePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IngredientItem(imgPath: 'assets/img/egg.svg', count: 2),
-                IngredientItem(imgPath: 'assets/img/milk.svg', count: 2),
-                IngredientItem(imgPath: 'assets/img/sugar.svg', count: 2),
+                IngredientItem(imgPath: PuddingAssets.egg, count: 2),
+                IngredientItem(imgPath: PuddingAssets.milk, count: 2),
+                IngredientItem(imgPath: PuddingAssets.sugar, count: 2),
               ],
             ),
             const SizedBox(height: 20),
