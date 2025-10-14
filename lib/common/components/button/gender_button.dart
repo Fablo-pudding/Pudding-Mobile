@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
 
+enum Gender { man, woman }
+
 class PuddingGenderButton extends StatefulWidget {
   final void Function() onTap;
+
   const PuddingGenderButton({super.key, required this.onTap});
 
   @override
@@ -11,38 +14,32 @@ class PuddingGenderButton extends StatefulWidget {
 }
 
 class _PuddingGenderButtonState extends State<PuddingGenderButton> {
-  bool manSelected = false;
-  bool womanSelcted = false;
+   Gender? gender;
 
-  void manselted() {
+  void selctedGender(Gender genderSelcet) {
     setState(() {
-      manSelected = true;
-      womanSelcted = false;
+      gender = genderSelcet;
       widget.onTap();
     });
   }
 
-  void girlselted() {
-    setState(() {
-      manSelected = false;
-      womanSelcted = true;
-      widget.onTap();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         ElevatedButton(
-          onPressed: manselted,
+          onPressed: () => selctedGender(Gender.man),
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
               EdgeInsets.symmetric(vertical: 53, horizontal: 44),
             ),
             backgroundColor: WidgetStateProperty.all(
-              manSelected ? PuddingColor.main : PuddingColor.background,
+              gender == Gender.man
+                  ? PuddingColor.main
+                  : PuddingColor.background,
             ),
+
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -55,13 +52,15 @@ class _PuddingGenderButtonState extends State<PuddingGenderButton> {
         ),
         SizedBox(width: 31),
         ElevatedButton(
-          onPressed: girlselted,
+          onPressed: () => selctedGender(Gender.woman),
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
               EdgeInsets.symmetric(vertical: 53, horizontal: 44),
             ),
             backgroundColor: WidgetStateProperty.all(
-              womanSelcted ? PuddingColor.main : PuddingColor.background,
+              gender == Gender.woman
+                  ? PuddingColor.main
+                  : PuddingColor.background,
             ),
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
