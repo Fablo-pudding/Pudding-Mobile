@@ -49,6 +49,7 @@ class PuddingTextStyle{
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
+
   /// PuddingCount
   static TextStyle puddingCount = NanumBarunpenR.copyWith(
     fontSize: 16,
