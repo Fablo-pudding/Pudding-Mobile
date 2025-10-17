@@ -53,7 +53,7 @@ class _QuestionBanner extends StatelessWidget {
               ),
               PuddingElevatedButton(
                 onPressed: () {},
-                background: PuddingColor.main,
+                backgroundColor: PuddingColor.main,
                 child: Text(
                   '물어보러가기',
                   style: PuddingTextStyle.body1.copyWith(

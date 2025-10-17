@@ -32,9 +32,9 @@ flutter:
         - asset: assets/fonts/NanumBarunpenR.ttf
           weight: 400
 
-    - family: RiaSans
+    - family: Lotteria
       fonts:
-        - asset: assets/fonts/RiaSans-Bold.ttf
+        - asset: assets/fonts/LotteriaChab.ttf
 
   assets:
     - assets/img/
