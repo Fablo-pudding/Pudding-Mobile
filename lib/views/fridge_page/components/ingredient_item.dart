@@ -7,22 +7,42 @@ class IngredientItem extends StatelessWidget {
   final String imgPath;
   final int count;
 
+  static const double _itemSize = 100;
+
   const IngredientItem({
     super.key,
     required this.imgPath,
-    required this.count
+    required this.count,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset(imgPath, width: 100, height: 100),
+        SvgPicture.asset(
+          imgPath,
+          width: _itemSize,
+          height: _itemSize,
+        ),
         Container(
-          width: 100,
+          width: _itemSize,
           height: 32,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), border: Border.all(color: PuddingColor.brown, width: 1)),
-          child: Align(alignment: Alignment.center, child: Text('$count', style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.brown))),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: PuddingColor.brown,
+              width: 1,
+            ),
+          ),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              '$count',
+              style: PuddingTextStyle.heading3.copyWith(
+                color: PuddingColor.brown,
+              ),
+            ),
+          ),
         ),
       ],
     );
