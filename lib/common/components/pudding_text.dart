@@ -7,7 +7,7 @@ class PuddingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Pudding',
+      'pudding',
       style: PuddingTextStyle.lotteriaChab.copyWith(fontSize: 36),
     );
   }
