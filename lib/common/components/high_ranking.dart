@@ -23,10 +23,9 @@ class PuddingHighRangking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double puddingSize;
-    if(ranking == 1){
+    if (ranking == 1) {
       puddingSize = 60;
-    }
-    else{
+    } else {
       puddingSize = 45;
     }
     return Column(
@@ -42,40 +41,50 @@ class PuddingHighRangking extends StatelessWidget {
                 color: backgroundColor,
               ),
               child: Padding(
-                padding: EdgeInsets.only(
-                  left: 11,
-                  right: 11,
-                  top: 10,
-                  bottom: 23,
-                ),
-                child: Column(
-                  children: [
-                    Text('$ranking개', style: PuddingTextStyle.lotteriaChab),
-                    SizedBox(height: 12),
-                    SvgPicture.asset(userImage, width: 44, height: 44),
-                    SizedBox(height: 7),
-                    Text(nickName, style: PuddingTextStyle.label1),
-                  ],
+                padding: EdgeInsets.symmetric(horizontal: 11),
+                child: SizedBox(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 12,),
+                      Text('$ranking위', style: PuddingTextStyle.lotteriaChab),
+                      const SizedBox(height: 12),
+                      SvgPicture.asset(userImage, width: 44, height: 44),
+                      const SizedBox(height: 8),
+                      Text(nickName, style: PuddingTextStyle.label1),
+                      const SizedBox(height: 20,),
+                    ],
+                  ),
                 ),
               ),
             ),
-            if(crown != null)
+            if (crown != null)
               Positioned(
-                bottom: 148,
-                child: SvgPicture.asset(crown!,width: 64,height: 48,),
+                bottom: 145,
+                child: SvgPicture.asset(crown!, width: 64, height: 48),
               ),
             Positioned(
-                top: 140,
-                child: Padding(
-                  padding:  EdgeInsets.only(top: ranking == 1 ? 0 : ranking == 2 ? 8 : 8),
-                  child: SvgPicture.asset('assets/img/pudding.svg',width: puddingSize,height: puddingSize,),
-                )),
-            Positioned(
-              top: 195,
+              top: 152,
               child: Padding(
-                padding: EdgeInsets.only(top: ranking == 1 ? 4 : ranking == 2 ? 4 : 4),
-                child: Text('$puddingCounting개',style: PuddingTextStyle.heading3),
-              ),)
+                padding: EdgeInsets.only(
+                  top: ranking == 1 ? 0 : 8,
+                ),
+                child: SvgPicture.asset(
+                  'assets/img/pudding.svg',
+                  width: puddingSize,
+                  height: puddingSize,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 207,
+              child: Padding(
+                padding: EdgeInsets.only(top: 4),
+                child: Text(
+                  '$puddingCounting개',
+                  style: PuddingTextStyle.heading3,
+                ),
+              ),
+            ),
           ],
         ),
       ],
