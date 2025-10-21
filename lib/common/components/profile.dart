@@ -10,14 +10,12 @@ import 'package:pudding/common/constants/text_style.dart';
 class PuddingProfile extends StatefulWidget {
   final String nickName;
   final String explanation;
-  final void Function()? ontap;
   final File? image;
 
   const PuddingProfile({
     super.key,
     required this.nickName,
     required this.explanation,
-    this.ontap,
     this.image,
   });
 
@@ -27,30 +25,20 @@ class PuddingProfile extends StatefulWidget {
 
 class _PuddingProfileState extends State<PuddingProfile> {
   final ImagePicker _picker = ImagePicker();
-    File? _fileImage;
+  File? _fileImage;
+  File? _littleImage;
 
-  getImage() async {
-    XFile? image = await _picker.pickImage(
-      source: ImageSource.gallery,
-      requestFullMetadata: false,
-    );
-    if (image != null) {
-      setState(() {
-        _fileImage = File(image.path);
-      });
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         imageProfile(),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(widget.nickName, style: PuddingTextStyle.heading2),
-            SizedBox(height: 9),
+            const SizedBox(height: 9),
             Text(
               widget.explanation,
               style: PuddingTextStyle.heading3.copyWith(
@@ -62,20 +50,15 @@ class _PuddingProfileState extends State<PuddingProfile> {
       ],
     );
   }
-  Widget _buildImage(){
-     if(_fileImage != null) {
-       return Expanded(
-           child: Image.file(_fileImage!, fit: BoxFit.cover,),
-       );
-     }
-     else{
-       return Expanded(
-           child: Container(
-             color: PuddingColor.white,
-           ),
-       );
-     }
+
+  Widget _buildImage() {
+    if (_fileImage != null) {
+      return Image.file(_littleImage!, fit: BoxFit.cover);
+    } else {
+      return Container(color: PuddingColor.white);
+    }
   }
+
   Widget imageProfile() {
     return Stack(
       clipBehavior: Clip.none,
@@ -83,25 +66,46 @@ class _PuddingProfileState extends State<PuddingProfile> {
         CircleAvatar(
           radius: 40,
           backgroundImage: _fileImage != null ? FileImage(_fileImage!) : null,
-          child: _fileImage == null ? SvgPicture.asset(
-            'assets/img/profile.svg',
-            width: 200,
-            height: 200,
-          ) : null
+          child: _fileImage == null
+              ? SvgPicture.asset(
+                  'assets/img/profile.svg',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                )
+              : null,
         ),
         Positioned(
-          bottom: 0,
-          right: -8,
-          child: InkWell(
+          bottom: -5,
+          right: -5,
+          child: GestureDetector(
             onTap: () async {
-              await getImage();
-              if(!mounted) return;
+              var image = await _picker.pickImage(source: ImageSource.gallery);
+              if (image != null) {
+                setState(() {
+                  _littleImage = File(image.path);
+                });
+              }
+              if (!mounted) return;
               showModalBottomSheet(
                 context: context,
                 builder: ((builder) => bottomSheet()),
               );
             },
-            child: SvgPicture.asset('assets/img/pen.svg'),
+            child: Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                color: PuddingColor.main,
+              ),
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.edit_outlined,
+                size: 16,
+                color: PuddingColor.brown,
+              ),
+            ),
           ),
         ),
       ],
@@ -109,27 +113,37 @@ class _PuddingProfileState extends State<PuddingProfile> {
   }
 
   Widget bottomSheet() {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 20),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: Column(
         children: [
-          _buildImage(),
-            Row(
-              children: [
-                Expanded(
-                  child:
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: PuddingElevatedButton(onPressed: () {
-                          Navigator.pop(context);
-                        }, child: Text('적용')),
-                      ),
+          Expanded(child: _buildImage()),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: PuddingElevatedButton(
+                    onPressed: () {
+                      if (_littleImage != null) {
+                        setState(() {
+                          _fileImage = _littleImage;
+                          imageCache.evict(
+                            FileImage(_fileImage!),
+                            includeLive: true,
+                          );
+                        });
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: Text('적용'),
                   ),
-              ],
-            ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
-
