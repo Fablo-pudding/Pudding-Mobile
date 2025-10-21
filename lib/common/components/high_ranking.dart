@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
-class PuddingHighRangking extends StatelessWidget {
+class PuddingHighRanking extends StatelessWidget {
   final int ranking;
   final Color backgroundColor;
   final String nickName;
@@ -10,7 +10,7 @@ class PuddingHighRangking extends StatelessWidget {
   final String? crown;
   final int puddingCounting;
 
-  const PuddingHighRangking({
+  const PuddingHighRanking({
     super.key,
     required this.ranking,
     required this.backgroundColor,
@@ -22,12 +22,7 @@ class PuddingHighRangking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double puddingSize;
-    if (ranking == 1) {
-      puddingSize = 60;
-    } else {
-      puddingSize = 45;
-    }
+    final double puddingSize = ranking == 1 ? 60 : 45;;
     return Column(
       children: [
         Stack(
