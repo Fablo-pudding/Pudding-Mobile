@@ -57,8 +57,8 @@ class PuddingTextFormField extends StatelessWidget {
 
     final focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.brown, width: 1),);
-
+      borderSide: BorderSide(color: PuddingColor.brown, width: 1),
+    );
 
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
     final filledColor = this.fillColor ?? PuddingColor.white;
