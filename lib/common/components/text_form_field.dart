@@ -2,104 +2,93 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
-
 class PuddingTextFormField extends StatelessWidget {
   final String? title;
-  final bool? errorIcon;
   final bool pwObsText;
   final TextEditingController controller;
   final TextStyle? style;
   final TextAlign? textAlign;
   final InputDecoration? decoration;
-  final void Function(String)? onchanged;
+  final void Function(String)? onChanged;
   final FormFieldValidator<String>? validator;
   final IconButton? suffixIcon;
   final IconButton? prefixIcon;
   final Color? cursorColor;
-  final bool autocrrect;
-  final TextInputType? keyboradType;
+  final bool autocorrect;
+  final TextInputType? keyboardType;
   final int? maxLength;
-  final bool choiceEnableBorders;
   final void Function(PointerDownEvent)? onTapOutSide;
+  final String hintText;
+  final Color? fillColor;
+  final FocusNode? focusNode;
+  final AutovalidateMode? autovalidateMode;
 
   const PuddingTextFormField({
     super.key,
     this.title,
-    this.errorIcon = false,
     this.pwObsText = false,
     required this.controller,
     this.style,
     this.textAlign,
     this.decoration = const InputDecoration(),
-    this.onchanged,
+    this.onChanged,
     this.validator,
     this.suffixIcon,
     this.prefixIcon,
     this.cursorColor,
-    required this.autocrrect,
-    this.keyboradType,
+    this.autocorrect = false,
+    this.keyboardType,
     this.maxLength,
-    this.choiceEnableBorders = true,
     this.onTapOutSide,
+    required this.hintText,
+    this.fillColor,
+    this.focusNode,
+    this.autovalidateMode,
   });
+
   @override
   Widget build(BuildContext context) {
-    final defaultTextStyle = PuddingTextStyle.body1;
+    final defaultTextStyle = style ?? PuddingTextStyle.body1;
+
     final enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(color: PuddingColor.white, width: 1),
     );
-    final enableBorder2 = Container(
-      decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: PuddingColor.brown,width: 1),
-            bottom:  BorderSide(color: PuddingColor.brown,width: 1),
-          )
-      ),
-    );
 
-    final enableBorders = choiceEnableBorders ? enableBorder : enableBorder2;
     final focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.black, width: 1),
-    );
-    final cousorColor = PuddingColor.brown;
+      borderSide: BorderSide(color: PuddingColor.brown, width: 1),);
 
-    InputDecoration? inputDecoration = InputDecoration(
-      hintText: decoration?.hintText,
-      hintStyle: decoration?.hintStyle,
-      errorText: decoration?.errorText,
-      errorStyle: decoration?.errorStyle,
-      icon: decoration?.icon,
-      suffixIcon: decoration?.suffixIcon,
-      prefixIcon: decoration?.prefixIcon,
-      suffixStyle: decoration?.suffixStyle,
-      prefixStyle: decoration?.prefixStyle,
+
+    final cursorColor = this.cursorColor ?? PuddingColor.brown;
+    final filledColor = this.fillColor ?? PuddingColor.white;
+    InputDecoration? inputDecoration = decoration!.copyWith(
+      errorBorder: InputBorder.none,
+      focusedErrorBorder: focusBorder,
       enabledBorder: enableBorder,
-      focusedBorder: focusBorder,
-      focusColor: decoration?.focusColor,
-      fillColor: decoration?.fillColor,
+      suffixIcon: suffixIcon,
       filled: true,
+      fillColor: filledColor,
+      hintText: hintText,
+      focusedBorder: focusBorder,
+      errorStyle: TextStyle(height: 0, fontSize: 0),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(title!= null)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(title!,style: PuddingTextStyle.heading3,),
-          ),
+        if (title != null) Text(title!, style: PuddingTextStyle.heading3),
         TextFormField(
           decoration: inputDecoration,
-          style: defaultTextStyle,
+          style: style ?? defaultTextStyle,
           controller: controller,
-          autocorrect: autocrrect,
-          keyboardType: keyboradType,
+          autocorrect: autocorrect,
+          keyboardType: keyboardType,
           obscureText: pwObsText,
           validator: validator,
-          cursorColor: cousorColor,
+          cursorColor: cursorColor,
           maxLength: maxLength,
-          onTapOutside:  (event) => FocusScope.of(context).unfocus(),
+          autovalidateMode: autovalidateMode,
+          onTapOutside: (event) => FocusScope.of(context).unfocus(),
         ),
       ],
     );
