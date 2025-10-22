@@ -25,8 +25,8 @@ class PuddingProfile extends StatefulWidget {
 
 class _PuddingProfileState extends State<PuddingProfile> {
   final ImagePicker _picker = ImagePicker();
-  File? _fileImage;
-  File? _littleImage;
+  File? _saveImage;
+  File? _tempImage;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,8 @@ class _PuddingProfileState extends State<PuddingProfile> {
   }
 
   Widget _buildImage() {
-    if (_fileImage != null) {
-      return Image.file(_littleImage!, fit: BoxFit.cover);
+    if (_tempImage != null) {
+      return Image.file(_tempImage!, fit: BoxFit.cover);
     } else {
       return Container(color: PuddingColor.white);
     }
@@ -65,8 +65,8 @@ class _PuddingProfileState extends State<PuddingProfile> {
       children: [
         CircleAvatar(
           radius: 40,
-          backgroundImage: _fileImage != null ? FileImage(_fileImage!) : null,
-          child: _fileImage == null
+          backgroundImage: _saveImage != null ? FileImage(_saveImage!) : null,
+          child: _saveImage == null
               ? SvgPicture.asset(
                   'assets/img/profile.svg',
                   width: 200,
@@ -83,7 +83,7 @@ class _PuddingProfileState extends State<PuddingProfile> {
               var image = await _picker.pickImage(source: ImageSource.gallery);
               if (image != null) {
                 setState(() {
-                  _littleImage = File(image.path);
+                  _tempImage = File(image.path);
                 });
               }
               if (!mounted) return;
@@ -125,13 +125,10 @@ class _PuddingProfileState extends State<PuddingProfile> {
                   padding: const EdgeInsets.only(top: 20),
                   child: PuddingElevatedButton(
                     onPressed: () {
-                      if (_littleImage != null) {
+                      if (_tempImage != null) {
                         setState(() {
-                          _fileImage = _littleImage;
-                          imageCache.evict(
-                            FileImage(_fileImage!),
-                            includeLive: true,
-                          );
+                          _saveImage = _tempImage;
+                          imageCache.clear();
                         });
                       }
                       Navigator.pop(context);
