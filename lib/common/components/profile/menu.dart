@@ -7,41 +7,41 @@ class PuddingMenu extends StatelessWidget {
   final Icon? iconButton;
   final BorderRadius? borderRadius;
   final Color textColor;
+
   const PuddingMenu({
     super.key,
     required this.menuName,
     this.iconButton,
-   this.borderRadius,
+    this.borderRadius,
     required this.textColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 23,top: 21,bottom: 20,right: 20),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       decoration: BoxDecoration(
         color: PuddingColor.main,
         borderRadius: borderRadius,
       ),
-      width: 362,
+      width: double.infinity,
       height: 64,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             menuName,
-            style: PuddingTextStyle.heading2.copyWith(
-              color: textColor,
+            style: PuddingTextStyle.heading2.copyWith(color: textColor),
+          ),
+          //Todo 눌렀을때 다른 페이지 연결하기
+          if (iconButton != null)
+            IconButton(
+              iconSize: 16,
+              onPressed: () {},
+              icon: iconButton!,
+              color: PuddingColor.gray400,
+              padding: EdgeInsets.zero,
             ),
-          ),
-          if(iconButton != null)
-          IconButton(
-            iconSize: 16,
-            onPressed: (){},
-            icon: iconButton!,
-            color: PuddingColor.gray400,
-            padding: EdgeInsets.zero,
-          ),
         ],
       ),
     );
