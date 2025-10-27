@@ -19,7 +19,7 @@ class PuddingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: PuddingColor.main,
         borderRadius: borderRadius,
