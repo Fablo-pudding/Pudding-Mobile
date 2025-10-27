@@ -21,7 +21,7 @@ class PuddingRanking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
       color: backgroudColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +37,7 @@ class PuddingRanking extends StatelessWidget {
                       width: 40,
                       height: 40,
                     ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Text(userName, style: PuddingTextStyle.heading3),
             ],
           ),
