@@ -6,7 +6,7 @@ class PuddingHighRanking extends StatelessWidget {
   final int ranking;
   final Color backgroundColor;
   final String nickName;
-  final String userImage;
+  final String? userImage;
   final String? crown;
   final int puddingCounting;
 
@@ -22,7 +22,7 @@ class PuddingHighRanking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double puddingSize = ranking == 1 ? 60 : 45;;
+    final double puddingSize = ranking == 1 ? 60 : 45;
     return Column(
       children: [
         Stack(
@@ -40,13 +40,23 @@ class PuddingHighRanking extends StatelessWidget {
                 child: SizedBox(
                   child: Column(
                     children: [
-                      const SizedBox(height: 12,),
+                      const SizedBox(
+                        height: 12,
+                      ),
                       Text('$ranking위', style: PuddingTextStyle.lotteriaChab),
                       const SizedBox(height: 12),
-                      SvgPicture.asset(userImage, width: 44, height: 44),
+                      userImage != null
+                          ? SvgPicture.asset(userImage!, width: 44, height: 44)
+                          : SvgPicture.asset(
+                              'assets/img/profile.svg',
+                              width: 40,
+                              height: 40,
+                            ),
                       const SizedBox(height: 8),
                       Text(nickName, style: PuddingTextStyle.label1),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
                 ),
@@ -54,7 +64,7 @@ class PuddingHighRanking extends StatelessWidget {
             ),
             if (crown != null)
               Positioned(
-                bottom: 145,
+                bottom: 137,
                 child: SvgPicture.asset(crown!, width: 64, height: 48),
               ),
             Positioned(
