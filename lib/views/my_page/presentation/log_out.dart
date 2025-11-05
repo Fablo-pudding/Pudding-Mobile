@@ -14,7 +14,13 @@ class _PuddingLogOutState extends State<PuddingLogOut> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: PuddingColor.gray400,
-      body: CheckModal(message: '로그아웃', onConfirm: null,firstTextColor: PuddingColor.gray400,secondTextColor: PuddingColor.red,),
+      body: CheckModal(
+        message: '로그아웃',
+        onConfirm: null,
+        /// todo 로그인 화면이나 스플래쉬 화면으로 돌아오게 하기
+        firstTextColor: PuddingColor.gray400,
+        secondTextColor: PuddingColor.red,
+      ),
     );
   }
 }
