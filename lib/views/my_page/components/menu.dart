@@ -4,18 +4,16 @@ import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingMenu extends StatelessWidget {
   final String menuName;
-  final Widget? icon;
+  final Widget? iconButton;
   final BorderRadius? borderRadius;
   final Color textColor;
-  final void Function()? onTap;
 
   const PuddingMenu({
     super.key,
     required this.menuName,
-    this.icon,
+    this.iconButton,
     this.borderRadius,
     required this.textColor,
-    this.onTap,
   });
 
   @override
@@ -35,12 +33,12 @@ class PuddingMenu extends StatelessWidget {
             menuName,
             style: PuddingTextStyle.heading2.copyWith(color: textColor),
           ),
-          ///Todo 눌렀을때 다른 페이지 연결하기
-          if (icon != null)
+          //Todo 눌렀을때 다른 페이지 연결하기
+          if (iconButton != null)
             IconButton(
               iconSize: 16,
-              onPressed: onTap,
-              icon: icon!,
+              onPressed: () {},
+              icon: iconButton!,
               color: PuddingColor.gray400,
               padding: EdgeInsets.zero,
             ),
