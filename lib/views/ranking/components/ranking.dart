@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingRanking extends StatelessWidget {
@@ -33,7 +34,7 @@ class PuddingRanking extends StatelessWidget {
               userImage != null
                   ? SvgPicture.asset(userImage!, width: 40, height: 40)
                   : SvgPicture.asset(
-                      'assets/img/profile.svg',
+                      PuddingAssets.profile,
                       width: 40,
                       height: 40,
                     ),
@@ -43,7 +44,7 @@ class PuddingRanking extends StatelessWidget {
           ),
           Row(
             children: [
-              SvgPicture.asset('assets/img/pudding.svg', width: 40, height: 40),
+              SvgPicture.asset(PuddingAssets.pudding, width: 40, height: 40),
               const SizedBox(width: 8),
               Text('$puddingCount개', style: PuddingTextStyle.puddingCount),
             ],

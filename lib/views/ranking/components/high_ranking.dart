@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingHighRanking extends StatelessWidget {
@@ -48,15 +49,13 @@ class PuddingHighRanking extends StatelessWidget {
                       userImage != null
                           ? SvgPicture.asset(userImage!, width: 44, height: 44)
                           : SvgPicture.asset(
-                              'assets/img/profile.svg',
+                              PuddingAssets.profile,
                               width: 40,
                               height: 40,
                             ),
                       const SizedBox(height: 8),
                       Text(nickName, style: PuddingTextStyle.label1),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                     ],
                   ),
                 ),
@@ -64,7 +63,7 @@ class PuddingHighRanking extends StatelessWidget {
             ),
             if (crown != null)
               Positioned(
-                bottom: 137,
+                bottom: 140,
                 child: SvgPicture.asset(crown!, width: 64, height: 48),
               ),
             Positioned(
@@ -74,7 +73,7 @@ class PuddingHighRanking extends StatelessWidget {
                   top: ranking == 1 ? 0 : 8,
                 ),
                 child: SvgPicture.asset(
-                  'assets/img/pudding.svg',
+                  PuddingAssets.pudding,
                   width: puddingSize,
                   height: puddingSize,
                 ),

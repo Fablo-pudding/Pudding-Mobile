@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/views/ranking/components/high_ranking.dart';
 import 'package:pudding/views/ranking/components/ranking.dart';
 import 'package:pudding/common/constants/color.dart';
@@ -12,6 +13,7 @@ class PuddingRankingPage extends StatefulWidget {
 }
 
 class _PuddingRankingPageState extends State<PuddingRankingPage> {
+  static const double width = 16;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +37,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                     userImage: null,
                   ),
                 ),
-                const SizedBox(
-                  width: 16,
-                ),
+                const SizedBox(width: width,),
                 Expanded(
                   child: PuddingHighRanking(
                     ranking: 1,
@@ -45,12 +45,10 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                     nickName: 'username',
                     userImage: null,
                     puddingCounting: 45,
-                    crown: 'assets/img/crown.svg',
+                    crown: PuddingAssets.crown,
                   ),
                 ),
-                const SizedBox(
-                  width: 16,
-                ),
+                const SizedBox(width: width,),
                 Expanded(
                   child: PuddingHighRanking(
                     ranking: 3,
@@ -63,9 +61,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 100,
-          ),
+          const SizedBox(height: 100,),
           Expanded(
             child: ListView.builder(
               itemCount: 100,
@@ -90,6 +86,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
             userName: 'userName',
             puddingCount: 22,
             backgroudColor: PuddingColor.main,
+            userImage: PuddingAssets.profile,
           ),
         ],
       ),
