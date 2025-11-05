@@ -41,9 +41,7 @@ class PuddingHighRanking extends StatelessWidget {
                 child: SizedBox(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      const SizedBox(height: 12,),
                       Text('$ranking위', style: PuddingTextStyle.lotteriaChab),
                       const SizedBox(height: 12),
                       userImage != null
