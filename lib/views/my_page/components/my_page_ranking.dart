@@ -5,7 +5,8 @@ import 'package:pudding/common/constants/text_style.dart';
 class PuddingMyPageRanking extends StatelessWidget {
   final int ranking;
 
-  const PuddingMyPageRanking({super.key,
+  const PuddingMyPageRanking({
+    super.key,
     required this.ranking
   });
 
