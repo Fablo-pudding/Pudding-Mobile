@@ -19,6 +19,8 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: preferredSize,
       child: AppBar(
+        centerTitle: true,
+        scrolledUnderElevation: 0,
         backgroundColor: PuddingColor.background,
         elevation: 0,
         title: Text(
