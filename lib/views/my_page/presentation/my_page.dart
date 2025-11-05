@@ -26,31 +26,31 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const SizedBox(
-              height: 32,
+            const SizedBox(height: 32,),
+            const PuddingProfile(
+              nickName: '최승우',
+              explanation: '대마고 1학년 2반 16번',
             ),
-            const PuddingProfile(nickName: '최승우', explanation: '대마고 1학년 2반 16번'),
-            const SizedBox(
-              height: 48,
-            ),
+            const SizedBox(height: 48,),
             const Row(
               children: [
                 PuddingMyPageRanking(ranking: 3),
               ],
             ),
-            const SizedBox(
-              height: 48,
-            ),
+            const SizedBox(height: 48,),
             PuddingMenu(
               menuName: '공지사항',
               textColor: PuddingColor.black,
-              iconButton: GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const PuddingNotice()));
-                  // todo 공지사항 넣기
-                },
-                child: const Icon(Symbols.arrow_forward_ios),
-              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PuddingNotice(),
+                  ),
+                );
+                // todo 공지사항 넣기
+              },
+              icon: const Icon(Symbols.arrow_forward_ios),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
@@ -59,17 +59,25 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
             PuddingMenu(
               menuName: '문의',
               textColor: PuddingColor.black,
-              iconButton: GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const PuddingInquiry()));
-                  //todo 문의 넣기
-                },
-                child: const Icon(Symbols.arrow_forward_ios),
-              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PuddingInquiry(),
+                  ),
+                );
+                //todo 문의 넣기
+              },
+              icon: const Icon(Symbols.arrow_forward_ios),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const PuddingLogOut()));
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PuddingLogOut(),
+                  ),
+                );
               },
               child: const PuddingMenu(
                 menuName: '로그아웃',
@@ -86,4 +94,3 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
     );
   }
 }
-

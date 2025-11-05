@@ -27,22 +27,15 @@ class NoticeDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            height: 50,
-          ),
+          SizedBox(height: 50,),
           Center(
             child: Text(
               '아직 개발중입니다',
               style: PuddingTextStyle.heading2,
             ),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          Divider(
-            thickness: 1,
-            height: 1,
-          ),
+          SizedBox(height: 50,),
+          Divider(thickness: 1, height: 1,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

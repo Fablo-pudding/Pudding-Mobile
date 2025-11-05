@@ -4,7 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class PuddingProfile extends StatefulWidget {
   final String nickName;
@@ -67,7 +69,7 @@ class _PuddingProfileState extends State<PuddingProfile> {
           backgroundImage: _saveImage != null ? FileImage(_saveImage!) : null,
           child: _saveImage == null
               ? SvgPicture.asset(
-                  'assets/img/profile.svg',
+                  PuddingAssets.profile,
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover,
@@ -100,7 +102,7 @@ class _PuddingProfileState extends State<PuddingProfile> {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.edit_outlined,
+                Symbols.mode_edit_outline,
                 size: 16,
                 color: PuddingColor.brown,
               ),
