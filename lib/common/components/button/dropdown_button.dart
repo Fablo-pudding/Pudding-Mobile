@@ -4,27 +4,28 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
-enum DropdownButtonType { years, months, days , cardinalNumber}
+enum DropdownButtonType { years, months, days }
 
-class PuddingDropdownButton extends StatelessWidget {
+class PuddingDropdownButton extends StatefulWidget {
   final DropdownButtonType dropdownButton;
-  final int? value;
-  final ValueChanged<int?>? onChanged;
-   PuddingDropdownButton({
-    super.key,
-    required this.dropdownButton,
-    this.onChanged,
-     this.value,
-  });
+  const PuddingDropdownButton({super.key, required this.dropdownButton,});
 
+  @override
+  State<PuddingDropdownButton> createState() => _PuddingDropdownButtonState();
+}
+
+class _PuddingDropdownButtonState extends State<PuddingDropdownButton> {
   final List<int> dropdownYears = List.generate(
-    DateTime.now().year - 2007,
-        (index) => 2007 + index,
-  ).take(3).toList();
-  final List<int> dropdownMonths = List.generate(12, (index)=>index+1);
-  final List<int> dropdownDays = List.generate(31, (index)=>index+1);
-  final List<int> cardinalNumbers = List.generate(DateTime.now().year - 2015,(index)=>index+9).take(3).toList();
+    DateTime.now().year - 2006,
+        (index) => 2006 + index,
+  );
+  final List<int> dropdownMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  final List<int> dropdownDays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+  ];
 
+  int? dropdownYear;
+  int? dropdownMonth;
+  int? dropdownDay;
 
   Expanded puddingEnum(DropdownButtonType type) {
     switch (type) {
@@ -38,7 +39,7 @@ class PuddingDropdownButton extends StatelessWidget {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: const MenuItemStyleData(height: 28),
+                menuItemStyleData: MenuItemStyleData(height: 28),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -54,15 +55,19 @@ class PuddingDropdownButton extends StatelessWidget {
                     color: PuddingColor.gray400,
                   ),
                 ),
-                value: value,
-                iconStyleData: const IconStyleData(
+                value: dropdownYear,
+                iconStyleData: IconStyleData(
                   icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
-                underline: const SizedBox.shrink(),
+                underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body3.copyWith(
                   color: PuddingColor.black,
                 ),
-                onChanged: onChanged,
+                onChanged: (int? newValue) {
+                  setState(() {
+                    dropdownYear = newValue;
+                  });
+                },
                 items: dropdownYears.map((year) {
                   return DropdownMenuItem<int>(
                     value: year,
@@ -89,7 +94,7 @@ class PuddingDropdownButton extends StatelessWidget {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: const MenuItemStyleData(height: 30),
+                menuItemStyleData: MenuItemStyleData(height: 30),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -105,15 +110,19 @@ class PuddingDropdownButton extends StatelessWidget {
                     color: PuddingColor.gray400,
                   ),
                 ),
-                value: value,
-                iconStyleData: const IconStyleData(
+                value: dropdownMonth,
+                iconStyleData: IconStyleData(
                   icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
-                underline: const SizedBox.shrink(),
+                underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body1.copyWith(
                   color: PuddingColor.black,
                 ),
-                onChanged: onChanged,
+                onChanged: (int? newValue) {
+                  setState(() {
+                    dropdownMonth = newValue;
+                  });
+                },
                 items: dropdownMonths.map((month) {
                   return DropdownMenuItem<int>(
                     value: month,
@@ -139,7 +148,7 @@ class PuddingDropdownButton extends StatelessWidget {
             height: 36,
             child: DropdownButtonHideUnderline(
               child: DropdownButton2<int>(
-                menuItemStyleData: const MenuItemStyleData(height: 30),
+                menuItemStyleData: MenuItemStyleData(height: 30),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -155,15 +164,19 @@ class PuddingDropdownButton extends StatelessWidget {
                     color: PuddingColor.gray400,
                   ),
                 ),
-                value: value,
-                iconStyleData: const IconStyleData(
+                value: dropdownDay,
+                iconStyleData: IconStyleData(
                   icon: Icon(Symbols.arrow_drop_down, size: 24),
                 ),
-                underline: const SizedBox.shrink(),
+                underline: SizedBox.shrink(),
                 style: PuddingTextStyle.body1.copyWith(
                   color: PuddingColor.black,
                 ),
-                onChanged: onChanged,
+                onChanged: (int? newValue) {
+                  setState(() {
+                    dropdownDay = newValue;
+                  });
+                },
                 items: dropdownDays.map((day) {
                   return DropdownMenuItem<int>(
                     value: day,
@@ -179,67 +192,31 @@ class PuddingDropdownButton extends StatelessWidget {
             ),
           ),
         );
-      case DropdownButtonType.cardinalNumber:
-        return Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: PuddingColor.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            height: 48,
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton2<int>(
-                menuItemStyleData: const MenuItemStyleData(height: 34),
-                dropdownStyleData: DropdownStyleData(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: PuddingColor.white,
-                  ),
-                  maxHeight: 124,
-                ),
-                isExpanded: true,
-                isDense: true,
-                hint: Text(
-                  '기수 입력',
-                  style: PuddingTextStyle.body1.copyWith(
-                    color: PuddingColor.gray400,
-                  ),
-                ),
-                value: value,
-                iconStyleData: const IconStyleData(
-                  icon: Icon(Symbols.arrow_drop_down, size: 24),
-                ),
-                underline: const SizedBox.shrink(),
-                style: PuddingTextStyle.body1.copyWith(
-                  color: PuddingColor.black,
-                ),
-                onChanged: onChanged,
-                items: cardinalNumbers.map((day) {
-                  return DropdownMenuItem<int>(
-                    value: day,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${day.toString()}기',
-                        style: PuddingTextStyle.body1.copyWith(
-                          color: PuddingColor.black,
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-        );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    int dayChoice() {
+      if (dropdownMonth == 2) {
+        if ((dropdownYear! % 4 == 0 && dropdownYear! % 100 != 0) ||
+            dropdownYear! % 400 == 0) {
+          return 29;
+        }
+        return 28;
+      }
+      if (dropdownMonth == 4 || dropdownMonth == 6 || dropdownMonth == 9 || dropdownMonth == 11) {
+        return 30;
+      } else {
+        return 31;
+      }
+    }
+    if ((dropdownDay ?? 0) > dayChoice()) {
+      dropdownDay = null;
+    }
     return Row(
       children: [
-        puddingEnum(dropdownButton),
+        puddingEnum(widget.dropdownButton),
       ],
     );
   }

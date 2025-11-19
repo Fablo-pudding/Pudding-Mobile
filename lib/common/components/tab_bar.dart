@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/login_page.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/page_view.dart';
-
-
 
 class PuddingTab extends StatefulWidget {
   const PuddingTab({super.key});
@@ -14,39 +10,48 @@ class PuddingTab extends StatefulWidget {
 }
 
 class _PuddingTabState extends State<PuddingTab>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin{
+  late TabController controller;
+
+  @override
+  void initState(){
+    super.initState();
+    controller = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Column(
-        children: [
-          TabBar(
-            labelColor: PuddingColor.brown,
-            unselectedLabelColor: PuddingColor.gray400,
-            labelStyle: PuddingTextStyle.heading2,
-            indicatorColor: PuddingColor.brown,
-            indicatorWeight: 1,
-            indicatorSize: TabBarIndicatorSize.tab,
-            tabs: const <Widget>[
-              Tab(
-                child: Text('로그인'),
-              ),
-              Tab(
-                child: Text('회원가입'),
-              ),
+    return  Column(
+      children: [
+        TabBar(
+          labelColor: PuddingColor.brown,
+          unselectedLabelColor: PuddingColor.gray400,
+          labelStyle: PuddingTextStyle.heading2,
+          indicatorColor: PuddingColor.brown,
+          indicatorWeight: 1,
+          indicatorSize: TabBarIndicatorSize.tab,
+          controller: controller,
+          tabs: <Widget>[
+            Tab(child: Text('로그인'),),
+            Tab(child: Text('회원가입'),),
+          ],
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: controller,
+            children: const [
+              Center(child: Text('첫번째 페이지')),
+              Center(child: Text('두번째 페이지')),
             ],
           ),
-          Expanded(
-            child: TabBarView(
-              children: const [
-                Center(child: PuddingLoginPage(),),
-                Center(child: PuddingPageView(),),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
