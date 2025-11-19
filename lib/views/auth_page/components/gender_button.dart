@@ -16,9 +16,9 @@ class PuddingGenderButton extends StatefulWidget {
 class _PuddingGenderButtonState extends State<PuddingGenderButton> {
    Gender? gender;
 
-  void selectedGender(Gender genderSelecet) {
+  void selectedGender(Gender genderSelect) {
     setState(() {
-      gender = genderSelecet;
+      gender = genderSelect;
       widget.onTap();
     });
   }
@@ -32,7 +32,7 @@ class _PuddingGenderButtonState extends State<PuddingGenderButton> {
           onPressed: () => selectedGender(Gender.man),
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
-              EdgeInsets.symmetric(vertical: 53, horizontal: 44),
+              const EdgeInsets.symmetric(vertical: 53, horizontal: 44),
             ),
             backgroundColor: WidgetStateProperty.all(
               gender == Gender.man
@@ -43,19 +43,19 @@ class _PuddingGenderButtonState extends State<PuddingGenderButton> {
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: PuddingColor.brown, width: 1),
+                side: const BorderSide(color: PuddingColor.brown, width: 1),
               ),
             ),
-            minimumSize: WidgetStateProperty.all(Size(60, 80)),
+            minimumSize: WidgetStateProperty.all(const Size(60, 80)),
           ),
           child: Row(children: [SvgPicture.asset('assets/img/man.svg')]),
         ),
-        SizedBox(width: 31),
+        const SizedBox(width: 31),
         ElevatedButton(
           onPressed: () => selectedGender(Gender.woman),
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
-              EdgeInsets.symmetric(vertical: 53, horizontal: 44),
+              const EdgeInsets.symmetric(vertical: 53, horizontal: 44),
             ),
             backgroundColor: WidgetStateProperty.all(
               gender == Gender.woman
@@ -65,10 +65,10 @@ class _PuddingGenderButtonState extends State<PuddingGenderButton> {
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: PuddingColor.brown, width: 1),
+                side: const BorderSide(color: PuddingColor.brown, width: 1),
               ),
             ),
-            minimumSize: WidgetStateProperty.all(Size(60, 80)),
+            minimumSize: WidgetStateProperty.all(const Size(60, 80)),
           ),
           child: Row(children: [SvgPicture.asset('assets/img/woman.svg')]),
         ),
