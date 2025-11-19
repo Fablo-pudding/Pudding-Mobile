@@ -85,7 +85,7 @@ class PuddingTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null) Text(title!, style: PuddingTextStyle.heading3),
-        const SizedBox(height: 4,),
+        SizedBox(height: 4,),
         TextFormField(
           onSaved: onSaved,
           decoration: inputDecoration,
