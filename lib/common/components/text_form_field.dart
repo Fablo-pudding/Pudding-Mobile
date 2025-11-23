@@ -22,6 +22,13 @@ class PuddingTextFormField extends StatelessWidget {
   final Color? fillColor;
   final FocusNode? focusNode;
   final AutovalidateMode? autovalidateMode;
+  final bool? expands;
+  final int? minLines;
+  final int? maxLines;
+  final bool? filled;
+  final TextStyle? hintStyle;
+  final bool? choiceEnableBorder;
+  final bool? choiceFocusBorder;
 
   const PuddingTextFormField({
     super.key,
@@ -44,6 +51,13 @@ class PuddingTextFormField extends StatelessWidget {
     this.fillColor,
     this.focusNode,
     this.autovalidateMode,
+    this.expands,
+    this.minLines,
+    this.maxLines,
+    this.filled,
+     this.choiceEnableBorder,
+     this.choiceFocusBorder,
+    this.hintStyle,
   });
 
   @override
@@ -60,19 +74,24 @@ class PuddingTextFormField extends StatelessWidget {
       borderSide: BorderSide(color: PuddingColor.brown, width: 1),
     );
 
+    final appliedFocusBorder = choiceFocusBorder == false ? InputBorder.none : focusBorder;
+    final appliedEnabledBorder = choiceEnableBorder == false ? InputBorder.none : enableBorder;
+
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
     final filledColor = this.fillColor ?? PuddingColor.white;
     InputDecoration? inputDecoration = decoration!.copyWith(
       errorBorder: InputBorder.none,
       focusedErrorBorder: focusBorder,
-      enabledBorder: enableBorder,
+      enabledBorder : appliedEnabledBorder,
       suffixIcon: suffixIcon,
-      filled: true,
+      filled: filled ?? true,
       fillColor: filledColor,
       hintText: hintText,
-      focusedBorder: focusBorder,
+      hintStyle: hintStyle,
+      focusedBorder: appliedFocusBorder,
       errorStyle: TextStyle(height: 0, fontSize: 0),
     );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,6 +107,10 @@ class PuddingTextFormField extends StatelessWidget {
           cursorColor: cursorColor,
           maxLength: maxLength,
           autovalidateMode: autovalidateMode,
+          textAlign: textAlign ?? TextAlign.start,
+          minLines: minLines,
+          maxLines: maxLines,
+          focusNode: focusNode,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
         ),
       ],

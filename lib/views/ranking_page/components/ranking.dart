@@ -8,7 +8,7 @@ class PuddingRanking extends StatelessWidget {
   final String? userImage;
   final String userName;
   final int puddingCount;
-  final Color backgroudColor;
+  final Color backGroudColor;
 
   const PuddingRanking({
     super.key,
@@ -16,14 +16,14 @@ class PuddingRanking extends StatelessWidget {
     this.userImage,
     required this.userName,
     required this.puddingCount,
-    required this.backgroudColor,
+    required this.backGroudColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
-      color: backgroudColor,
+      color: backGroudColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
-import 'package:pudding/views/ranking/components/high_ranking.dart';
-import 'package:pudding/views/ranking/components/ranking.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/views/ranking_page/components/high_ranking.dart';
+import 'package:pudding/views/ranking_page/components/ranking.dart';
 
 class PuddingRankingPage extends StatefulWidget {
   const PuddingRankingPage({super.key});
@@ -73,7 +73,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                         ranking: index+4,
                         userName: 'userName',
                         puddingCount: index,
-                        backgroudColor: PuddingColor.background,
+                        backGroudColor: PuddingColor.background,
                       ),
                     ),
                   ],
@@ -85,7 +85,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
             ranking: 2,
             userName: 'userName',
             puddingCount: 22,
-            backgroudColor: PuddingColor.main,
+            backGroudColor: PuddingColor.main,
             userImage: PuddingAssets.profile,
           ),
         ],
