@@ -6,4 +6,5 @@ abstract final class PuddingAssets {
   static const logo = 'assets/img/logo.svg';
   static const crown = 'assets/img/crown.svg';
   static const profile = 'assets/img/profile.svg';
+  static const recipe = 'assets/img/recipe.svg';
 }
