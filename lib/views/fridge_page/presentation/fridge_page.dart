@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/fridge_page/components/ingredient_item.dart';
+import 'package:pudding/common/components/app_bar';
+
 class PuddingFridgePage extends StatelessWidget {
   const PuddingFridgePage({super.key});
 
