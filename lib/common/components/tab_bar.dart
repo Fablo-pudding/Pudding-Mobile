@@ -4,6 +4,8 @@ import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up_page/login_page.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up_page/page_view.dart';
 
+
+
 class PuddingTab extends StatefulWidget {
   const PuddingTab({super.key});
 
@@ -38,12 +40,8 @@ class _PuddingTabState extends State<PuddingTab>
           Expanded(
             child: TabBarView(
               children: const [
-                Center(
-                  child: PuddingLoginPage(),
-                ),
-                Center(
-                  child: PuddingPageView(),
-                ),
+                Center(child: PuddingLoginPage(),),
+                Center(child: PuddingPageView(),),
               ],
             ),
           ),
