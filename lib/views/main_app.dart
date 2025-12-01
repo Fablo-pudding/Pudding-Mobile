@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/bottom_navigation_bar.dart';
-import 'package:pudding/views/fridge_page/presentation/fridge_page.dart';
 
 class PuddingMainApp extends StatefulWidget {
   const PuddingMainApp({super.key});

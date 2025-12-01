@@ -6,7 +6,7 @@ import 'package:pudding/common/constants/color.dart';
 class PuddingIdPage extends StatefulWidget {
   final void Function()? next;
 
-  const PuddingIdPage({super.key, this.next});
+  const PuddingIdPage({super.key, required this.next});
 
   @override
   State<PuddingIdPage> createState() => _PuddingIdPageState();
@@ -31,7 +31,8 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
 
   void _onChangedButton() {
     setState(() {
-      isEnabledButton = _idController.text.isNotEmpty;
+      isEnabledButton = _idController.text.length >= 3
+      ;
     });
   }
 
@@ -51,12 +52,9 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
                   controller: _idController,
                   hintText: '3 ~ 12자 내 아이디 생성',
                   title: '아이디 생성',
-                  maxLength: 13,
-                  validator: (value){
-                    if(value!.length > 3){
-                      return null;
-                    }
-                    if(value.length < 12){
+                  maxLength: 12,
+                  validator: (value) {
+                    if (value ==null || value.length < 3) {
                       return null;
                     }
                     return null;
@@ -69,17 +67,17 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
                 children: [
                   Expanded(
                     child: PuddingElevatedButton(
-                      onPressed: isEnabledButton
-                          ? () {
+                      onPressed: isEnabledButton ? (){
+                        if(_formKey.currentState!.validate()) {
                           widget.next?.call();
-                      }
-                          : null,
+                        }
+                      } : null,
                       child: Text('다음'),
                     ),
                   ),
                 ],
               ),
-             const SizedBox(height: 10,),
+              const SizedBox(height: 10,),
             ],
           ),
         ),
