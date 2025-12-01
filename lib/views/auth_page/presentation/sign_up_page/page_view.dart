@@ -7,7 +7,7 @@ import 'package:pudding/views/auth_page/presentation/sign_up_page/password.dart'
 import 'package:pudding/views/auth_page/presentation/sign_up_page/repassword.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up_page/student_number.dart';
 
-
+enum Page {id, birthDate, studentNumber, genderSelect,password,rePassword,complete}
 class PuddingPageView extends StatefulWidget {
   const PuddingPageView({super.key});
 
@@ -16,21 +16,21 @@ class PuddingPageView extends StatefulWidget {
 }
 
 class _PuddingPageViewState extends State<PuddingPageView> {
-  PageController pageController = PageController(
+ final PageController pageController = PageController(
     initialPage: 0,
   );
 
-  void selectPage(int index) {
-    pageController.jumpToPage(index);
+  void selectPage(Page page) {
+    pageController.jumpToPage(page.index);
     setState(() {});
   }
 
   @override
   void initState() {
-    pageController.addListener(() {
+    super.initState();
+  pageController.addListener(() {
       setState(() {});
     });
-    super.initState();
   }
 
   @override
@@ -41,37 +41,37 @@ class _PuddingPageViewState extends State<PuddingPageView> {
       children: [
         SizedBox.expand(
           child: PuddingIdPage(
-            next: () => selectPage(1),
+            next: () => selectPage(Page.birthDate),
           ),
         ),
         SizedBox.expand(
           child: PuddingSignUpBirthDate(
-            next: () => selectPage(2),
-            back: () => selectPage(0),
+            next: () => selectPage(Page.studentNumber),
+            back: () => selectPage(Page.id),
           ),
         ),
         SizedBox.expand(
           child: PuddingSignUpStudentNumber(
-            next: () => selectPage(3),
-            back: () => selectPage(1),
+            next: () => selectPage(Page.genderSelect),
+            back: () => selectPage(Page.birthDate),
           ),
         ),
         SizedBox.expand(
           child: PuddingSignUpGenderSelect(
-            next: () => selectPage(4),
-            back: () => selectPage(2),
+            next: () => selectPage(Page.password),
+            back: () => selectPage(Page.studentNumber),
           ),
         ),
         SizedBox.expand(
           child: PuddingPassword(
-            next: () => selectPage(5),
-            back: () => selectPage(3),
+            next: () => selectPage(Page.rePassword),
+            back: () => selectPage(Page.genderSelect),
           ),
         ),
         SizedBox.expand(
           child: PuddingRepassword(
-            next: () => selectPage(6),
-            back: () => selectPage(4),
+            next: () => selectPage(Page.complete),
+            back: () => selectPage(Page.password),
           ),
         ),
         SizedBox.expand(
