@@ -85,25 +85,18 @@ class PuddingPost extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 22),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: EdgeInsets.zero,
-
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PuddingCommentWrite()),
-                  );
-                },
-                child: Text(
-                  title,
-                  style: PuddingTextStyle.heading3.copyWith(
-                    color: PuddingColor.black,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+                  },
+                  child: Text(
+                    title,
+                    style: PuddingTextStyle.heading3.copyWith(
+                      color: PuddingColor.black,
+                    ),
                   ),
                 ),
               ),
-            ),
           ),
           const SizedBox(height: 20),
           Divider(color: PuddingColor.brown),
@@ -117,10 +110,15 @@ class PuddingPost extends StatelessWidget {
                   size: 14,
                 ),
                 const SizedBox(width: 6),
-                Text(
-                  '댓글 $commentCount',
-                  style: PuddingTextStyle.body3.copyWith(
-                    color: PuddingColor.gray400,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+                  },
+                  child: Text(
+                    '댓글 $commentCount',
+                    style: PuddingTextStyle.body3.copyWith(
+                      color: PuddingColor.gray400,
+                    ),
                   ),
                 ),
               ],

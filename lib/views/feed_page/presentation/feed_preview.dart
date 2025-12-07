@@ -17,8 +17,13 @@ class PuddingFeedPreview extends StatefulWidget {
 
 class _PuddingFeedPreviewState extends State<PuddingFeedPreview> {
   final DateTime dateTime = DateTime.now();
+  late Duration differentTime;
+  @override
+  void initState() {
+    super.initState();
+    differentTime =  DateTime.now().difference(dateTime);
 
-   String get dateTimeFormat => DateFormat('mm').format(dateTime);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +31,20 @@ class _PuddingFeedPreviewState extends State<PuddingFeedPreview> {
       backgroundColor: PuddingColor.background,
       appBar: PuddingAppBar(
         title: '피드',
-        leading: SizedBox(),
+        leading: const SizedBox(),
       ),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int index) {
           return PuddingPost(
             username: '최승우',
-            time: dateTimeFormat,
+            time: "${differentTime.inMinutes}분전" ,
             title: '안녕하세요',
             commentCount: 2,
             profileImg: PuddingAssets.profile,
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(
-            height: 20,
-          );
+          return const SizedBox(height: 20,);
         },
         itemCount: 100,
       ),
