@@ -3,8 +3,7 @@ import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/feed/presentation/feed_page.dart';
-
+import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 
 class PuddingFeedWritePage extends StatefulWidget {
   const PuddingFeedWritePage({super.key});
@@ -47,9 +46,21 @@ class _PuddingFeedWritePageState extends State<PuddingFeedWritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: PuddingColor.background,
-      appBar: PuddingAppBar(title: '피드',leading: SizedBox(),rightText: '게시',leftText: '뒤로',navigator: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingFeedPage()));
-      },),
+      appBar: PuddingAppBar(
+        title: '피드',
+        leading: TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
+        ),
+        rightText: TextButton(
+          onPressed: isEnabledButton ? () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (context) => PuddingCommentWrite()));
+          } : null,
+          child: Text("게시",style: PuddingTextStyle.heading3,),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -65,10 +76,11 @@ class _PuddingFeedWritePageState extends State<PuddingFeedWritePage> {
               controller: feedController,
               textAlign: TextAlign.center,
               hintText: '제목을 입력해 주세요',
-              hintStyle: PuddingTextStyle.heading3.copyWith(
+              hintStyle: PuddingTextStyle.heading2.copyWith(
                 color: PuddingColor.gray400,
               ),
-
+              style: PuddingTextStyle.heading2,
+              maxLength: 101,
             ),
             Divider(
               height: 1,
@@ -90,7 +102,11 @@ class _PuddingFeedWritePageState extends State<PuddingFeedWritePage> {
                     filled: false,
                     controller: feedContentController,
                     hintText: '내용을 입력해 주세요',
-                    hintStyle: PuddingTextStyle.body1.copyWith(color: PuddingColor.gray400),
+                    hintStyle: PuddingTextStyle.body1.copyWith(
+                      color: PuddingColor.gray400,
+                    ),
+                    style: PuddingTextStyle.body1,
+                    maxLength: 513,
                     focusNode: _focusNode,
                     choiceFocusBorder: false,
                     choiceEnableBorder: false,

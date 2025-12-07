@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 
 class PuddingPost extends StatelessWidget {
   final String username;
@@ -41,7 +43,7 @@ class PuddingPost extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: PuddingColor.gray400,
-                  child: Image.network(
+                  child: SvgPicture.asset(
                     profileImg,
                     width: 60,
                     height: 60,
@@ -83,10 +85,22 @@ class PuddingPost extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 22),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                title,
-                style: PuddingTextStyle.heading3.copyWith(
-                  color: PuddingColor.black,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: EdgeInsets.zero,
+
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => PuddingCommentWrite()),
+                  );
+                },
+                child: Text(
+                  title,
+                  style: PuddingTextStyle.heading3.copyWith(
+                    color: PuddingColor.black,
+                  ),
                 ),
               ),
             ),
