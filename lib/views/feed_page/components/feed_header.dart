@@ -48,16 +48,14 @@ class PuddingFeedHeader extends StatelessWidget {
             PuddingFeedEdit(),
           ],
         ),
-        const SizedBox(
-          height: 13,
-        ),
+        const SizedBox(height: 13,),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset(
               userImage,
-              width: height ?? 46,
-              height: width ?? 46,
+              width: width ?? 46,
+              height: height ?? 46,
             ),
             const SizedBox(
               width: 8,

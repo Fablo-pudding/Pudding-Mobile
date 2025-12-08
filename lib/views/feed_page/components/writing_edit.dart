@@ -4,6 +4,7 @@ import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
+import 'package:pudding/views/feed_page/presentation/feed_edit.dart';
 
 class PuddingFeedEdit extends StatefulWidget {
   const PuddingFeedEdit({super.key,});
@@ -42,7 +43,7 @@ class _PuddingEditState extends State<PuddingFeedEdit> {
                 return CheckModal(message: '수정하시겠습니까?', onConfirm: (){
                   ///todo 작성자가 아닐 시 수정 불가
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PuddingCommentWrite()),
+                    MaterialPageRoute(builder: (context) => PuddingFeedEditPage()),
                   );
                 });
               });
