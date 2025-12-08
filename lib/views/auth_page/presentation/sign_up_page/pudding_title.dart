@@ -34,7 +34,8 @@ class _PuddingSignUpState extends State<PuddingTitle> {
             const SizedBox(height: 20,),
             Expanded(child: PuddingTab()),
           ],
-
+        ),
+      ),
     );
   }
 }
