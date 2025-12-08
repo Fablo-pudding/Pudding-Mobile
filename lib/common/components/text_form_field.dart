@@ -22,6 +22,13 @@ class PuddingTextFormField extends StatelessWidget {
   final Color? fillColor;
   final FocusNode? focusNode;
   final AutovalidateMode? autovalidateMode;
+  final bool? expands;
+  final int? minLines;
+  final int? maxLines;
+  final bool? filled;
+  final TextStyle? hintStyle;
+  final bool? choiceEnableBorder;
+  final bool? choiceFocusBorder;
 
   const PuddingTextFormField({
     super.key,
@@ -44,15 +51,25 @@ class PuddingTextFormField extends StatelessWidget {
     this.fillColor,
     this.focusNode,
     this.autovalidateMode,
+    this.expands,
+    this.minLines,
+    this.maxLines,
+    this.filled,
+    this.choiceEnableBorder,
+    this.choiceFocusBorder,
+    this.hintStyle,
   });
 
   @override
   Widget build(BuildContext context) {
     final defaultTextStyle = style ?? PuddingTextStyle.body1;
-
+    final feedFocusBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: PuddingColor.white),
+    );
     final enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.white, width: 1),
+      borderSide: BorderSide(color: PuddingColor.white),
     );
 
     final focusBorder = OutlineInputBorder(
@@ -60,19 +77,36 @@ class PuddingTextFormField extends StatelessWidget {
       borderSide: BorderSide(color: PuddingColor.brown, width: 1),
     );
 
+    InputBorder selectFocusBorder;
+
+    if (choiceFocusBorder == false) {
+      selectFocusBorder = InputBorder.none;
+    } else if (choiceFocusBorder == true) {
+      selectFocusBorder = focusBorder;
+    } else {
+      selectFocusBorder = feedFocusBorder;
+    }
+
+    final selectEnabledBorder = choiceEnableBorder == false
+        ? InputBorder.none
+        : enableBorder;
+
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
     final filledColor = this.fillColor ?? PuddingColor.white;
     InputDecoration? inputDecoration = decoration!.copyWith(
       errorBorder: InputBorder.none,
       focusedErrorBorder: focusBorder,
-      enabledBorder: enableBorder,
+      enabledBorder: selectEnabledBorder,
       suffixIcon: suffixIcon,
-      filled: true,
+      filled: filled ?? true,
       fillColor: filledColor,
       hintText: hintText,
-      focusedBorder: focusBorder,
+      hintStyle: hintStyle,
+      focusedBorder: selectFocusBorder,
       errorStyle: TextStyle(height: 0, fontSize: 0),
+      counterText: '',
     );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,6 +122,10 @@ class PuddingTextFormField extends StatelessWidget {
           cursorColor: cursorColor,
           maxLength: maxLength,
           autovalidateMode: autovalidateMode,
+          textAlign: textAlign ?? TextAlign.start,
+          minLines: minLines,
+          maxLines: maxLines,
+          focusNode: focusNode,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
         ),
       ],

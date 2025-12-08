@@ -56,6 +56,11 @@ class PuddingTextStyle{
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle feedTitle = NanumBarunpenB.copyWith(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  );
+
   /// Lotteria
   static TextStyle lotteriaChab = LotteriaChab.copyWith(
     fontSize: 24,
