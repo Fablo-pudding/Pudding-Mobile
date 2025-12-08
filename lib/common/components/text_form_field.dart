@@ -26,6 +26,7 @@ class PuddingTextFormField extends StatelessWidget {
   final TextInputFormatter? inputFormatter;
   final void Function(String?)? onSaved;
   final String? countText;
+  final String? errorText;
 
   const PuddingTextFormField({
     super.key,
@@ -51,6 +52,7 @@ class PuddingTextFormField extends StatelessWidget {
     this.inputFormatter,
     this.onSaved,
     this.countText,
+    this.errorText,
   });
 
   @override
@@ -78,14 +80,17 @@ class PuddingTextFormField extends StatelessWidget {
       fillColor: filledColor,
       hintText: hintText,
       focusedBorder: focusBorder,
-     counterText: countText,
-      errorStyle: const TextStyle(height: 0, fontSize: 0),
+      errorText: errorText,
+      counterText: countText,
+      errorStyle: PuddingTextStyle.body3.copyWith(color: PuddingColor.red),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null) Text(title!, style: PuddingTextStyle.heading3),
-        SizedBox(height: 4,),
+        SizedBox(
+          height: 4,
+        ),
         TextFormField(
           onSaved: onSaved,
           decoration: inputDecoration,

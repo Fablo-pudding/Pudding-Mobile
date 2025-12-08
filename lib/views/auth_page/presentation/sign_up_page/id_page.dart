@@ -50,12 +50,13 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
                 key: _formKey,
                 child: PuddingTextFormField(
                   controller: _idController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   hintText: '3 ~ 12자 내 아이디 생성',
                   title: '아이디 생성',
                   maxLength: 12,
                   validator: (value) {
-                    if (value ==null || value.length < 3) {
-                      return null;
+                    if (value == null || value.length < 3) {
+                      return '3글자 이상 쳐주세요';
                     }
                     return null;
                   },
