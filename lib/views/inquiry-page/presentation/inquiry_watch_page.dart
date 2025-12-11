@@ -8,9 +8,7 @@ import 'package:pudding/views/feed_page/components/comment_header.dart';
 import 'package:pudding/views/inquiry-page/components/inquiry_header.dart';
 
 class PuddingInquiryWatchPage extends StatefulWidget {
-  const PuddingInquiryWatchPage({
-    super.key,
-  });
+  const PuddingInquiryWatchPage({super.key});
 
   @override
   State<PuddingInquiryWatchPage> createState() => _PuddingInquiryWatchPageState();
@@ -52,9 +50,7 @@ class _PuddingInquiryWatchPageState extends State<PuddingInquiryWatchPage> {
               ),
             ),
             Divider(height: 1, thickness: 1, color: PuddingColor.brown),
-            const SizedBox(
-              height: 47,
-            ),
+            const SizedBox(height: 47,),
             Expanded(
               child: Stack(
                 children: [
@@ -66,8 +62,8 @@ class _PuddingInquiryWatchPageState extends State<PuddingInquiryWatchPage> {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 15),
                           child: PuddingCommentHeader(
-                            userId: '최승우',
-                            userImage: PuddingAssets.profile,
+                            userId: '관리자',
+                            userImage: PuddingAssets.admin,
                             content: '안녕하세요',
                           ),
                         );
