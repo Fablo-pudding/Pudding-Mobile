@@ -3,14 +3,17 @@ import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/views/inquiry-page/presentation/admin/admin_inquiry_page.dart';
 import 'package:pudding/views/inquiry-page/presentation/inquiry_watch_page.dart';
 
 class PuddingInquiryArticle extends StatefulWidget {
   final String title;
+  final bool value;
 
   const PuddingInquiryArticle({
     super.key,
     required this.title,
+    required this.value,
   });
 
   @override
@@ -44,7 +47,14 @@ class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
                     ),
                     GestureDetector(
                         onTap: (){
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
+                          if(widget.value){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingAdminInquiryPage()));
+                          }
+                          else {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    PuddingInquiryWatchPage()));
+                          }
                         },
                         child: Icon(Symbols.arrow_forward_ios)),
                   ],

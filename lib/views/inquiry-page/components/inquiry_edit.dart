@@ -41,6 +41,7 @@ class _PuddingEditState extends State<PuddingInquiryEdit> {
               builder: (BuildContext context) {
                 return CheckModal(message: '작성한 문의를 수정하시겠습니까?', onConfirm: (){
                   ///todo 작성자가 아닐 시 수정 불가
+                  Navigator.of(context).pop();
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => PuddingInquiryEditPage()),
                   );

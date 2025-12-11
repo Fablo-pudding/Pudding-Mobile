@@ -7,14 +7,14 @@ import 'package:pudding/views/inquiry-page/components/inquiry_article.dart';
 import 'package:pudding/views/inquiry-page/presentation/inquiry_write.dart';
 
 
-class PuddingInquiryPage extends StatefulWidget {
-  const PuddingInquiryPage({super.key});
+class PuddingAdminInquiryPage extends StatefulWidget {
+  const PuddingAdminInquiryPage({super.key});
 
   @override
-  State<PuddingInquiryPage> createState() => _PuddingInquiryPageState();
+  State<PuddingAdminInquiryPage> createState() => _PuddingAdminInquiryPageState();
 }
 
-class _PuddingInquiryPageState extends State<PuddingInquiryPage> {
+class _PuddingAdminInquiryPageState extends State<PuddingAdminInquiryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,28 +41,9 @@ class _PuddingInquiryPageState extends State<PuddingInquiryPage> {
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return PuddingInquiryArticle(
-                    title: '안녕하세요', value: false,
+                    title: '안녕하세요', value: true,
                   );
                 },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: PuddingElevatedButton(
-                      child: Text('새 문의 작성'),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => PuddingInquiryWrite(),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

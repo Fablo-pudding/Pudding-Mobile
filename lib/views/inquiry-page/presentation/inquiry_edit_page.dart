@@ -4,6 +4,7 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
+import 'package:pudding/views/inquiry-page/presentation/inquiry_watch_page.dart';
 
 class PuddingInquiryEditPage extends StatefulWidget {
   const PuddingInquiryEditPage({super.key});
@@ -54,7 +55,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
         ),
         rightText: TextButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
           },
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),

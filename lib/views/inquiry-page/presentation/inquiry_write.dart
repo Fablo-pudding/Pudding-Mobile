@@ -58,9 +58,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
             showDialog(context: context, builder: (BuildContext dialogContext){
               return CheckModal(message: '작성한 문의 내용을 등록하시겠습니까?', onConfirm: (){
                 Navigator.of(dialogContext).pop();
-                Navigator.of(
-                  context,
-                ).push(MaterialPageRoute(builder: (context) => PuddingInquiryWatchPage()));
+             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
               });
             });} : null,
           child: Text("등록",style: PuddingTextStyle.heading3,),

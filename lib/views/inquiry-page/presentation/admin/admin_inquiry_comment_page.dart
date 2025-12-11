@@ -8,6 +8,7 @@ import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/views/feed_page/components/comment_header.dart';
 import 'package:pudding/views/feed_page/components/feed_header.dart';
 import 'package:pudding/views/feed_page/components/writing_edit.dart';
+import 'package:pudding/views/inquiry-page/components/inquiry_edit.dart';
 
 class PuddingAdminInquiryCommentPage extends StatefulWidget {
   const PuddingAdminInquiryCommentPage({
@@ -55,7 +56,7 @@ class _PuddingAdminInquiryCommentPageState extends State<PuddingAdminInquiryComm
       resizeToAvoidBottomInset: false,
       backgroundColor: PuddingColor.background,
       appBar: PuddingAppBar(
-        title: '피드',
+        title: '문의',
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(Symbols.arrow_back_ios_new),
@@ -104,7 +105,7 @@ class _PuddingAdminInquiryCommentPageState extends State<PuddingAdminInquiryComm
                   ),
                   Positioned(
                       right: 0,
-                      child: PuddingFeedEdit()),
+                      child: PuddingInquiryEdit()),
                 ],
               ),
             ),
