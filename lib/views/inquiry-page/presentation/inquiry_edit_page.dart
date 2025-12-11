@@ -14,23 +14,23 @@ class PuddingInquiryEditPage extends StatefulWidget {
 }
 
 class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
-  final TextEditingController feedController = TextEditingController();
-  final TextEditingController feedContentController = TextEditingController();
+  final TextEditingController inquiryController = TextEditingController();
+  final TextEditingController inquiryContentController = TextEditingController();
   bool isEnabledButton = false;
   late FocusNode _focusNode;
 
   @override
   void initState() {
-    feedController.addListener(onChangedButton);
-    feedContentController.addListener(onChangedButton);
+    inquiryController.addListener(onChangedButton);
+    inquiryContentController.addListener(onChangedButton);
     _focusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
-    feedController.dispose();
-    feedContentController.dispose();
+    inquiryController.dispose();
+    inquiryContentController.dispose();
     _focusNode.dispose();
     super.dispose();
   }
@@ -38,8 +38,8 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
   void onChangedButton() {
     setState(() {
       isEnabledButton =
-          feedController.text.isNotEmpty &&
-              feedContentController.text.isNotEmpty;
+          inquiryController.text.isNotEmpty &&
+              inquiryContentController.text.isNotEmpty;
     });
   }
 
@@ -54,9 +54,9 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
           child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
         ),
         rightText: TextButton(
-          onPressed: () {
+          onPressed: isEnabledButton ? () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
-          },
+          } : null,
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),
       ),
@@ -74,7 +74,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
               choiceFocusBorder: false,
               choiceEnableBorder: false,
               filled: false,
-              controller: feedController,
+              controller: inquiryController,
               textAlign: TextAlign.center,
               hintText: '제목을 입력해 주세요',
               hintStyle: PuddingTextStyle.heading3.copyWith(
@@ -100,7 +100,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
                   child: PuddingTextFormField(
                     maxLength: 255,
                     filled: false,
-                    controller: feedContentController,
+                    controller: inquiryContentController,
                     hintText: '내용을 입력해 주세요',
                     hintStyle: PuddingTextStyle.body1.copyWith(
                       color: PuddingColor.gray400,
