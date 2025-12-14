@@ -5,11 +5,15 @@ import 'package:pudding/common//constants/text_style.dart';
 class CheckModal extends StatelessWidget {
   final String message;
   final void Function()? onConfirm;
+  final Color? firstTextColor;
+  final Color? secondTextColor;
 
   const CheckModal({
     super.key,
     required this.message,
-    required this.onConfirm
+    required this.onConfirm,
+    this.firstTextColor,
+    this.secondTextColor
   });
 
   @override
@@ -45,7 +49,7 @@ class CheckModal extends StatelessWidget {
                         '취소',
                         textAlign: TextAlign.center,
                         style: PuddingTextStyle.button.copyWith(
-                          color: PuddingColor.red,
+                          color: firstTextColor ?? PuddingColor.red,
                         ),
                       ),
                     ),
@@ -61,7 +65,7 @@ class CheckModal extends StatelessWidget {
                         '확인',
                         textAlign: TextAlign.center,
                         style: PuddingTextStyle.button.copyWith(
-                          color: PuddingColor.brown,
+                          color: secondTextColor ?? PuddingColor.brown,
                         ),
                       ),
                     ),

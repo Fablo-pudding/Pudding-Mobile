@@ -10,6 +10,7 @@ class PuddingMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: PuddingColor.background,
       body: SafeArea(
         child: Column(
           spacing: 16,

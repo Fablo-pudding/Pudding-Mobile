@@ -20,11 +20,13 @@ class _PuddingMainAppState extends State<PuddingMainApp> {
   ];
 
   void _onTap(int index) {
-    if (_currentIndex == index) {
-      _navigatorKeys[index].currentState!.popUntil((route) => route.isFirst);
-    } else {
-      _navigatorKeys[index].currentState!.popUntil((route) => route.isFirst);
-    }
+    setState(() {
+      if (_currentIndex == index) {
+        _navigatorKeys[index].currentState!.popUntil((route) => route.isFirst);
+      } else {
+        _currentIndex = index;
+      }
+    });
   }
 
   /// TODO 페이지 구현 시 Scaffold -> 페이지로 교체
@@ -52,7 +54,7 @@ class _PuddingMainAppState extends State<PuddingMainApp> {
           Navigator(
             key: _navigatorKeys[3],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('냉장고 페이지'),),)),
+                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('냉장고 페이지')),)),
           ),
           Navigator(
             key: _navigatorKeys[4],

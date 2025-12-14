@@ -12,10 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  flutter_svg: ^2.1.0
+  flutter_svg: ^2.1.1
   material_symbols_icons: ^4.2719.0
   dropdown_button2: ^2.3.9
   gap: ^3.0.1
+  image_picker: ^1.2.0
 
 dev_dependencies:
   flutter_test:

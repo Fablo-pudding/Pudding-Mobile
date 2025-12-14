@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
@@ -9,10 +10,10 @@ class PuddingTextFormField extends StatelessWidget {
   final TextStyle? style;
   final TextAlign? textAlign;
   final InputDecoration? decoration;
-  final void Function(String)? onChanged;
+  final void Function(dynamic)? onChanged;
   final FormFieldValidator<String>? validator;
-  final IconButton? suffixIcon;
-  final IconButton? prefixIcon;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final Color? cursorColor;
   final bool autocorrect;
   final TextInputType? keyboardType;
@@ -22,6 +23,10 @@ class PuddingTextFormField extends StatelessWidget {
   final Color? fillColor;
   final FocusNode? focusNode;
   final AutovalidateMode? autovalidateMode;
+  final TextInputFormatter? inputFormatter;
+  final void Function(String?)? onSaved;
+  final String? countText;
+  final String? errorText;
 
   const PuddingTextFormField({
     super.key,
@@ -44,6 +49,10 @@ class PuddingTextFormField extends StatelessWidget {
     this.fillColor,
     this.focusNode,
     this.autovalidateMode,
+    this.inputFormatter,
+    this.onSaved,
+    this.countText,
+    this.errorText,
   });
 
   @override
@@ -52,12 +61,12 @@ class PuddingTextFormField extends StatelessWidget {
 
     final enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.white, width: 1),
+      borderSide: const BorderSide(color: PuddingColor.white, width: 1),
     );
 
     final focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.brown, width: 1),
+      borderSide: const BorderSide(color: PuddingColor.brown, width: 1),
     );
 
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
@@ -71,13 +80,19 @@ class PuddingTextFormField extends StatelessWidget {
       fillColor: filledColor,
       hintText: hintText,
       focusedBorder: focusBorder,
-      errorStyle: TextStyle(height: 0, fontSize: 0),
+      errorText: errorText,
+      counterText: countText,
+      errorStyle: PuddingTextStyle.body3.copyWith(color: PuddingColor.red),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null) Text(title!, style: PuddingTextStyle.heading3),
+        SizedBox(
+          height: 4,
+        ),
         TextFormField(
+          onSaved: onSaved,
           decoration: inputDecoration,
           style: style ?? defaultTextStyle,
           controller: controller,
@@ -88,6 +103,7 @@ class PuddingTextFormField extends StatelessWidget {
           cursorColor: cursorColor,
           maxLength: maxLength,
           autovalidateMode: autovalidateMode,
+          inputFormatters: [?inputFormatter],
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
         ),
       ],
