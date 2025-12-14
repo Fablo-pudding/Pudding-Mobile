@@ -46,7 +46,7 @@ class _PuddingCompleteState extends State<PuddingComplete> {
                       onPressed: () {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => PuddingTitle(),
+                            builder: (context) => const PuddingTitle(),
                           ),
                         );
                       },

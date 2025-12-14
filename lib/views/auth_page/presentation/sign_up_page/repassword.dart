@@ -60,14 +60,8 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                 title: '비밀번호 재입력',
                 suffixIcon: GestureDetector(
                   onTap: () => setState(() => pwObsText = !pwObsText),
-                  child: Builder(
-                    builder: (context) {
-                      if (pwObsText) {
-                        return const Icon(Symbols.visibility);
-                      } else {
-                        return const Icon(Symbols.visibility_off_rounded);
-                      }
-                    },
+                  child: Icon(
+                      pwObsText == true ? Symbols.visibility : Symbols.visibility_off
                   ),
                 ),
               ),

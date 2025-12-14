@@ -64,14 +64,8 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
                   title: '비밀번호',
                   suffixIcon: GestureDetector(
                     onTap: () => setState(() => pwObsText = !pwObsText),
-                    child: Builder(
-                      builder: (context) {
-                        if (pwObsText) {
-                          return const Icon(Symbols.visibility);
-                        } else {
-                          return const Icon(Symbols.visibility_off_rounded);
-                        }
-                      },
+                    child: Icon(
+                       pwObsText == true ? Symbols.visibility : Symbols.visibility_off
                     ),
                   ),
                 ),
@@ -85,7 +79,7 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PuddingMainPage(),
+                              builder: (context) => const PuddingMainPage(),
                             ),
                                 (route) => false,
                           );
