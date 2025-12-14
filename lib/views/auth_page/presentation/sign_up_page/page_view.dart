@@ -4,7 +4,8 @@ import 'package:pudding/views/auth_page/presentation/sign_up_page/id_page.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up_page/password.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up_page/repassword.dart';
 
-enum Page {id,password,rePassword,complete}
+enum Page { id, password, rePassword, complete }
+
 class PuddingPageView extends StatefulWidget {
   const PuddingPageView({super.key});
 
@@ -13,10 +14,11 @@ class PuddingPageView extends StatefulWidget {
 }
 
 class _PuddingPageViewState extends State<PuddingPageView> {
- final PageController pageController = PageController(
+  final PageController pageController = PageController(
     initialPage: 0,
   );
- String password = '';
+  String password = '';
+
   void selectPage(Page page) {
     pageController.jumpToPage(page.index);
     setState(() {});
@@ -25,7 +27,7 @@ class _PuddingPageViewState extends State<PuddingPageView> {
   @override
   void initState() {
     super.initState();
-  pageController.addListener(() {
+    pageController.addListener(() {
       setState(() {});
     });
   }
@@ -44,15 +46,16 @@ class _PuddingPageViewState extends State<PuddingPageView> {
         SizedBox.expand(
           child: PuddingPassword(
             password: password,
-            next: (pwd){
+            next: (pwd) {
               password = pwd;
-              selectPage(Page.rePassword);},
+              selectPage(Page.rePassword);
+            },
             back: () => selectPage(Page.id),
-
           ),
         ),
         SizedBox.expand(
           child: PuddingRepassword(
+            password: password,
             next: () => selectPage(Page.complete),
             back: () => selectPage(Page.password),
           ),

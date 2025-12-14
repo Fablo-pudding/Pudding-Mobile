@@ -87,12 +87,14 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                       child: Text('이전'),
                     ),
                   ),
-                  const SizedBox(width: 22,),
+                  const SizedBox(
+                    width: 22,
+                  ),
                   Expanded(
                     child: PuddingElevatedButton(
                       onPressed: isEnabledText
                           ? () {
-                              widget.next?.call(widget.password);
+                              widget.next?.call(passwordController.text);
                             }
                           : null,
                       child: Text('다음'),

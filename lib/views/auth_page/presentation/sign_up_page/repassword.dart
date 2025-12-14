@@ -5,10 +5,16 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 
 class PuddingRepassword extends StatefulWidget {
+  final String password;
   final void Function()? next;
   final void Function()? back;
 
-  const PuddingRepassword({super.key, this.next, this.back});
+  const PuddingRepassword({
+    super.key,
+    this.next,
+    this.back,
+    required this.password,
+  });
 
   @override
   State<PuddingRepassword> createState() => _PuddingRepasswordState();
@@ -28,7 +34,9 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
 
   void _onChanged() {
     setState(() {
-      isEnabledButton = passwordController.text.isNotEmpty;
+      isEnabledButton =
+          passwordController.text.isNotEmpty &&
+          passwordController.text == widget.password;
     });
   }
 
@@ -42,7 +50,9 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            const SizedBox(height: 32,),
+              const SizedBox(
+                height: 32,
+              ),
               PuddingTextFormField(
                 pwObsText: pwObsText,
                 controller: passwordController,
@@ -72,7 +82,9 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                       child: Text('이전'),
                     ),
                   ),
-                  const SizedBox(width: 22,),
+                  const SizedBox(
+                    width: 22,
+                  ),
                   Expanded(
                     child: PuddingElevatedButton(
                       onPressed: isEnabledButton
@@ -85,7 +97,9 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                   ),
                 ],
               ),
-             const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),

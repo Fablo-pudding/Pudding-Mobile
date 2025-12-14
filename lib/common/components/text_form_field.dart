@@ -10,7 +10,7 @@ class PuddingTextFormField extends StatelessWidget {
   final TextStyle? style;
   final TextAlign? textAlign;
   final InputDecoration? decoration;
-  final void Function(String)? onChanged;
+  final void Function(dynamic)? onChanged;
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
