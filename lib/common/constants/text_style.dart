@@ -50,12 +50,6 @@ class PuddingTextStyle{
     fontWeight: FontWeight.w700,
   );
 
-  /// PuddingCount
-  static TextStyle puddingCount = NanumBarunpenR.copyWith(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-  );
-
   /// Lotteria
   static TextStyle lotteriaChab = LotteriaChab.copyWith(
     fontSize: 24,

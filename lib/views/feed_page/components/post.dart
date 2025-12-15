@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 
 class PuddingPost extends StatelessWidget {
   final String username;
@@ -41,7 +43,7 @@ class PuddingPost extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: PuddingColor.gray400,
-                  child: Image.network(
+                  child: SvgPicture.asset(
                     profileImg,
                     width: 60,
                     height: 60,
@@ -83,13 +85,18 @@ class PuddingPost extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 22),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                title,
-                style: PuddingTextStyle.heading3.copyWith(
-                  color: PuddingColor.black,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+                  },
+                  child: Text(
+                    title,
+                    style: PuddingTextStyle.heading3.copyWith(
+                      color: PuddingColor.black,
+                    ),
+                  ),
                 ),
               ),
-            ),
           ),
           const SizedBox(height: 20),
           Divider(color: PuddingColor.brown),
@@ -103,10 +110,15 @@ class PuddingPost extends StatelessWidget {
                   size: 14,
                 ),
                 const SizedBox(width: 6),
-                Text(
-                  '댓글 $commentCount',
-                  style: PuddingTextStyle.body3.copyWith(
-                    color: PuddingColor.gray400,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+                  },
+                  child: Text(
+                    '댓글 $commentCount',
+                    style: PuddingTextStyle.body3.copyWith(
+                      color: PuddingColor.gray400,
+                    ),
                   ),
                 ),
               ],

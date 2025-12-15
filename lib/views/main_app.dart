@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/bottom_navigation_bar.dart';
+import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
+import 'package:pudding/views/fridge_page/presentation/fridge_page.dart';
 
 class PuddingMainApp extends StatefulWidget {
   const PuddingMainApp({super.key});
@@ -44,7 +46,7 @@ class _PuddingMainAppState extends State<PuddingMainApp> {
           Navigator(
             key: _navigatorKeys[1],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('피드 페이지'),),)),
+                MaterialPageRoute(builder: (_) => Scaffold(body: PuddingFeedPreview())),
           ),
           Navigator(
             key: _navigatorKeys[2],

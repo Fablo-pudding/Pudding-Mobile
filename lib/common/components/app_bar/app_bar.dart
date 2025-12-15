@@ -5,31 +5,44 @@ import 'package:pudding/common/constants/text_style.dart';
 class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final String title;
-  final TextStyle? titleStyle;
+  final Widget? rightText;
 
   const PuddingAppBar({
     super.key,
     this.leading,
     required this.title,
-    this.titleStyle,
+    this.rightText,
   });
 
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: preferredSize,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: AppBar(
-        centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: PuddingColor.background,
         elevation: 0,
+        centerTitle: true,
+        leading: leading != null
+            ? Align(
+                alignment: Alignment.centerLeft,
+                child: leading,
+              )
+            : SizedBox(width: 70),
         title: Text(
           title,
-          style:
-              titleStyle ??
-              PuddingTextStyle.lotteriaChab.copyWith(color: PuddingColor.brown),
+          style: PuddingTextStyle.lotteriaChab.copyWith(
+            color: PuddingColor.brown,
+          ),
         ),
-        leading: leading,
+        actions: [
+          rightText != null
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: rightText,
+                )
+              : SizedBox(width: 70),
+        ],
       ),
     );
   }
