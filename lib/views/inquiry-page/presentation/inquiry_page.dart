@@ -6,6 +6,7 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/views/inquiry-page/components/inquiry_article.dart';
 import 'package:pudding/views/inquiry-page/presentation/inquiry_write.dart';
 
+
 class PuddingInquiryPage extends StatefulWidget {
   const PuddingInquiryPage({super.key});
 
@@ -23,7 +24,7 @@ class _PuddingInquiryPageState extends State<PuddingInquiryPage> {
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: GestureDetector(
-            onTap: () {
+            onTap: (){
               Navigator.of(context).pop();
             },
             child: Icon(
@@ -40,8 +41,7 @@ class _PuddingInquiryPageState extends State<PuddingInquiryPage> {
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return PuddingInquiryArticle(
-                    title: '안녕하세요',
-                    value: false,
+                    title: '안녕하세요', value: false,
                   );
                 },
               ),
