@@ -30,4 +30,3 @@ class PuddingMyPageRanking extends StatelessWidget {
     );
   }
 }
-
