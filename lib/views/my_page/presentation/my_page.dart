@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/views/inquiry-page/presentation/inquiry_page.dart';
 import 'package:pudding/views/my_page/components/menu.dart';
 import 'package:pudding/views/my_page/components/my_page_ranking.dart';
 import 'package:pudding/views/my_page/components/profile.dart';
-import 'package:pudding/views/my_page/presentation/inquiry.dart';
 import 'package:pudding/views/my_page/presentation/log_out.dart';
-import 'package:pudding/views/my_page/presentation/notice.dart';
 
 class PuddingMyPage extends StatefulWidget {
   const PuddingMyPage({super.key});
@@ -42,13 +41,7 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
               menuName: '공지사항',
               textColor: PuddingColor.black,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PuddingNotice(),
-                  ),
-                );
-                // todo 공지사항 넣기
+                // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingNoticePage()));
               },
               icon: const Icon(Symbols.arrow_forward_ios),
               borderRadius: const BorderRadius.only(
@@ -63,10 +56,9 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PuddingInquiry(),
+                    builder: (context) => const PuddingInquiryPage(),
                   ),
                 );
-                //todo 문의 넣기
               },
               icon: const Icon(Symbols.arrow_forward_ios),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
 import 'package:pudding/views/main_page/components/study_control.dart';
 
 class PuddingMainPage extends StatelessWidget {
@@ -53,7 +54,9 @@ class _QuestionBanner extends StatelessWidget {
                 ),
               ),
               PuddingElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingFeedPreview()));
+                },
                 backgroundColor: PuddingColor.main,
                 child: Text(
                   '물어보러가기',

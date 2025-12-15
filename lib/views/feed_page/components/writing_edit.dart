@@ -3,7 +3,6 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 import 'package:pudding/views/feed_page/presentation/feed_edit.dart';
 
 class PuddingFeedEdit extends StatefulWidget {
@@ -34,13 +33,13 @@ class _PuddingEditState extends State<PuddingFeedEdit> {
             context: context,
             builder: (BuildContext context) {
               /// todo 작성자가 아닐 시 삭제 불가
-              return CheckModal(message: '삭제하시겠습니까?', onConfirm: null);
+              return CheckModal(message: '피드를 삭제하시겠습니까?', onConfirm: null);
               });
         } else if (value == 'edit') {
           showDialog(
               context: context,
               builder: (BuildContext context) {
-                return CheckModal(message: '수정하시겠습니까?', onConfirm: (){
+                return CheckModal(message: '피드를 수정하시겠습니까?', onConfirm: (){
                   ///todo 작성자가 아닐 시 수정 불가
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => PuddingFeedEditPage()),

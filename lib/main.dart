@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/pudding_title.dart';
+import 'package:pudding/views/inquiry-page/presentation/admin/admin_inquiry_comment_page.dart';
+import 'package:pudding/views/main_app.dart';
+import 'package:pudding/views/my_page/presentation/my_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +33,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: PuddingTitle()
+      debugShowCheckedModeBanner: false,
+      home: PuddingAdminInquiryCommentPage(),
     );
   }
 }
