@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/text_form_field.dart';
@@ -8,6 +7,7 @@ import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/views/feed_page/components/comment_header.dart';
 import 'package:pudding/views/feed_page/components/feed_header.dart';
 import 'package:pudding/views/feed_page/components/writing_edit.dart';
+import 'package:intl/intl.dart';
 
 class PuddingCommentWrite extends StatefulWidget {
   const PuddingCommentWrite({

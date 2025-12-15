@@ -49,13 +49,12 @@ class PuddingTextStyle{
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
-
-  /// PuddingCount
+  /// puddingCount
   static TextStyle puddingCount = NanumBarunpenR.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
-
+  /// feedTitle
   static TextStyle feedTitle = NanumBarunpenB.copyWith(
     fontSize: 20,
     fontWeight: FontWeight.w700,

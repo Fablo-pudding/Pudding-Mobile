@@ -13,7 +13,7 @@ class CheckModal extends StatelessWidget {
     required this.message,
     required this.onConfirm,
     this.firstTextColor,
-    this.secondTextColor,
+    this.secondTextColor
   });
 
   @override

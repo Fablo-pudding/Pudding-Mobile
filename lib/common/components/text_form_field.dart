@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
@@ -9,10 +10,10 @@ class PuddingTextFormField extends StatelessWidget {
   final TextStyle? style;
   final TextAlign? textAlign;
   final InputDecoration? decoration;
-  final void Function(String)? onChanged;
+  final void Function(dynamic)? onChanged;
   final FormFieldValidator<String>? validator;
-  final IconButton? suffixIcon;
-  final IconButton? prefixIcon;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final Color? cursorColor;
   final bool autocorrect;
   final TextInputType? keyboardType;
@@ -22,9 +23,10 @@ class PuddingTextFormField extends StatelessWidget {
   final Color? fillColor;
   final FocusNode? focusNode;
   final AutovalidateMode? autovalidateMode;
-  final bool? expands;
-  final int? minLines;
-  final int? maxLines;
+  final TextInputFormatter? inputFormatter;
+  final void Function(String?)? onSaved;
+  final String? countText;
+  final String? errorText;
   final bool? filled;
   final TextStyle? hintStyle;
   final bool? choiceEnableBorder;
@@ -51,13 +53,14 @@ class PuddingTextFormField extends StatelessWidget {
     this.fillColor,
     this.focusNode,
     this.autovalidateMode,
-    this.expands,
-    this.minLines,
-    this.maxLines,
+    this.inputFormatter,
+    this.onSaved,
+    this.countText,
+    this.errorText,
     this.filled,
+    this.hintStyle,
     this.choiceEnableBorder,
     this.choiceFocusBorder,
-    this.hintStyle,
   });
 
   @override
@@ -67,16 +70,16 @@ class PuddingTextFormField extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(color: PuddingColor.white),
     );
+
     final enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.white),
+      borderSide: const BorderSide(color: PuddingColor.white, width: 1),
     );
 
     final focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: PuddingColor.brown, width: 1),
+      borderSide: const BorderSide(color: PuddingColor.brown, width: 1),
     );
-
     InputBorder selectFocusBorder;
 
     if (choiceFocusBorder == false) {
@@ -90,28 +93,31 @@ class PuddingTextFormField extends StatelessWidget {
     final selectEnabledBorder = choiceEnableBorder == false
         ? InputBorder.none
         : enableBorder;
-
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
     final filledColor = this.fillColor ?? PuddingColor.white;
     InputDecoration? inputDecoration = decoration!.copyWith(
       errorBorder: InputBorder.none,
       focusedErrorBorder: focusBorder,
-      enabledBorder: selectEnabledBorder,
+      enabledBorder: enableBorder,
       suffixIcon: suffixIcon,
-      filled: filled ?? true,
+      filled: true,
       fillColor: filledColor,
       hintText: hintText,
+      focusedBorder: focusBorder,
+      errorText: errorText,
+      counterText: countText,
       hintStyle: hintStyle,
-      focusedBorder: selectFocusBorder,
-      errorStyle: TextStyle(height: 0, fontSize: 0),
-      counterText: '',
+      errorStyle: PuddingTextStyle.body3.copyWith(color: PuddingColor.red),
     );
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null) Text(title!, style: PuddingTextStyle.heading3),
+        SizedBox(
+          height: 4,
+        ),
         TextFormField(
+          onSaved: onSaved,
           decoration: inputDecoration,
           style: style ?? defaultTextStyle,
           controller: controller,
@@ -122,10 +128,7 @@ class PuddingTextFormField extends StatelessWidget {
           cursorColor: cursorColor,
           maxLength: maxLength,
           autovalidateMode: autovalidateMode,
-          textAlign: textAlign ?? TextAlign.start,
-          minLines: minLines,
-          maxLines: maxLines,
-          focusNode: focusNode,
+          inputFormatters: [?inputFormatter],
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
         ),
       ],
