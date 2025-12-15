@@ -24,7 +24,7 @@ class PuddingInquiryArticle extends StatefulWidget {
 class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
   final DateTime writeDate = DateTime.now();
 
-  String get dateTimeFormat => DateFormat('yyyy.MM.dd.HH:mm').format(writeDate);
+  String get dateTimeFormat => DateFormat('yyyy.MM.dd').format(writeDate);
 
   @override
   Widget build(BuildContext context) {
