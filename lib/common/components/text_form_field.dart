@@ -27,6 +27,10 @@ class PuddingTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final String? countText;
   final String? errorText;
+  final bool? filled;
+  final TextStyle? hintStyle;
+  final bool? choiceEnableBorder;
+  final bool? choiceFocusBorder;
 
   const PuddingTextFormField({
     super.key,
@@ -53,11 +57,19 @@ class PuddingTextFormField extends StatelessWidget {
     this.onSaved,
     this.countText,
     this.errorText,
+    this.filled,
+    this.hintStyle,
+    this.choiceEnableBorder,
+    this.choiceFocusBorder,
   });
 
   @override
   Widget build(BuildContext context) {
     final defaultTextStyle = style ?? PuddingTextStyle.body1;
+    final feedFocusBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: PuddingColor.white),
+    );
 
     final enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
@@ -68,7 +80,19 @@ class PuddingTextFormField extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
       borderSide: const BorderSide(color: PuddingColor.brown, width: 1),
     );
+    InputBorder selectFocusBorder;
 
+    if (choiceFocusBorder == false) {
+      selectFocusBorder = InputBorder.none;
+    } else if (choiceFocusBorder == true) {
+      selectFocusBorder = focusBorder;
+    } else {
+      selectFocusBorder = feedFocusBorder;
+    }
+
+    final selectEnabledBorder = choiceEnableBorder == false
+        ? InputBorder.none
+        : enableBorder;
     final cursorColor = this.cursorColor ?? PuddingColor.brown;
     final filledColor = this.fillColor ?? PuddingColor.white;
     InputDecoration? inputDecoration = decoration!.copyWith(
@@ -82,6 +106,7 @@ class PuddingTextFormField extends StatelessWidget {
       focusedBorder: focusBorder,
       errorText: errorText,
       counterText: countText,
+      hintStyle: hintStyle,
       errorStyle: PuddingTextStyle.body3.copyWith(color: PuddingColor.red),
     );
     return Column(
