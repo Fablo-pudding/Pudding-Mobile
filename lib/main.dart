@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pudding/views/inquiry-page/presentation/admin/admin_inquiry_comment_page.dart';
 import 'package:pudding/views/main_app.dart';
 import 'package:pudding/views/my_page/presentation/my_page.dart';
-import 'package:pudding/views/notice_page/presentation/admin/admin_notice_write_page.dart';
-import 'package:pudding/views/notice_page/presentation/notice_page.dart';
 
 void main() {
   runApp(const MyApp());

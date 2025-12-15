@@ -7,7 +7,6 @@ import 'package:pudding/views/my_page/components/menu.dart';
 import 'package:pudding/views/my_page/components/my_page_ranking.dart';
 import 'package:pudding/views/my_page/components/profile.dart';
 import 'package:pudding/views/my_page/presentation/log_out.dart';
-import 'package:pudding/views/notice_page/presentation/notice_page.dart';
 
 class PuddingMyPage extends StatefulWidget {
   const PuddingMyPage({super.key});
@@ -42,7 +41,7 @@ class _PuddingMyPageState extends State<PuddingMyPage> {
               menuName: '공지사항',
               textColor: PuddingColor.black,
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingNoticePage()));
+                // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingNoticePage()));
               },
               icon: const Icon(Symbols.arrow_forward_ios),
               borderRadius: const BorderRadius.only(
