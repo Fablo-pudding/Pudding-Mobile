@@ -27,7 +27,6 @@ class NoticeDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 50,),
           Center(
             child: Text(
               '아직 개발중입니다',

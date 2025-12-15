@@ -6,7 +6,6 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/fridge_page/components/ingredient_item.dart';
-
 class PuddingFridgePage extends StatelessWidget {
   const PuddingFridgePage({super.key});
 
