@@ -4,8 +4,9 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/components/writing_edit.dart';
 import 'package:pudding/views/inquiry-page/components/inquiry_edit.dart';
+import 'package:pudding/views/notice_page/components/notice_edit.dart';
 
-class PuddingInquiryHeader extends StatelessWidget {
+class PuddingNoticeHeader extends StatelessWidget {
   final String? title;
   final String userId;
   final String userImage;
@@ -16,7 +17,7 @@ class PuddingInquiryHeader extends StatelessWidget {
   final double? width;
   final PuddingInquiryEdit? puddingInquiryEdit;
 
-  const PuddingInquiryHeader({
+  const PuddingNoticeHeader({
     super.key,
     this.title,
     required this.userId,
@@ -46,12 +47,10 @@ class PuddingInquiryHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            PuddingInquiryEdit(),
+            PuddingNoticeEdit(),
           ],
         ),
-        const SizedBox(
-          height: 13,
-        ),
+        const SizedBox(height: 13,),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

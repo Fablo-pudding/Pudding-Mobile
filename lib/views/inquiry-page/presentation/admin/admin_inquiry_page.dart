@@ -6,12 +6,12 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/views/inquiry-page/components/inquiry_article.dart';
 import 'package:pudding/views/inquiry-page/presentation/inquiry_write.dart';
 
-
 class PuddingAdminInquiryPage extends StatefulWidget {
   const PuddingAdminInquiryPage({super.key});
 
   @override
-  State<PuddingAdminInquiryPage> createState() => _PuddingAdminInquiryPageState();
+  State<PuddingAdminInquiryPage> createState() =>
+      _PuddingAdminInquiryPageState();
 }
 
 class _PuddingAdminInquiryPageState extends State<PuddingAdminInquiryPage> {
@@ -24,7 +24,7 @@ class _PuddingAdminInquiryPageState extends State<PuddingAdminInquiryPage> {
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.of(context).pop();
             },
             child: Icon(
@@ -41,7 +41,8 @@ class _PuddingAdminInquiryPageState extends State<PuddingAdminInquiryPage> {
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return PuddingInquiryArticle(
-                    title: '안녕하세요', value: true,
+                    title: '안녕하세요',
+                    value: true,
                   );
                 },
               ),

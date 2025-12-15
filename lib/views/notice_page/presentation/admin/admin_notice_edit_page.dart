@@ -4,41 +4,42 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_watch_page.dart';
+import 'package:pudding/views/notice_page/presentation/admin/admin_notice_watch_page.dart';
 
-class PuddingInquiryEditPage extends StatefulWidget {
-  const PuddingInquiryEditPage({super.key});
+class PuddingAdminNoticeEditPage extends StatefulWidget {
+  const PuddingAdminNoticeEditPage({super.key});
 
   @override
-  State<PuddingInquiryEditPage> createState() => _PuddingInquiryWritePageState();
+  State<PuddingAdminNoticeEditPage> createState() => _PuddingAdminNoticeEditPageState();
 }
 
-class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
-  final TextEditingController inquiryController = TextEditingController();
-  final TextEditingController inquiryContentController = TextEditingController();
+class _PuddingAdminNoticeEditPageState extends State<PuddingAdminNoticeEditPage> {
+  final TextEditingController feedController = TextEditingController();
+  final TextEditingController feedContentController = TextEditingController();
   bool isEnabledButton = false;
-  final commentFocusNode = FocusNode();
+  late FocusNode _focusNode;
 
   @override
   void initState() {
-    inquiryController.addListener(onChangedButton);
-    inquiryContentController.addListener(onChangedButton);
+    feedController.addListener(onChangedButton);
+    feedContentController.addListener(onChangedButton);
+    _focusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
-    inquiryController.dispose();
-    inquiryContentController.dispose();
-    commentFocusNode.dispose();
+    feedController.dispose();
+    feedContentController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
   void onChangedButton() {
     setState(() {
       isEnabledButton =
-          inquiryController.text.isNotEmpty &&
-              inquiryContentController.text.isNotEmpty;
+          feedController.text.isNotEmpty &&
+              feedContentController.text.isNotEmpty;
     });
   }
 
@@ -47,15 +48,15 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
     return Scaffold(
       backgroundColor: PuddingColor.background,
       appBar: PuddingAppBar(
-        title: '문의',
+        title: '공지사항',
         leading: TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
         ),
         rightText: TextButton(
-          onPressed: isEnabledButton ? () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
-          } : null,
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingAdminNoticeWatchPage()));
+          },
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),
       ),
@@ -73,7 +74,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
               choiceFocusBorder: false,
               choiceEnableBorder: false,
               filled: false,
-              controller: inquiryController,
+              controller: feedController,
               textAlign: TextAlign.center,
               hintText: '제목을 입력해 주세요',
               hintStyle: PuddingTextStyle.heading3.copyWith(
@@ -92,19 +93,19 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  commentFocusNode.requestFocus();
+                  _focusNode.requestFocus();
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: PuddingTextFormField(
                     maxLength: 255,
                     filled: false,
-                    controller: inquiryContentController,
+                    controller: feedContentController,
                     hintText: '내용을 입력해 주세요',
                     hintStyle: PuddingTextStyle.body1.copyWith(
                       color: PuddingColor.gray400,
                     ),
-                    focusNode: commentFocusNode,
+                    focusNode: _focusNode,
                     choiceFocusBorder: false,
                     choiceEnableBorder: false,
                   ),

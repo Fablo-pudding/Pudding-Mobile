@@ -3,18 +3,16 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_edit_page.dart';
+import 'package:pudding/views/notice_page/presentation/admin/admin_notice_edit_page.dart';
 
-class PuddingInquiryEdit extends StatefulWidget {
-  const PuddingInquiryEdit({
-    super.key,
-  });
+class PuddingNoticeEdit extends StatefulWidget {
+  const PuddingNoticeEdit({super.key,});
 
   @override
-  State<PuddingInquiryEdit> createState() => _PuddingEditState();
+  State<PuddingNoticeEdit> createState() => _PuddingNoticeEditState();
 }
 
-class _PuddingEditState extends State<PuddingInquiryEdit> {
+class _PuddingNoticeEditState extends State<PuddingNoticeEdit> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
@@ -32,37 +30,29 @@ class _PuddingEditState extends State<PuddingInquiryEdit> {
       onSelected: (String value) {
         if (value == 'delete') {
           showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              /// todo 작성자가 아닐 시 삭제 불가
-              return CheckModal(message: '작성한 문의를 삭제하시겠습니까?', onConfirm: null);
-            },
-          );
+              context: context,
+              builder: (BuildContext context) {
+                /// todo 작성자가 아닐 시 삭제 불가
+                return CheckModal(message: '작성한 공지를 삭제하시겠습니까?', onConfirm: null);
+              });
         } else if (value == 'edit') {
           showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return CheckModal(
-                message: '작성한 문의를 수정하시겠습니까?',
-                onConfirm: () {
+              context: context,
+              builder: (BuildContext context) {
+                return CheckModal(message: '작성한 공지를 수정하시겠습니까?', onConfirm: (){
                   ///todo 작성자가 아닐 시 수정 불가
-                  Navigator.of(context).pop();
                   Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PuddingInquiryEditPage(),
-                    ),
+                    MaterialPageRoute(builder: (context) => PuddingAdminNoticeEditPage()),
                   );
-                },
-              );
-            },
-          );
+                });
+              });
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
         PopupMenuItem<String>(
           value: 'delete',
           height: 36,
-          child: Center(
+          child : Center(
             child: Text(
               '삭제',
               style: PuddingTextStyle.heading3.copyWith(

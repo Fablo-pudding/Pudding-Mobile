@@ -15,7 +15,8 @@ class PuddingInquiryWrite extends StatefulWidget {
 
 class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
   final TextEditingController inquiryController = TextEditingController();
-  final TextEditingController inquiryContentController = TextEditingController();
+  final TextEditingController inquiryContentController =
+      TextEditingController();
   bool isEnabledButton = false;
   late FocusNode _focusNode;
 
@@ -39,7 +40,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
     setState(() {
       isEnabledButton =
           inquiryController.text.isNotEmpty &&
-              inquiryContentController.text.isNotEmpty;
+          inquiryContentController.text.isNotEmpty;
     });
   }
 
@@ -51,17 +52,38 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
         title: '문의작성',
         leading: TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
+          child: Text(
+            "뒤로",
+            style: PuddingTextStyle.heading3.copyWith(
+              color: PuddingColor.gray400,
+            ),
+          ),
         ),
         rightText: TextButton(
-          onPressed: isEnabledButton ? () {
-            showDialog(context: context, builder: (BuildContext dialogContext){
-              return CheckModal(message: '작성한 문의 내용을 등록하시겠습니까?', onConfirm: (){
-                Navigator.of(dialogContext).pop();
-             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
-              });
-            });} : null,
-          child: Text("등록",style: PuddingTextStyle.heading3,),
+          onPressed: isEnabledButton
+              ? () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext dialogContext) {
+                      return CheckModal(
+                        message: '작성한 문의 내용을 등록하시겠습니까?',
+                        onConfirm: () {
+                          Navigator.of(dialogContext).pop();
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => PuddingInquiryWatchPage(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                }
+              : null,
+          child: Text(
+            "등록",
+            style: PuddingTextStyle.heading3,
+          ),
         ),
       ),
       body: SafeArea(
@@ -117,7 +139,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
                 ),
               ),
             ),
-          ]
+          ],
         ),
       ),
     );
