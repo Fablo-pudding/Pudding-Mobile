@@ -23,8 +23,10 @@ class PuddingInquiryArticle extends StatefulWidget {
 
 class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
   final DateTime writeDate = DateTime.now();
+
   String get dateTimeFormat => DateFormat('yyyy.MM.dd.HH:mm').format(writeDate);
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -47,20 +49,29 @@ class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
                       ),
                     ),
                     GestureDetector(
-                        onTap: (){
-                          if(widget.value){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingAdminInquiryCommentPage()));
-                          }
-                          else {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    PuddingInquiryWatchPage()));
-                          }
-                        },
-                        child: Icon(Symbols.arrow_forward_ios)),
+                      onTap: () {
+                        if (widget.value) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PuddingAdminInquiryCommentPage(),
+                            ),
+                          );
+                        } else {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => PuddingInquiryWatchPage(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Icon(Symbols.arrow_forward_ios),
+                    ),
                   ],
                 ),
-                const SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Text('작성일 $dateTimeFormat'),
               ],
             ),

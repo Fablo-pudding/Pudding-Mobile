@@ -17,13 +17,12 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
   final TextEditingController inquiryController = TextEditingController();
   final TextEditingController inquiryContentController = TextEditingController();
   bool isEnabledButton = false;
-  late FocusNode _focusNode;
+  final commentFocusNode = FocusNode();
 
   @override
   void initState() {
     inquiryController.addListener(onChangedButton);
     inquiryContentController.addListener(onChangedButton);
-    _focusNode = FocusNode();
     super.initState();
   }
 
@@ -31,7 +30,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
   void dispose() {
     inquiryController.dispose();
     inquiryContentController.dispose();
-    _focusNode.dispose();
+    commentFocusNode.dispose();
     super.dispose();
   }
 
@@ -93,7 +92,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  _focusNode.requestFocus();
+                  commentFocusNode.requestFocus();
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -105,7 +104,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
                     hintStyle: PuddingTextStyle.body1.copyWith(
                       color: PuddingColor.gray400,
                     ),
-                    focusNode: _focusNode,
+                    focusNode: commentFocusNode,
                     choiceFocusBorder: false,
                     choiceEnableBorder: false,
                   ),

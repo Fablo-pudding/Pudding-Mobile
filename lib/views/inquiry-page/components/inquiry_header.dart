@@ -49,7 +49,9 @@ class PuddingInquiryHeader extends StatelessWidget {
             PuddingInquiryEdit(),
           ],
         ),
-        const SizedBox(height: 13,),
+        const SizedBox(
+          height: 13,
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
