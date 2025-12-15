@@ -63,6 +63,7 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                 controller: passwordController,
                 hintText: '최소 8자, 영어 대소문자와 _#\$* 사용 가능',
                 title: '비밀번호 생성',
+                maxLines: 1,
                 suffixIcon: GestureDetector(
                   onTap: () => setState(() => pwObsText = !pwObsText),
                   child: Icon(

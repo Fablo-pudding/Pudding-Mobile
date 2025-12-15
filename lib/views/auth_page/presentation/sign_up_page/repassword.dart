@@ -58,6 +58,7 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                 controller: passwordController,
                 hintText: '비밀번호 입력',
                 title: '비밀번호 재입력',
+                maxLines: 1,
                 suffixIcon: GestureDetector(
                   onTap: () => setState(() => pwObsText = !pwObsText),
                   child: Icon(

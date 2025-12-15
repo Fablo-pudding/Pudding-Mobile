@@ -60,7 +60,6 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
                     }
                     return null;
                   },
-                  countText: '',
                 ),
               ),
               const Spacer(),
