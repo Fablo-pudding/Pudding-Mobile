@@ -42,6 +42,7 @@ class _PuddingPasswordState extends State<PuddingPassword> {
     final value = RegExp(r'^[0-9a-zA-Z_!#$*]+$').hasMatch(input);
     setState(() {
       isEnabledText = value && input.isNotEmpty;
+      isEnabledText = passwordController.text.length >= 8;
     });
   }
 
@@ -70,6 +71,12 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                       pwObsText == true ? Symbols.visibility : Symbols.visibility_off
                   ),
                 ),
+                validator: (value) {
+                  if (value == null || value.length < 3) {
+                    return '3글자 이상 쳐주세요';
+                  }
+                  return null;
+                },
               ),
               const Spacer(),
               Row(
