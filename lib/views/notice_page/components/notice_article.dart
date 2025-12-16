@@ -20,7 +20,7 @@ class PuddingNoticeArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime writeDate = DateTime.;
+    final DateTime writeDate = DateTime.now();
 
    final String dateTimeFormat = DateFormat('yyyy.MM.dd').format(writeDate);
     return Container(
