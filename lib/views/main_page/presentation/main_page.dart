@@ -55,7 +55,7 @@ class _QuestionBanner extends StatelessWidget {
               ),
               PuddingElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingFeedPreview()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const PuddingFeedPreview()));
                 },
                 backgroundColor: PuddingColor.main,
                 child: Text(

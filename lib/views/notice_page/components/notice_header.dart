@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_edit.dart';
+import 'package:pudding/views/notice_page/components/notice_edit.dart';
 
-class PuddingInquiryHeader extends StatelessWidget {
+class PuddingNoticeHeader extends StatelessWidget {
   final String? title;
-  final String userId;
-  final String userImage;
   final String? content;
   final String? date;
   final String? commentContent;
   final double? height;
   final double? width;
-  final PuddingInquiryEdit? puddingInquiryEdit;
+  final PuddingNoticeEdit? puddingNoticeEdit;
+  final bool edit;
 
-  const PuddingInquiryHeader({
+  const PuddingNoticeHeader({
     super.key,
     this.title,
-    required this.userId,
-    required this.userImage,
     this.content,
     this.date,
     this.commentContent,
     this.height,
     this.width,
-    this.puddingInquiryEdit,
+    this.puddingNoticeEdit,
+    required this.edit,
   });
 
   @override
@@ -45,7 +44,9 @@ class PuddingInquiryHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            PuddingInquiryEdit(),
+            PuddingNoticeEdit(
+              edit: edit,
+            ),
           ],
         ),
         const SizedBox(
@@ -55,7 +56,7 @@ class PuddingInquiryHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              userImage,
+              PuddingAssets.admin,
               width: width ?? 46,
               height: height ?? 46,
             ),
@@ -66,7 +67,7 @@ class PuddingInquiryHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  userId,
+                  '관리자',
                   style: PuddingTextStyle.heading2,
                 ),
                 Text(
@@ -85,7 +86,8 @@ class PuddingInquiryHeader extends StatelessWidget {
         if (content != null)
           Text(
             content!,
-            style: PuddingTextStyle.body1.copyWith(color: PuddingColor.black),
+            style: PuddingTextStyle.body1.
+            copyWith(color: PuddingColor.black),
           ),
       ],
     );
