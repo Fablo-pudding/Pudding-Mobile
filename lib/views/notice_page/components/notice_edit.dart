@@ -52,7 +52,7 @@ class _PuddingNoticeEditState extends State<PuddingNoticeEdit> {
                   ///todo 작성자가 아닐 시 수정 불가
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => PuddingAdminNoticeEditPage(),
+                      builder: (context) => const PuddingAdminNoticeEditPage(),
                     ),
                   );
                 },

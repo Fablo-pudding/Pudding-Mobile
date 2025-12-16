@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
-import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/views/notice_page/components/notice_write.dart';
 import 'package:pudding/views/notice_page/presentation/admin/admin_notice_watch_page.dart';
 
 class PuddingAdminNoticeWritePage extends StatefulWidget {
@@ -60,7 +60,7 @@ class _PuddingAdminNoticeWritePageState extends State<PuddingAdminNoticeWritePag
                 Navigator.of(dialogContext).pop();
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => PuddingAdminNoticeWatchPage(),
+                      builder: (context) => const PuddingAdminNoticeWatchPage(),
                     ));
               });
             });} : null,
@@ -68,60 +68,7 @@ class _PuddingAdminNoticeWritePageState extends State<PuddingAdminNoticeWritePag
         ),
       ),
       body: SafeArea(
-        child: Column(
-            children: [
-              Divider(
-                height: 1,
-                thickness: 1,
-                color: PuddingColor.brown,
-              ),
-              PuddingTextFormField(
-                choiceFocusBorder: false,
-                choiceEnableBorder: false,
-                filled: false,
-                controller: noticeController,
-                textAlign: TextAlign.center,
-                hintText: '제목을 입력해 주세요',
-                hintStyle: PuddingTextStyle.heading2.copyWith(
-                  color: PuddingColor.gray400,
-                ),
-                style: PuddingTextStyle.heading2,
-                maxLength: 101,
-              ),
-              Divider(
-                height: 1,
-                thickness: 1,
-                color: PuddingColor.brown,
-              ),
-              const SizedBox(
-                height: 19,
-              ),
-              Expanded(
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    _focusNode.requestFocus();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: PuddingTextFormField(
-                      filled: false,
-                      controller: noticeContentController,
-                      hintText: '내용을 입력해 주세요',
-                      hintStyle: PuddingTextStyle.body1.copyWith(
-                        color: PuddingColor.gray400,
-                      ),
-                      style: PuddingTextStyle.body1,
-                      maxLength: 513,
-                      focusNode: _focusNode,
-                      choiceFocusBorder: false,
-                      choiceEnableBorder: false,
-                    ),
-                  ),
-                ),
-              ),
-            ]
-        ),
+        child: NoticeWrite(focusNode: _focusNode, commentController: noticeController, contentController: noticeContentController),
       ),
     );
   }

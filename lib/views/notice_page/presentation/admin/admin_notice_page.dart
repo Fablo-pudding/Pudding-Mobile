@@ -46,7 +46,7 @@ class _PuddingAdminNoticePageState extends State<PuddingAdminNoticePage> {
                 children: [
                   Expanded(
                     child: PuddingElevatedButton(child: Text('새 공지사항 작성'), onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PuddingAdminNoticeWritePage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const PuddingAdminNoticeWritePage()));
                     }),
                   ),
                 ],
