@@ -10,10 +10,12 @@ class PuddingAdminNoticeWritePage extends StatefulWidget {
   const PuddingAdminNoticeWritePage({super.key});
 
   @override
-  State<PuddingAdminNoticeWritePage> createState() => _PuddingAdminNoticeWritePageState();
+  State<PuddingAdminNoticeWritePage> createState() =>
+      _PuddingAdminNoticeWritePageState();
 }
 
-class _PuddingAdminNoticeWritePageState extends State<PuddingAdminNoticeWritePage> {
+class _PuddingAdminNoticeWritePageState
+    extends State<PuddingAdminNoticeWritePage> {
   final TextEditingController noticeController = TextEditingController();
   final TextEditingController noticeContentController = TextEditingController();
   bool isEnabledButton = false;
@@ -39,7 +41,7 @@ class _PuddingAdminNoticeWritePageState extends State<PuddingAdminNoticeWritePag
     setState(() {
       isEnabledButton =
           noticeController.text.isNotEmpty &&
-              noticeContentController.text.isNotEmpty;
+          noticeContentController.text.isNotEmpty;
     });
   }
 
@@ -51,26 +53,48 @@ class _PuddingAdminNoticeWritePageState extends State<PuddingAdminNoticeWritePag
         title: '공지사항',
         leading: TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
+          child: Text(
+            "뒤로",
+            style: PuddingTextStyle.heading3.copyWith(
+              color: PuddingColor.gray400,
+            ),
+          ),
         ),
         rightText: TextButton(
-          onPressed: isEnabledButton ? () {
-            showDialog(context: context, builder: (dialogContext){
-              return CheckModal(message: '작성한 공지 내용을 등록하시겠습니까?', onConfirm: (){
-                Navigator.of(dialogContext).pop();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => const PuddingAdminNoticeWatchPage(),
-                    ));
-              });
-            });} : null,
-          child: Text("등록",style: PuddingTextStyle.heading3,),
+          onPressed: isEnabledButton
+              ? () {
+                  showDialog(
+                    context: context,
+                    builder: (dialogContext) {
+                      return CheckModal(
+                        message: '작성한 공지 내용을 등록하시겠습니까?',
+                        onConfirm: () {
+                          Navigator.of(dialogContext).pop();
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const PuddingAdminNoticeWatchPage(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                }
+              : null,
+          child: Text(
+            "등록",
+            style: PuddingTextStyle.heading3,
+          ),
         ),
       ),
       body: SafeArea(
-        child: NoticeWrite(focusNode: _focusNode, commentController: noticeController, contentController: noticeContentController),
+        child: NoticeWrite(
+          focusNode: _focusNode,
+          commentController: noticeController,
+          contentController: noticeContentController,
+        ),
       ),
     );
   }
 }
-

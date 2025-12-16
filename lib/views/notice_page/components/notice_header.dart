@@ -44,7 +44,9 @@ class PuddingNoticeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            PuddingNoticeEdit(edit: edit,),
+            PuddingNoticeEdit(
+              edit: edit,
+            ),
           ],
         ),
         const SizedBox(
@@ -84,7 +86,8 @@ class PuddingNoticeHeader extends StatelessWidget {
         if (content != null)
           Text(
             content!,
-            style: PuddingTextStyle.body1.copyWith(color: PuddingColor.black),
+            style: PuddingTextStyle.body1.
+            copyWith(color: PuddingColor.black),
           ),
       ],
     );

@@ -74,7 +74,11 @@ class _PuddingAdminNoticeEditPageState
         ),
       ),
       body: SafeArea(
-        child: NoticeWrite(focusNode: _focusNode, commentController: noticeController, contentController: noticeContentController),
+        child: NoticeWrite(
+          focusNode: _focusNode,
+          commentController: noticeController,
+          contentController: noticeContentController,
+        ),
       ),
     );
   }
