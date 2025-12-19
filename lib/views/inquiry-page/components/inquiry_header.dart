@@ -14,6 +14,7 @@ class PuddingInquiryHeader extends StatelessWidget {
   final double? height;
   final double? width;
   final PuddingInquiryEdit? puddingInquiryEdit;
+  final bool admin;
 
   const PuddingInquiryHeader({
     super.key,
@@ -26,6 +27,7 @@ class PuddingInquiryHeader extends StatelessWidget {
     this.height,
     this.width,
     this.puddingInquiryEdit,
+    required this.admin,
   });
 
   @override
@@ -45,7 +47,7 @@ class PuddingInquiryHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            PuddingInquiryEdit(),
+            admin ? PuddingInquiryEdit() : SizedBox(),
           ],
         ),
         const SizedBox(
