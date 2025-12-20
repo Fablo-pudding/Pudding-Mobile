@@ -59,7 +59,10 @@ class PuddingTextStyle{
     fontSize: 20,
     fontWeight: FontWeight.w700,
   );
-
+  static TextStyle ingredientsItem = NanumBarunpenR.copyWith(
+    fontSize: 22,
+    fontWeight: FontWeight.w400,
+  );
   /// Lotteria
   static TextStyle lotteriaChab = LotteriaChab.copyWith(
     fontSize: 24,
