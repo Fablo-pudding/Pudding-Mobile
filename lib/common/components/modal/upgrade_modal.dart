@@ -16,21 +16,25 @@ class UpgradeModal extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 200,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PuddingUpgradeBox(
-                      svgPicture: PuddingAssets.pudding2,
-                      star: '1성',
+                    Expanded(
+                      child: PuddingUpgradeBox(
+                        svgPicture: PuddingAssets.pudding2,
+                        star: '1성',
+                      ),
                     ),
                     const SizedBox(
                       width: 20,
                     ),
-                    PuddingUpgradeBox(
-                      svgPicture: PuddingAssets.pudding3,
-                      star: '2성',
+                    Expanded(
+                      child: PuddingUpgradeBox(
+                        svgPicture: PuddingAssets.pudding3,
+                        star: '2성',
+                      ),
                     ),
                   ],
                 ),
@@ -39,7 +43,6 @@ class UpgradeModal extends StatelessWidget {
                 ),
                 Row(
                   children: [
-          
                     Expanded(
                       child: PuddingElevatedButton(
                         onPressed: () {

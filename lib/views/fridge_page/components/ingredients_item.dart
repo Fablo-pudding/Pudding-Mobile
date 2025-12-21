@@ -8,6 +8,7 @@ class PuddingIngredientsItem extends StatelessWidget {
   final int ingredientsItem;
   final double width;
   final double height;
+  final double? svgHeight;
 
   const PuddingIngredientsItem({
     super.key,
@@ -15,12 +16,13 @@ class PuddingIngredientsItem extends StatelessWidget {
     required this.ingredientsItem,
     required this.width,
     required this.height,
+    this.svgHeight,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: PuddingColor.background,
         borderRadius: BorderRadius.circular(8),
@@ -31,9 +33,16 @@ class PuddingIngredientsItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('$ingredientsItem개',style: PuddingTextStyle.ingredientsItem,),
-          SizedBox(height: 12,),
-          Expanded(child: SvgPicture.asset(svgPicture,fit: BoxFit.contain,)),
+          Text(
+            '$ingredientsItem개',
+            style: PuddingTextStyle.ingredientsItem,
+          ),
+         const SizedBox(height: 12,),
+          SvgPicture.asset(
+            svgPicture,
+            fit: BoxFit.contain,
+            height: svgHeight,
+          ),
         ],
       ),
     );

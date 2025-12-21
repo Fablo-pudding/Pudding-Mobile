@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
-import 'package:pudding/common/components/modal/item_modal.dart';
 import 'package:pudding/common/components/modal/upgrade_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
@@ -22,6 +21,7 @@ class PuddingFridgePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
+              const Spacer(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -32,7 +32,7 @@ class PuddingFridgePage extends StatelessWidget {
                           svgPicture: PuddingAssets.egg,
                           ingredientsItem: 32,
                           width: double.infinity,
-                          height: 190,
+                          height: 180,
                         ),
                         const SizedBox(height: 20),
                         PuddingIngredientsItem(
@@ -40,6 +40,7 @@ class PuddingFridgePage extends StatelessWidget {
                           ingredientsItem: 32,
                           width: double.infinity,
                           height: 150,
+                          svgHeight: 64,
                         ),
                       ],
                     ),
@@ -50,7 +51,7 @@ class PuddingFridgePage extends StatelessWidget {
                       svgPicture: PuddingAssets.milk,
                       ingredientsItem: 32,
                       width: double.infinity,
-                      height: 360,
+                      height: 350,
                     ),
                   ),
                 ],
@@ -67,9 +68,12 @@ class PuddingFridgePage extends StatelessWidget {
                   Expanded(
                     child: PuddingElevatedButton(
                       onPressed: () {
-                        showDialog(context: context, builder: (BuildContext context){
-                          return CheckModal(message: '재료를 사용하여 푸딩을 만드시겠습니까?', onConfirm: (){});
-                        });
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CheckModal(message: '재료를 사용하여 푸딩을 만드시겠습니까?', onConfirm: (){});
+                          },
+                        );
                       },
                       child: const Text('푸딩 제작'),
                     ),
@@ -79,18 +83,28 @@ class PuddingFridgePage extends StatelessWidget {
                     child: PuddingElevatedButton(
                       onPressed: () {
                         showDialog(
-                          context: context, builder: (BuildContext context) {
-                          return CheckModal(
-                              message: '푸딩을 강화하시겠습니까?', onConfirm: () {
-                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>UpgradeModal()));
-                            });
-                          });
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CheckModal(
+                              message: '푸딩을 강화하시겠습니까?',
+                              onConfirm: () {
+                                Navigator.of(context).pop();
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => UpgradeModal(),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        );
                       },
                       child: const Text('푸딩 강화'),
                     ),
                   ),
                 ],
               ),
+              const Spacer(),
             ],
           ),
         ),

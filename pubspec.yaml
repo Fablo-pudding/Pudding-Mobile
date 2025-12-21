@@ -50,5 +50,5 @@ flutter:
         - asset: assets/fonts/LotteriaChab.ttf
 
   assets:
-    - assets/img/
+    - assets/img/logo/
 

@@ -5,12 +5,8 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
-enum PuddingBox{
-  firstPudding,
-  secondPudding,
-  thirdPudding;
+enum PuddingBox { firstPudding, secondPudding, thirdPudding }
 
-}
 class PuddingStar extends StatefulWidget {
   final int? star;
   final int puddingCount;
@@ -31,7 +27,8 @@ class PuddingStar extends StatefulWidget {
 
 class _PuddingStarState extends State<PuddingStar> {
   late PuddingBox stars;
-@override
+
+  @override
   void initState() {
     super.initState();
     stars = PuddingBox.firstPudding;
@@ -46,8 +43,10 @@ class _PuddingStarState extends State<PuddingStar> {
               SvgPicture.asset(PuddingAssets.star1),
               SvgPicture.asset(PuddingAssets.pudding1),
               const SizedBox(height: 4),
-              Text('${widget.puddingCount}개',
-                  style: PuddingTextStyle.puddingCount),
+              Text(
+                '${widget.puddingCount}개',
+                style: PuddingTextStyle.puddingCount,
+              ),
             ],
           ),
         );
@@ -58,8 +57,10 @@ class _PuddingStarState extends State<PuddingStar> {
               SvgPicture.asset(PuddingAssets.star2),
               SvgPicture.asset(PuddingAssets.pudding2),
               const SizedBox(height: 4),
-              Text('${widget.puddingCount2}개',
-                  style: PuddingTextStyle.puddingCount),
+              Text(
+                '${widget.puddingCount2}개',
+                style: PuddingTextStyle.puddingCount,
+              ),
             ],
           ),
         );
@@ -70,8 +71,10 @@ class _PuddingStarState extends State<PuddingStar> {
               SvgPicture.asset(PuddingAssets.star3),
               SvgPicture.asset(PuddingAssets.pudding3),
               const SizedBox(height: 4),
-              Text('${widget.puddingCount3}개',
-                  style: PuddingTextStyle.puddingCount),
+              Text(
+                '${widget.puddingCount3}개',
+                style: PuddingTextStyle.puddingCount,
+              ),
             ],
           ),
         );
@@ -90,45 +93,43 @@ class _PuddingStarState extends State<PuddingStar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: (){
-              setState(() {
-               switch(stars){
-                 case PuddingBox.firstPudding:
-                   stars = PuddingBox.thirdPudding;
-                 case PuddingBox.secondPudding:
-                   stars = PuddingBox.firstPudding;
-                 case PuddingBox.thirdPudding:
-                  stars = PuddingBox.secondPudding;
-               }
-              });
-            },
-            child: Icon(
-              Symbols.arrow_back_ios,
-              size: 16,
-              color: PuddingColor.brown,
-            ),
-          ),
+          stars == PuddingBox.firstPudding
+              ? const SizedBox(width: 16,)
+              : GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (stars case PuddingBox.secondPudding) {
+                        stars = PuddingBox.firstPudding;
+                      } else if (stars case PuddingBox.thirdPudding) {
+                        stars = PuddingBox.secondPudding;
+                      }
+                    });
+                  },
+                  child: Icon(
+                    Symbols.arrow_back_ios,
+                    size: 16,
+                    color: PuddingColor.brown,
+                  ),
+                ),
           Expanded(child: _buildStarColumn()),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                switch(stars){
-                  case PuddingBox.secondPudding:
-                    stars = PuddingBox.thirdPudding;
-                  case PuddingBox.thirdPudding:
-                    stars = PuddingBox.firstPudding;
-                  case PuddingBox.firstPudding:
-
-                }
-              });
-            },
-            child: Icon(
-              Symbols.arrow_forward_ios,
-              size: 16,
-              color: PuddingColor.brown,
-            ),
-          ),
+          stars == PuddingBox.thirdPudding
+              ? const SizedBox(width: 16,)
+              : GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (stars case PuddingBox.firstPudding) {
+                        stars = PuddingBox.secondPudding;
+                      } else if (stars case PuddingBox.secondPudding) {
+                        stars = PuddingBox.thirdPudding;
+                      }
+                    });
+                  },
+                  child: Icon(
+                    Symbols.arrow_forward_ios,
+                    size: 16,
+                    color: PuddingColor.brown,
+                  ),
+                ),
         ],
       ),
     );
