@@ -28,7 +28,8 @@ class LackModal extends StatelessWidget {
           ),
           const SizedBox(height: 50),
           const Divider(thickness: 1, height: 1, color: PuddingColor.gray400),
-          IntrinsicHeight(
+         SizedBox(
+           width: double.infinity,
             child: Row(
               children: [
                 Expanded(

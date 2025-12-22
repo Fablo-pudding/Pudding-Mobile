@@ -11,7 +11,7 @@ class UpgradeModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: PuddingColor.gray400,
+        backgroundColor: PuddingColor.gray400.withOpacity(0.5),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -19,7 +19,6 @@ class UpgradeModal extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: PuddingUpgradeBox(

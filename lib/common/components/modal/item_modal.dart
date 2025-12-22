@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 class ItemModal extends StatelessWidget {
 
   const ItemModal({
-    super.key,
+    super.key
   });
 
   @override
