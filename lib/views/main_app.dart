@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/bottom_navigation_bar.dart';
 import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
-import 'package:pudding/views/fridge_page/presentation/fridge_page.dart';
+import 'package:pudding/views/fridge_page/presentation/firdge_page.dart';
+import 'package:pudding/views/main_page/presentation/main_page.dart';
+import 'package:pudding/views/my_page/presentation/my_page.dart';
+import 'package:pudding/views/ranking/presentaion/ranking_page.dart';
 
 class PuddingMainApp extends StatefulWidget {
   const PuddingMainApp({super.key});
@@ -41,7 +44,7 @@ class _PuddingMainAppState extends State<PuddingMainApp> {
           Navigator(
             key: _navigatorKeys[0],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('메인 페이지'),),)),
+                MaterialPageRoute(builder: (_) => Scaffold(body: PuddingMainPage(),)),
           ),
           Navigator(
             key: _navigatorKeys[1],
@@ -51,17 +54,17 @@ class _PuddingMainAppState extends State<PuddingMainApp> {
           Navigator(
             key: _navigatorKeys[2],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('랭킹 페이지'),),),),
+                MaterialPageRoute(builder: (_) => Scaffold(body: PuddingRankingPage(),),),
           ),
           Navigator(
             key: _navigatorKeys[3],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('냉장고 페이지')),)),
+                MaterialPageRoute(builder: (_) => Scaffold(body: PuddingFridgePage())),
           ),
           Navigator(
             key: _navigatorKeys[4],
             onGenerateRoute: (settings) =>
-                MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('마이 페이지'),),)),
+                MaterialPageRoute(builder: (_) => Scaffold(body: PuddingMyPage())),
           ),
         ],
       ),

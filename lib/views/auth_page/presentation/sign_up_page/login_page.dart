@@ -3,6 +3,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/views/main_app.dart';
 import 'package:pudding/views/main_page/presentation/main_page.dart';
 
 class PuddingLoginPage extends StatefulWidget {
@@ -80,7 +81,7 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const PuddingMainPage(),
+                              builder: (context) => const PuddingMainApp(),
                             ),
                                 (route) => false,
                           );
