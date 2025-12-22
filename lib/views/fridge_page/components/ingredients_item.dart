@@ -22,7 +22,7 @@ class PuddingIngredientsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
         color: PuddingColor.background,
         borderRadius: BorderRadius.circular(8),
@@ -32,12 +32,12 @@ class PuddingIngredientsItem extends StatelessWidget {
       width: width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             '$ingredientsItem개',
             style: PuddingTextStyle.ingredientsItem,
           ),
-         const SizedBox(height: 12,),
           SvgPicture.asset(
             svgPicture,
             fit: BoxFit.contain,
