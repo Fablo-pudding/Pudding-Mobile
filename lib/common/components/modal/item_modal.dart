@@ -4,9 +4,11 @@ import 'package:pudding/common/constants/text_style.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemModal extends StatelessWidget {
+  final String svgPath;
 
   const ItemModal({
-    super.key
+    super.key,
+    required this.svgPath
   });
 
   @override
@@ -24,12 +26,13 @@ class ItemModal extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 18),
             child: Text(
-              '재료를 사용하여 푸딩을 만드시겠습니까?',
+              '아이템을 획득하였습니다.',
               style: PuddingTextStyle.heading3.copyWith(
                 color: PuddingColor.brown,
               ),
             ),
           ),
+          SvgPicture.asset(svgPath),
           const SizedBox(height: 20),
           Divider(color: PuddingColor.gray400, thickness: 1),
           Padding(

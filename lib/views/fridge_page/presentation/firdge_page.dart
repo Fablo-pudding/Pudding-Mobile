@@ -3,6 +3,7 @@ import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/components/modal/lack_modal.dart';
+import 'package:pudding/common/components/modal/select_modal.dart';
 import 'package:pudding/common/components/modal/upgrade_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
@@ -74,7 +75,7 @@ class PuddingFridgePage extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return LackModal(message: '재료를 사용하여 푸딩을 만드시겠습니까?');
+                            return CheckModal(message: '재료를 사용하여 푸딩을 만드시겠습니까?', onConfirm: () {},);
                           },
                         );
                       },
@@ -92,10 +93,9 @@ class PuddingFridgePage extends StatelessWidget {
                               message: '푸딩을 강화하시겠습니까?',
                               onConfirm: () {
                                 Navigator.of(context).pop();
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => UpgradeModal(),
-                                  ),
+                               showDialog(context: context, builder: (BuildContext context){
+                                 return SelectModal();
+                               }
                                 );
                               },
                             );

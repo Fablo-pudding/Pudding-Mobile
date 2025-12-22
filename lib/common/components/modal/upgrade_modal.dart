@@ -10,51 +10,46 @@ class UpgradeModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: PuddingColor.gray400.withValues(alpha: 0.5),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return Dialog(
+      backgroundColor: PuddingColor.gray400.withValues(alpha: 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: PuddingUpgradeBox(
-                        svgPicture: PuddingAssets.pudding2,
-                        star: '1성',
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: PuddingUpgradeBox(
-                        svgPicture: PuddingAssets.pudding3,
-                        star: '2성',
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: PuddingUpgradeBox(
+                    svgPicture: PuddingAssets.pudding2,
+                    star: '1성',
+                  ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  width: 20,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PuddingElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('취소'),
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: PuddingUpgradeBox(
+                    svgPicture: PuddingAssets.pudding3,
+                    star: '2성',
+                  ),
                 ),
               ],
             ),
-          ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: PuddingElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('취소'),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
     );
   }
@@ -82,7 +77,7 @@ class PuddingUpgradeBox extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         height: 240,
-        width: 160,
+        width: 200,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
