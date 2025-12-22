@@ -8,7 +8,7 @@ abstract final class PuddingAssets {
   static const profile = 'assets/img/profile.svg';
   static const send = 'assets/img/send.svg';
   static const admin = 'assets/img/admin.svg';
-  static const puddingTitle = 'assets/img/logo/puddingTitle.svg';
+  static const puddingTitle = 'assets/img/puddingTitle.svg';
   static const star1 = 'assets/img/star1.svg';
   static const star2 = 'assets/img/star2.svg';
   static const star3 = 'assets/img/star3.svg';

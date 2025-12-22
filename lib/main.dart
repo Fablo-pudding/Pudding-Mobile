@@ -3,6 +3,7 @@ import 'package:pudding/common/components/modal/upgrade_modal.dart';
 import 'package:pudding/views/fridge_page/components/ingredients_item.dart';
 import 'package:pudding/views/fridge_page/presentation/firdge_page.dart';
 import 'package:pudding/views/main_app.dart';
+import 'package:pudding/views/splash_page/presentaion/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       debugShowCheckedModeBanner: false,
-      home: PuddingMainApp(),
+      home: PuddingSplashPage(),
     );
   }
 }
