@@ -16,6 +16,8 @@ dependencies:
   material_symbols_icons: ^4.2719.0
   image_picker: ^1.2.0
   intl: ^0.18.1
+  flutter_riverpod: ^3.0.3
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:
