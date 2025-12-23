@@ -4,7 +4,7 @@ import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
 import 'package:pudding/views/fridge_page/presentation/firdge_page.dart';
 import 'package:pudding/views/main_page/presentation/main_page.dart';
 import 'package:pudding/views/my_page/presentation/my_page.dart';
-import 'package:pudding/views/ranking/presentaion/ranking_page.dart';
+import 'package:pudding/views/ranking_page/presentaion/ranking_page.dart';
 
 class PuddingMainApp extends StatefulWidget {
   const PuddingMainApp({super.key});
