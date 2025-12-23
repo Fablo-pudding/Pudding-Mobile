@@ -8,8 +8,9 @@ import 'package:pudding/views/main_page/presentation/main_page.dart';
 
 class PuddingLoginPage extends StatefulWidget {
   final VoidCallback? onNext;
+  final String password;
 
-  const PuddingLoginPage({super.key, this.onNext});
+  const PuddingLoginPage({super.key, this.onNext, required this.password});
 
   @override
   State<PuddingLoginPage> createState() => _PuddingLoginState();
@@ -38,7 +39,7 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
   void _onChangedButton() {
     setState(() {
       isEnabledButton =
-          idController.text.isNotEmpty && passwordController.text.isNotEmpty;
+          idController.text.isNotEmpty && passwordController.text.length >= 8;
     });
   }
 
@@ -49,54 +50,62 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                const SizedBox(height: 32,),
-                PuddingTextFormField(
-                  controller: idController,
-                  hintText: '아이디 입력',
-                  title: '아이디',
-                ),
-                const SizedBox(height: 28,),
-                PuddingTextFormField(
-                  pwObsText: pwObsText,
-                  controller: passwordController,
-                  hintText: '비밀번호 입력',
-                  title: '비밀번호',
-                  maxLines: 1,
-                  suffixIcon: GestureDetector(
-                    onTap: () => setState(() => pwObsText = !pwObsText),
-                    child: Icon(
-                       pwObsText == true ? Symbols.visibility : Symbols.visibility_off
-                    ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 32,
+              ),
+              PuddingTextFormField(
+                controller: idController,
+                hintText: '아이디 입력',
+                title: '아이디',
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              PuddingTextFormField(
+                pwObsText: pwObsText,
+                controller: passwordController,
+                hintText: '비밀번호 입력',
+                title: '비밀번호',
+                maxLines: 1,
+                suffixIcon: GestureDetector(
+                  onTap: () => setState(() => pwObsText = !pwObsText),
+                  child: Icon(
+                    pwObsText == true
+                        ? Symbols.visibility
+                        : Symbols.visibility_off,
                   ),
                 ),
-                const Spacer(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PuddingElevatedButton(
-                        onPressed: isEnabledButton
-                            ? () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PuddingMainApp(),
-                            ),
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  Expanded(
+                    child: PuddingElevatedButton(
+                      onPressed: isEnabledButton
+                          ? () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PuddingMainApp(),
+                                ),
                                 (route) => false,
-                          );
-                        }
-                            : null,
-                        child: Text('로그인'),
-                      ),
+                              );
+                            }
+                          : null,
+                      child: Text('로그인'),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 10,),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 }

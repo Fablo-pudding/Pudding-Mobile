@@ -94,7 +94,7 @@ class PuddingFridgePage extends StatelessWidget {
                               onConfirm: () {
                                 Navigator.of(context).pop();
                                showDialog(context: context, builder: (BuildContext context){
-                                 return SelectModal();
+                                 return UpgradeModal();
                                }
                                 );
                               },

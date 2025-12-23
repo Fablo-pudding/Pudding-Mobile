@@ -72,8 +72,8 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                   ),
                 ),
                 validator: (value) {
-                  if (value == null || value.length < 3) {
-                    return '3글자 이상 쳐주세요';
+                  if (value == null || value.length < 8) {
+                    return '8글자 이상 쳐주세요';
                   }
                   return null;
                 },
