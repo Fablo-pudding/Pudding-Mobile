@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/login_page.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/page_view.dart';
+import 'package:pudding/views/auth_page/presentation/sign_in/login_page.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/page_view.dart';
 
 class PuddingTab extends StatefulWidget {
   const PuddingTab({super.key});

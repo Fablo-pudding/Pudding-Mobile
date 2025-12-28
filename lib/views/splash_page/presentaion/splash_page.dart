@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/pudding_title.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/pudding_title.dart';
 
 class PuddingSplashPage extends StatefulWidget {
   const PuddingSplashPage({super.key});

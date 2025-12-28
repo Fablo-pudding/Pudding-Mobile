@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/complete.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/id_page.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/password.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/repassword.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/complete.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/id_page.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/password.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/repassword.dart';
 
 enum Page { id, password, rePassword, complete }
 

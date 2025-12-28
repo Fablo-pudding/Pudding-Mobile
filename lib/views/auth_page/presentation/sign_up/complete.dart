@@ -3,8 +3,8 @@ import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/views/auth_page/components/tab_bar.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/login_page.dart';
-import 'package:pudding/views/auth_page/presentation/sign_up_page/pudding_title.dart';
+import 'package:pudding/views/auth_page/presentation/sign_in/login_page.dart';
+import 'package:pudding/views/auth_page/presentation/sign_up/pudding_title.dart';
 
 class PuddingComplete extends StatefulWidget {
   const PuddingComplete({super.key});
