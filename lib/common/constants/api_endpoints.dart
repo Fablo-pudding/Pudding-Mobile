@@ -1,6 +1,6 @@
 class ApiEndpoints {
   /// BaseURL
-  static const baseURL = "http://34.207.16.33:8080/";
+  static const baseURL = "http://34.207.16.33:8080";
 
   /// User
   static const signUp = "/user/signup";
@@ -15,9 +15,9 @@ class ApiEndpoints {
   /// feed
   static const feedWrite = "/feed/create";
   static const feedCheck = "/feed/get-list";
-  static const feedDetailCheck = "/feed/-detail";
-  static const feedUpdate = "/feed/update/";
-  static const feedDelete = "/feed/delete/";
+  static const feedDetailCheck = "/feed/get-detail";
+  static const feedUpdate = "/feed/update";
+  static const feedDelete = "/feed/delete";
 
   /// comment
   static const commentWrite = "/comment/create";
@@ -33,11 +33,18 @@ class ApiEndpoints {
   static const egg = "/storage/get-egg";
   static const sugar = "/storage/get-sugar";
 
+  /// timer
+  static const createTimer = "/timer";
+  static const timerCheck = "/timer";
+
   /// inquiry
   static const inquiryRegister = "/inquiry/create";
+  static const inquiryAllCheck = "/inquiry";
+  static const inquiryDetailCheck = "/inquiry";
+  static const inquiryAnswer = "/inquiry";
   static const myCheck = "/inquiry/my";
-  static const inquiryCheck = "/inquiry";
-  
+  static const inquiryDelete = "/inquiry";
+
   /// notice
   static const noticeWrite = "/notice/create";
   static const noticeCheck = "/notice/get-list";
