@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pudding/common/constants/api_endpoints.dart';
-import 'package:pudding/common/constants/baseUrl.dart';
+import 'package:pudding/common/constants/base_url.dart';
 
 final Dio dio = Dio(
   dio.options = BaseOptions(
