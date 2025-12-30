@@ -1,6 +1,6 @@
 class ApiEndpoints {
   /// BaseURL
-  static const baseURL = "http://34.207.16.33:8080";
+  static const baseURL = "";
 
   /// 공통주소
   static const _timerBaseUrl = "/timer";
