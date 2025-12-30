@@ -1,4 +1,3 @@
-import 'package:pudding/common/constants/base_url.dart';
 
 class ApiEndpoints {
   /// 공통주소

@@ -18,6 +18,7 @@ dependencies:
   intl: ^0.18.1
   flutter_riverpod: ^3.0.3
   dio: ^5.9.0
+  flutter_dotenv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -53,4 +54,5 @@ flutter:
 
   assets:
     - assets/img/
+    - .env
 
