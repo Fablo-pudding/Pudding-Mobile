@@ -2,6 +2,10 @@ class ApiEndpoints {
   /// BaseURL
   static const baseURL = "http://34.207.16.33:8080";
 
+  /// 공통주소
+  static const _timerBaseUrl = "/timer";
+  static const _inquiryBaseUrl = "/inquiry";
+
   /// User
   static const signUp = "/user/signup";
   static const login = "/user/login";
@@ -34,16 +38,16 @@ class ApiEndpoints {
   static const sugar = "/storage/get-sugar";
 
   /// timer
-  static const createTimer = "/timer";
-  static const timerCheck = "/timer";
+  static const createTimer = _timerBaseUrl;
+  static const timerCheck = _timerBaseUrl;
 
   /// inquiry
   static const inquiryRegister = "/inquiry/create";
-  static const inquiryAllCheck = "/inquiry";
-  static const inquiryDetailCheck = "/inquiry";
-  static const inquiryAnswer = "/inquiry";
   static const myCheck = "/inquiry/my";
-  static const inquiryDelete = "/inquiry";
+  static const inquiryAllCheck = _inquiryBaseUrl;
+  static const inquiryDetailCheck = _inquiryBaseUrl;
+  static const inquiryAnswer = _inquiryBaseUrl;
+  static const inquiryDelete = _inquiryBaseUrl;
 
   /// notice
   static const noticeWrite = "/notice/create";
