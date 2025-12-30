@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:pudding/common/constants/api_endpoints.dart';
+import 'package:pudding/common/constants/baseUrl.dart';
 
 final Dio dio = Dio(
   dio.options = BaseOptions(
-    baseUrl: ApiEndpoints.baseURL,
+    baseUrl: BaseUrl.baseUrl,
     contentType: Headers.jsonContentType,
     responseType: ResponseType.json,
     receiveTimeout: Duration(seconds: 5),

@@ -1,7 +1,6 @@
-class ApiEndpoints {
-  /// BaseURL
-  static const baseURL = "";
+import 'package:pudding/common/constants/baseUrl.dart';
 
+class ApiEndpoints {
   /// 공통주소
   static const _timerBaseUrl = "/timer";
   static const _inquiryBaseUrl = "/inquiry";
