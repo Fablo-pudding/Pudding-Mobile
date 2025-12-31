@@ -3,7 +3,7 @@ import 'dart:convert';
 class FeedCheckResponse {
   final int postId;
   final int userId;
-  final String profileImgUrl;
+  final String? profileImgUrl;
   final String title;
   final String content;
   final DateTime createAt;
@@ -12,7 +12,7 @@ class FeedCheckResponse {
   FeedCheckResponse({
     required this.postId,
     required this.userId,
-    required this.profileImgUrl,
+    this.profileImgUrl,
     required this.title,
     required this.content,
     required this.createAt,
