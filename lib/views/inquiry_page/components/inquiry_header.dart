@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_edit.dart';
+import 'package:pudding/views/inquiry_page/components/inquiry_edit.dart';
 
 class PuddingInquiryHeader extends StatelessWidget {
   final String? title;

@@ -6,8 +6,8 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/views/feed_page/components/comment_header.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_edit.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_header.dart';
+import 'package:pudding/views/inquiry_page/components/inquiry_edit.dart';
+import 'package:pudding/views/inquiry_page/components/inquiry_header.dart';
 
 class PuddingAdminInquiryCommentPage extends StatefulWidget {
   const PuddingAdminInquiryCommentPage({

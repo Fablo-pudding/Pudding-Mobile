@@ -3,7 +3,6 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_edit_page.dart';
 
 class PuddingInquiryEdit extends StatefulWidget {
   const PuddingInquiryEdit({

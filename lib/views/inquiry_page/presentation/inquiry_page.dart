@@ -3,8 +3,8 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/constants/color.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_article.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_write.dart';
+import 'package:pudding/views/inquiry_page/components/inquiry_article.dart';
+import 'package:pudding/views/inquiry_page/presentation/inquiry_write.dart';
 
 class PuddingInquiryPage extends StatefulWidget {
   const PuddingInquiryPage({super.key});
