@@ -5,14 +5,16 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 
 class PuddingPassword extends StatefulWidget {
-  final void Function(String)? next;
+  final void Function(String, String)? next;
   final void Function()? back;
+  final String id;
   final String password;
 
   const PuddingPassword({
     super.key,
     this.next,
     this.back,
+    required this.id,
     required this.password,
   });
 
@@ -96,7 +98,7 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                     child: PuddingElevatedButton(
                       onPressed: isEnabledText
                           ? () {
-                              widget.next?.call(passwordController.text);
+                              widget.next?.call(passwordController.text, widget.id);
                             }
                           : null,
                       child: Text('다음'),

@@ -3,9 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/presentation/admin/admin_inquiry_comment_page.dart';
-import 'package:pudding/views/inquiry-page/presentation/admin/admin_inquiry_page.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_watch_page.dart';
+import 'package:pudding/views/inquiry_page/presentation/admin/admin_inquiry_comment_page.dart';
+import 'package:pudding/views/inquiry_page/presentation/inquiry_watch_page.dart';
 
 class PuddingInquiryArticle extends StatefulWidget {
   final String title;

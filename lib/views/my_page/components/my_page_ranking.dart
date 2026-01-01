@@ -23,7 +23,7 @@ class PuddingMyPageRanking extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('👑랭킹', style: PuddingTextStyle.heading2),
-            Text('$ranking개', style: PuddingTextStyle.heading2),
+            Text('$ranking등', style: PuddingTextStyle.heading2),
           ],
         ),
       ),

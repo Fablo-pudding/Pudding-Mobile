@@ -4,7 +4,7 @@ import 'package:pudding/common/components/modal/check_modal.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_watch_page.dart';
+import 'package:pudding/views/inquiry_page/presentation/inquiry_watch_page.dart';
 
 class PuddingInquiryWrite extends StatefulWidget {
   const PuddingInquiryWrite({super.key});

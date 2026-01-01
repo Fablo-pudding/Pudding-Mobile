@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/views/auth_page/provider/auth.dart';
 
-class PuddingRepassword extends StatefulWidget {
+class PuddingRepassword extends ConsumerStatefulWidget {
+  final String id;
   final String password;
   final void Function()? next;
   final void Function()? back;
@@ -13,14 +16,15 @@ class PuddingRepassword extends StatefulWidget {
     super.key,
     this.next,
     this.back,
+    required this.id,
     required this.password,
   });
 
   @override
-  State<PuddingRepassword> createState() => _PuddingRepasswordState();
+  ConsumerState<PuddingRepassword> createState() => _PuddingRepasswordState();
 }
 
-class _PuddingRepasswordState extends State<PuddingRepassword> {
+class _PuddingRepasswordState extends ConsumerState<PuddingRepassword> {
   bool pwObsText = true;
   TextEditingController passwordController = TextEditingController();
   bool isEnabledButton = false;
@@ -62,7 +66,9 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                 suffixIcon: GestureDetector(
                   onTap: () => setState(() => pwObsText = !pwObsText),
                   child: Icon(
-                      pwObsText == true ? Symbols.visibility : Symbols.visibility_off
+                    pwObsText == true
+                        ? Symbols.visibility
+                        : Symbols.visibility_off,
                   ),
                 ),
               ),
@@ -83,8 +89,17 @@ class _PuddingRepasswordState extends State<PuddingRepassword> {
                   Expanded(
                     child: PuddingElevatedButton(
                       onPressed: isEnabledButton
-                          ? () {
-                              widget.next?.call();
+                          ? () async {
+                              final bool success = await ref.read(
+                                signUpProvider(
+                                  name: widget.id,
+                                  password: widget.password,
+                                ).future,
+                              );
+
+                              if (success) {
+                                widget.next?.call();
+                              }
                             }
                           : null,
                       child: Text('다음'),

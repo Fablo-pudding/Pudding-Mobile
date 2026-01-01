@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/constants/color.dart';
-import 'package:pudding/views/inquiry-page/presentation/inquiry_page.dart';
+import 'package:pudding/views/inquiry_page/presentation/inquiry_page.dart';
 import 'package:pudding/views/my_page/components/menu.dart';
 import 'package:pudding/views/my_page/components/my_page_ranking.dart';
 import 'package:pudding/views/my_page/components/profile.dart';

@@ -5,7 +5,7 @@ import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/views/feed_page/components/comment_header.dart';
-import 'package:pudding/views/inquiry-page/components/inquiry_header.dart';
+import 'package:pudding/views/inquiry_page/components/inquiry_header.dart';
 
 class PuddingInquiryWatchPage extends StatefulWidget {
   const PuddingInquiryWatchPage({super.key});
