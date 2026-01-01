@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pudding/common/constants/api_endpoints.dart';
 import 'package:pudding/service/dio.dart';
-import 'package:pudding/views/auth_page/presentation/model/info_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -81,25 +80,3 @@ Future<bool> signIn(Ref ref, {
   }
 }
 
-@riverpod
-Future<InfoResponse> myInfo(Ref ref) async {
-  final storage = const FlutterSecureStorage();
-  final accessToken = await storage.read(key: 'accessToken');
-  try {
-    final response = await dio.get(ApiEndpoints.myInfo,
-        options: Options(
-            headers: {'Authorization': 'Bearer $accessToken'}
-        )
-    );
-    if(response.statusCode == 200){
-      return InfoResponse.fromJson(response.data);
-    }
-    else{
-      throw Exception(response.statusCode);
-    }
-  }
-  catch (err) {
-    print(err);
-    rethrow;
-  }
-}
