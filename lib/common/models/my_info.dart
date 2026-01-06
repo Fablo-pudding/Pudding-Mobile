@@ -11,6 +11,15 @@ class MyInfo {
     this.profileImageUrl,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'userId': userId,
+      'name': name,
+      'ranking': ranking,
+      'profileImageUrl': profileImageUrl
+    };
+  }
+
   factory MyInfo.fromJson(Map<String, dynamic> json) {
     return MyInfo(
       userId: json['userId'],

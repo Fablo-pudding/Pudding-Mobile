@@ -19,6 +19,18 @@ class FeedCheck {
     required this.commentCount,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'postId': postId,
+      'userId': userId,
+      'profileImgUrl': profileImgUrl,
+      'title': title,
+      'content': content,
+      'createAt': createAt,
+      'commentCount': commentCount
+    };
+  }
+
   factory FeedCheck.fromJson(Map<String, dynamic> json) {
     return FeedCheck(
       postId: json['postId'],

@@ -19,6 +19,19 @@ class InquiryCheck {
     required this.reply,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'userId': userId,
+      'userName': userName,
+      'userProfileImageUrl': userProfileImageUrl,
+      'title': title,
+      'content': content,
+      'createAt': createAt,
+      'reply': reply
+    };
+  }
+
   factory InquiryCheck.fromJson(Map<String, dynamic> json) {
     return InquiryCheck(
       id: json['id'],

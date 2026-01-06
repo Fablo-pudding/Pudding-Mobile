@@ -6,4 +6,8 @@ class InquiryAnswer {
   Map<String, dynamic> toJson() {
     return {'reply': reply};
   }
+
+  factory InquiryAnswer.fromJson(Map<String, dynamic> json) {
+    return InquiryAnswer(reply: json['reply']);
+  }
 }
