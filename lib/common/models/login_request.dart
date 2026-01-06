@@ -7,4 +7,8 @@ class LoginRequest {
   Map<String, dynamic> toJson() {
     return {'name': name, 'password': password};
   }
+
+  factory LoginRequest.fromJson(Map<String, dynamic> json) {
+    return LoginRequest(name: json['name'], password: json['password']);
+  }
 }

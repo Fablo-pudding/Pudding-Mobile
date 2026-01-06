@@ -19,6 +19,19 @@ class FeedDetailCheck {
     this.commentCount,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'postId': postId,
+      'userId': userId,
+      'profileImageUrl': profileImageUrl,
+      'title': title,
+      'content': content,
+      'createdAt': createdAt,
+      'comments': comments,
+      'commentCount': commentCount
+    };
+  }
+
   FeedDetailCheck.fromJson(Map<String, dynamic> json) {
     postId = json['post_id'];
     userId = json['user_id'];

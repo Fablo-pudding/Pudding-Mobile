@@ -13,6 +13,16 @@ class GlobalRanking {
     required this.pudding3,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'rank': rank,
+      'userId': userId,
+      'userName': userName,
+      'userProfileImageUrl': userProfileImageUrl,
+      'pudding3': pudding3
+    };
+  }
+
   factory GlobalRanking.fromJson(Map<String, dynamic> json) {
     return GlobalRanking(
       rank: json['rank'],
