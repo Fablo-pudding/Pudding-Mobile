@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class FeedCheckResponse {
+class FeedCheck {
   final int postId;
   final int userId;
   final String? profileImgUrl;
@@ -9,7 +9,7 @@ class FeedCheckResponse {
   final DateTime createAt;
   final int commentCount;
 
-  FeedCheckResponse({
+  FeedCheck({
     required this.postId,
     required this.userId,
     this.profileImgUrl,
@@ -19,8 +19,8 @@ class FeedCheckResponse {
     required this.commentCount,
   });
 
-  factory FeedCheckResponse.fromJson(Map<String, dynamic>json){
-    return FeedCheckResponse(
+  factory FeedCheck.fromJson(Map<String, dynamic>json){
+    return FeedCheck(
         postId: json['postId'],
         userId: json['userId'],
         profileImgUrl: json['profileImgUrl'],

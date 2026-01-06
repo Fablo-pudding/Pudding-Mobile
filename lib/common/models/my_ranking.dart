@@ -1,20 +1,20 @@
-class MyRankingResponse {
+class MyRanking {
   final int rank;
   final int userId;
   final String userName;
   final String? userProfileImageUrl;
   final int pudding3;
 
-  MyRankingResponse({
+  MyRanking({
     required this.rank,
     required this.userId,
     required this.userName,
-    required this.userProfileImageUrl,
+    this.userProfileImageUrl,
     required this.pudding3,
   });
 
-  factory MyRankingResponse.fromJson(Map<String, dynamic> json) {
-    return MyRankingResponse(
+  factory MyRanking.fromJson(Map<String, dynamic> json) {
+    return MyRanking(
       rank: json['rank'],
       userId: json['userId'],
       userName: json['userName'],

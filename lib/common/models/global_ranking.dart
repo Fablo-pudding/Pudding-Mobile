@@ -1,20 +1,20 @@
-class GlobalRankingResponse {
+class GlobalRanking {
   final int rank;
   final int userId;
   final String userName;
   final String? userProfileImageUrl;
   final int pudding3;
 
-  GlobalRankingResponse({
+  GlobalRanking({
     required this.rank,
     required this.userId,
     required this.userName,
-    required this.userProfileImageUrl,
+    this.userProfileImageUrl,
     required this.pudding3,
   });
 
-  factory GlobalRankingResponse.fromJson(Map<String, dynamic> json) {
-    return GlobalRankingResponse(
+  factory GlobalRanking.fromJson(Map<String, dynamic> json) {
+    return GlobalRanking(
       rank: json['rank'],
       userId: json['userId'],
       userName: json['userName'],

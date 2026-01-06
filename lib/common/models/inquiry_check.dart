@@ -1,26 +1,26 @@
-class InquiryCheckResponse {
+class InquiryCheck {
   final int id;
   final int userId;
   final String userName;
-  final bool userProfileImageUrl;
+  final String? userProfileImageUrl;
   final String title;
   final String content;
   final DateTime createAt;
   final String reply;
 
-  InquiryCheckResponse({
+  InquiryCheck({
     required this.id,
     required this.userId,
     required this.userName,
-    required this.userProfileImageUrl,
+    this.userProfileImageUrl,
     required this.title,
     required this.content,
     required this.createAt,
     required this.reply,
   });
 
-  factory InquiryCheckResponse.fromJson(Map<String, dynamic> json) {
-    return InquiryCheckResponse(
+  factory InquiryCheck.fromJson(Map<String, dynamic> json) {
+    return InquiryCheck(
       id: json['id'],
       userId: json['userId'],
       userName: json['userName'],

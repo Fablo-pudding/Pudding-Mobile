@@ -1,8 +1,8 @@
-class TextInputRequest {
+class TextInput {
   final String title;
   final String content;
 
-  TextInputRequest({required this.title, required this.content});
+  TextInput({required this.title, required this.content});
 
   Map<String, dynamic> toJson() {
     return {'title': title, 'content': content};
