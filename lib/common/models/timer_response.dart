@@ -1,9 +1,13 @@
 class TimerResponse {
-  final int elapsedTime;
+  final int totalTime;
 
-  TimerResponse({required this.elapsedTime});
+  TimerResponse({required this.totalTime});
 
   factory TimerResponse.fromJson(Map<String, dynamic> json) {
-    return TimerResponse(elapsedTime: json['elapsedTime']);
+    return TimerResponse(totalTime: json['totalTime']);
+  }
+
+  Map<String, dynamic> toJson() {
+    return {'totalTime' : totalTime};
   }
 }

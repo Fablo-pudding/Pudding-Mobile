@@ -10,4 +10,11 @@ class PuddingOneUpgrade {
       pudding2: json['pudding2'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'pudding1': pudding1,
+      'pudding2': pudding2,
+    };
+  }
 }

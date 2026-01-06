@@ -25,4 +25,15 @@ class StorageInfo {
       pudding3: json['pudding3'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'milk': milk,
+      'sugar': sugar,
+      'egg': egg,
+      'pudding1': pudding1,
+      'pudding2': pudding2,
+      'pudding3': pudding3,
+    };
+  }
 }

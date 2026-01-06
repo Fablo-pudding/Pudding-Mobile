@@ -12,4 +12,11 @@ class PuddingIngredient {
       egg: json['egg'],
     );
   }
+  Map<String,dynamic> toJson(){
+    return {
+      'milk':milk,
+      'sugar':sugar,
+      'egg':egg,
+    };
+  }
 }

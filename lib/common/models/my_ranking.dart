@@ -22,4 +22,13 @@ class MyRanking {
       pudding3: json['pudding3'],
     );
   }
+  Map<String,dynamic> toJson(){
+    return {
+      'rank':rank,
+      'userId':userId,
+      'userName':userName,
+      'userProfileImageUrl':userProfileImageUrl,
+      'pudding3':pudding3,
+    };
+  }
 }

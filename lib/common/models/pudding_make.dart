@@ -19,4 +19,12 @@ class StorageMake {
       sugar: json['sugar'],
     );
   }
+  Map<String,dynamic> toJson(){
+    return {
+      'pudding1':pudding1,
+      'milk' :milk,
+      'egg':egg,
+      'sugar':sugar,
+    };
+  }
 }
