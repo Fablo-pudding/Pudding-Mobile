@@ -9,7 +9,7 @@ class PuddingIngredient {
     return PuddingIngredient(
       milk: json['milk'],
       sugar: json['sugar'],
-      egg: json['egg']
+      egg: json['egg'],
     );
   }
 }

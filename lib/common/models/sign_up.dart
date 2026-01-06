@@ -1,4 +1,4 @@
-class SignUp{
+class SignUp {
   final String name;
   final String password;
 

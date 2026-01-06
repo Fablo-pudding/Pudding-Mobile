@@ -8,14 +8,16 @@ class FeedDetailCheck {
   List<Comments>? comments;
   int? commentCount;
 
-  FeedDetailCheck({this.postId,
+  FeedDetailCheck({
+    this.postId,
     this.userId,
     this.profileImageUrl,
     this.title,
     this.content,
     this.createdAt,
     this.comments,
-    this.commentCount});
+    this.commentCount,
+  });
 
   FeedDetailCheck.fromJson(Map<String, dynamic> json) {
     postId = json['post_id'];
@@ -34,7 +36,6 @@ class FeedDetailCheck {
   }
 }
 
-
 class Comments {
   int? commentId;
   int? userId;
@@ -42,12 +43,13 @@ class Comments {
   String? comment;
   String? createdAt;
 
-  Comments(
-      {this.commentId,
-        this.userId,
-        this.profileImageUrl,
-        this.comment,
-        this.createdAt});
+  Comments({
+    this.commentId,
+    this.userId,
+    this.profileImageUrl,
+    this.comment,
+    this.createdAt,
+  });
 
   Comments.fromJson(Map<String, dynamic> json) {
     commentId = json['comment_id'];
@@ -56,4 +58,4 @@ class Comments {
     comment = json['comment'];
     createdAt = json['created_at'];
   }
-  }
+}
