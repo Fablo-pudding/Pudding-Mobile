@@ -80,7 +80,7 @@ class _PuddingRepasswordState extends ConsumerState<PuddingRepassword> {
                       onPressed: () {
                         widget.back?.call();
                       },
-                      child: Text('이전'),
+                      child: const Text('이전'),
                     ),
                   ),
                   const SizedBox(
@@ -90,19 +90,17 @@ class _PuddingRepasswordState extends ConsumerState<PuddingRepassword> {
                     child: PuddingElevatedButton(
                       onPressed: isEnabledButton
                           ? () async {
-                              final bool success = await ref.read(
-                                signUpProvider(
-                                  name: widget.id,
-                                  password: widget.password,
-                                ).future,
+                              final auth = ref.read(authProvider);
+                              final access = await auth.signUp(
+                                name: widget.id,
+                                password: widget.password,
                               );
-
-                              if (success) {
+                              if(access){
                                 widget.next?.call();
                               }
                             }
                           : null,
-                      child: Text('다음'),
+                      child: const Text('다음'),
                     ),
                   ),
                 ],

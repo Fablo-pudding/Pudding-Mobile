@@ -22,10 +22,10 @@ class MyInfo {
 
   factory MyInfo.fromJson(Map<String, dynamic> json) {
     return MyInfo(
-      userId: json['userId'],
-      name: json['name'],
-      ranking: json['ranking'],
-      profileImageUrl: json['profileImageUrl'],
+      userId: json['userId'].toString(),
+      name: json['name'] as String,
+      ranking: json['ranking'] as int,
+      profileImageUrl: json['profileImageUrl'] as String?,
     );
   }
 }
