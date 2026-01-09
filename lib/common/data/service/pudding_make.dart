@@ -23,7 +23,7 @@ class PuddingMake {
         return StorageMake.fromJson(response.data);
       }
       else {
-        throw Exception("알 수 없는 오류");
+        throw Exception("오류 (${response.statusCode})");
       }
     } on DioException catch(e) {
 
@@ -46,7 +46,7 @@ class PuddingMake {
         throw Exception("서버 오류");
       }
       else {
-        throw Exception("알 수 없는 오류");
+        throw Exception("오류 (${e.response?.statusCode})");
       }
     }
   }

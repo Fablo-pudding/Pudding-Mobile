@@ -24,7 +24,7 @@ class FridgeInfo {
         return StorageInfo.fromJson(response.data);
       }
       else {
-        throw Exception("알 수 없는 오류");
+        throw Exception("오류 (${response.statusCode})");
       }
     } on DioException catch(e) {
 
@@ -44,7 +44,7 @@ class FridgeInfo {
         throw Exception("서버 오류");
       }
       else {
-        throw Exception("알 수 없는 오류");
+        throw Exception("오류 (${e.response?.statusCode})");
       }
     }
   }
