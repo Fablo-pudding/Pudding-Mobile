@@ -13,7 +13,7 @@ class StorageMake {
 
   factory StorageMake.fromJson(Map<String, dynamic> json) {
     return StorageMake(
-      pudding1: json['pudding1'],
+      pudding1: json['pudding_1'],
       milk: json['milk'],
       egg: json['egg'],
       sugar: json['sugar'],
@@ -21,7 +21,7 @@ class StorageMake {
   }
   Map<String,dynamic> toJson(){
     return {
-      'pudding1':pudding1,
+      'pudding_1':pudding1,
       'milk' :milk,
       'egg':egg,
       'sugar':sugar,

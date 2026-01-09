@@ -17,12 +17,12 @@ class StorageInfo {
 
   factory StorageInfo.fromJson(Map<String, dynamic> json) {
     return StorageInfo(
-      milk: json['milk'],
-      sugar: json['sugar'],
-      egg: json['egg'],
-      pudding1: json['pudding1'],
-      pudding2: json['pudding2'],
-      pudding3: json['pudding3'],
+      milk: json['milk'] ?? 0,
+      sugar: json['sugar'] ?? 0,
+      egg: json['egg'] ?? 0,
+      pudding1: json['pudding_1'] ?? 0,
+      pudding2: json['pudding_2'] ?? 0,
+      pudding3: json['pudding_3'] ?? 0,
     );
   }
 
@@ -31,9 +31,9 @@ class StorageInfo {
       'milk': milk,
       'sugar': sugar,
       'egg': egg,
-      'pudding1': pudding1,
-      'pudding2': pudding2,
-      'pudding3': pudding3,
+      'pudding_1': pudding1,
+      'pudding_2': pudding2,
+      'pudding_3': pudding3,
     };
   }
 }
