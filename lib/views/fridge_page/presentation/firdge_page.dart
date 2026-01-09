@@ -103,18 +103,21 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                       try {
 
                                         await PuddingMake().puddingMake();
-                                        setState(() {
-                                          fridgeFuture = FridgeInfo().fridgeInfo();
-                                        });
+
+                                        if (mounted) {
+                                          setState(() {
+                                            fridgeFuture = FridgeInfo().fridgeInfo();
+                                          });
+                                        }
 
                                         Navigator.pop(context);
 
                                       } catch(e) {
                                         print(e);
+                                        if (!mounted) return;
                                         Navigator.pop(context);
                                         showDialog(
                                             context: context,
-                                            // useRootNavigator: true,
                                             builder: (context) {
                                               return LackModal(message: '재료가 부족합니다.');
                                             }
@@ -142,7 +145,9 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return UpgradeModal();
+                                          return UpgradeModal(
+
+                                          );
                                         },
                                       );
                                     },

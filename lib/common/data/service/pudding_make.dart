@@ -9,7 +9,10 @@ class PuddingMake {
   Future<StorageMake> puddingMake() async {
     try {
       final accessToken = await Storage.read('accessToken');
-      print(accessToken);
+
+      if (accessToken == null) {
+        throw Exception("로그인 필요");
+      }
 
       final response = await dio.post(
         ApiEndpoints.make,
@@ -23,7 +26,11 @@ class PuddingMake {
         throw Exception("알 수 없는 오류");
       }
     } on DioException catch(e) {
-      if (e.response?.statusCode == 400) {
+
+      if (e.response?.statusCode == null) {
+        throw Exception("네트워크 오류");
+      }
+      else if (e.response?.statusCode == 400) {
         throw Exception("재료 부족");
       }
       else if (e.response?.statusCode == 401) {
@@ -39,7 +46,7 @@ class PuddingMake {
         throw Exception("서버 오류");
       }
       else {
-        throw Exception("네트워크 오류");
+        throw Exception("알 수 없는 오류");
       }
     }
   }
