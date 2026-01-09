@@ -4,7 +4,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
-import 'package:pudding/views/auth_page/provider/auth.dart';
+import 'package:pudding/common/provider/auth.dart';
 
 class PuddingRepassword extends ConsumerStatefulWidget {
   final String id;
