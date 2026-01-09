@@ -33,7 +33,11 @@ class _PuddingPageViewState extends State<PuddingPageView> {
       setState(() {});
     });
   }
-
+@override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return PageView(
@@ -43,8 +47,8 @@ class _PuddingPageViewState extends State<PuddingPageView> {
         SizedBox.expand(
           child: PuddingIdPage(
             next: (id) {
-              selectPage(Page.password);
               this.id = id;
+              selectPage(Page.password);
             },
           ),
         ),

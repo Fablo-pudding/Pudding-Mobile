@@ -9,13 +9,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod/src/framework.dart';
 
 class PuddingLoginPage extends ConsumerStatefulWidget {
-  final String id;
-  final String password;
 
   const PuddingLoginPage({
     super.key,
-    required this.id,
-    required this.password,
   });
 
   @override
