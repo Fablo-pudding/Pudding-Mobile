@@ -32,7 +32,7 @@ class _PuddingSignUpState extends State<PuddingTitle> {
               style: PuddingTextStyle.lotteriaChab.copyWith(fontSize: 36),
             ),
             const SizedBox(height: 20,),
-            const Expanded(child: PuddingTab()),
+            Expanded(child: PuddingTab()),
           ],
         ),
       ),

@@ -8,6 +8,9 @@ class MyInfoApi {
   Future<MyInfo?> myInfo() async {
     try {
       final accessToken = await Storage.read('accessToken');
+      if(accessToken == null){
+        print('accessToken이 없습니다');
+      }
       final response = await dio.get(
         ApiEndpoints.myInfo,
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}),

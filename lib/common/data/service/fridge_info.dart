@@ -10,7 +10,9 @@ class FridgeInfo {
   Future<StorageInfo> fridgeInfo() async {
     try {
       final accessToken = await Storage.read('accessToken');
-      print(accessToken);
+      if(accessToken == null){
+        print('accessToken이 없습니다');
+      }
 
       final response = await dio.get(
           ApiEndpoints.storageCheck,

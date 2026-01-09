@@ -40,7 +40,7 @@ class _PuddingTabState extends State<PuddingTab>
             child: TabBarView(
               children: const [
                 Center(
-                  child: PuddingLoginPage(id: '', password: '',),
+                  child: PuddingLoginPage(),
                 ),
                 Center(
                   child: PuddingPageView(),

@@ -11,16 +11,36 @@ class Storage {
     )
   );
   static Future<void> write(String key,String value) async{
-    await _storage.write(key: key, value: value);
+    try{await _storage.write(key: key, value: value);}
+    catch(e){
+      print('write 에러 $e');
+    }
   }
   static Future<String?> read(String key) async {
-   return await _storage.read(key: key);
+    try{
+     return await _storage.read(key: key);
+    }
+    catch(e) {
+      print('write 에러 $e');
+    }
+    return null;
   }
   static Future<void> delete(String key) async {
-    await _storage.delete(key: key);
+    try{
+      await _storage.delete(key: key);
+    }
+    catch(e){
+      print('delete 에러 $e');
+    }
+
   }
   static Future<void> deleteAll() async {
-    await _storage.deleteAll();
+    try{
+      await _storage.deleteAll();
+    }
+    catch(e){
+      print('deleteAll 에러 $e');
+    }
   }
 }
 

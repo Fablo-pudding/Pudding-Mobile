@@ -50,8 +50,6 @@ class Auth {
         final refreshToken = response.data['refreshToken'];
         await Storage.write('accessToken', accessToken);
         await Storage.write('refreshToken', refreshToken);
-        print(accessToken);
-        print(refreshToken);
         return true;
       }
     } on DioException catch (e) {
