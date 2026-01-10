@@ -154,6 +154,7 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                                   setState(() {
                                                     fridgeFuture = FridgeInfo().fridgeInfo();
                                                   });
+                                                  Navigator.pop(context);
                                                 }
 
                                               } catch(e) {

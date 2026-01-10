@@ -24,7 +24,6 @@ class UpgradeModal extends StatelessWidget {
                 Expanded(
                   child: PuddingUpgradeBox(
                     onTap: () {
-                      Navigator.pop(context);
                       onUpgradeOne();
                     },
                     svgPicture: PuddingAssets.pudding2,
@@ -37,7 +36,7 @@ class UpgradeModal extends StatelessWidget {
                 Expanded(
                   child: PuddingUpgradeBox(
                     onTap: () {
-                      Navigator.pop(context);
+
                     },
                     svgPicture: PuddingAssets.pudding3,
                     star: '2성',
