@@ -9,6 +9,7 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/data/models/storage_info.dart';
 import 'package:pudding/common/data/service/pudding_make.dart';
+import 'package:pudding/common/data/service/pudding_one_upgrade.dart';
 import 'package:pudding/views/fridge_page/components/ingredients_item.dart';
 import 'package:pudding/views/fridge_page/components/pudding_star.dart';
 import 'package:pudding/common/constants/api_endpoints.dart';
@@ -146,7 +147,27 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return UpgradeModal(
+                                            onUpgradeOne: () async {
+                                              try {
+                                                await PuddingUpgradeOne().puddingUpgradeOne();
+                                                if (mounted) {
+                                                  setState(() {
+                                                    fridgeFuture = FridgeInfo().fridgeInfo();
+                                                  });
+                                                }
 
+                                              } catch(e) {
+                                                print(e);
+                                                if (!mounted) return;
+                                                Navigator.pop(context);
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return LackModal(message: '푸딩이 부족합니다.');
+                                                    }
+                                                );
+                                              }
+                                            },
                                           );
                                         },
                                       );

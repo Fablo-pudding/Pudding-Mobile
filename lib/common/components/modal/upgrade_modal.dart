@@ -6,7 +6,11 @@ import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class UpgradeModal extends StatelessWidget {
-  const UpgradeModal({super.key});
+  final void Function() onUpgradeOne;
+  const UpgradeModal({
+    super.key,
+    required this.onUpgradeOne,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,10 @@ class UpgradeModal extends StatelessWidget {
               children: [
                 Expanded(
                   child: PuddingUpgradeBox(
+                    onTap: () {
+                      Navigator.pop(context);
+                      onUpgradeOne();
+                    },
                     svgPicture: PuddingAssets.pudding2,
                     star: '1성',
                   ),
@@ -28,6 +36,9 @@ class UpgradeModal extends StatelessWidget {
                 ),
                 Expanded(
                   child: PuddingUpgradeBox(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     svgPicture: PuddingAssets.pudding3,
                     star: '2성',
                   ),
@@ -58,19 +69,19 @@ class UpgradeModal extends StatelessWidget {
 class PuddingUpgradeBox extends StatelessWidget {
   final String svgPicture;
   final String star;
+  final void Function()? onTap;
 
   const PuddingUpgradeBox({
     super.key,
     required this.svgPicture,
     required this.star,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        /// todo
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: PuddingColor.background,
