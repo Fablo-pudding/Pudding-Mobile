@@ -7,9 +7,11 @@ import 'package:pudding/common/constants/text_style.dart';
 
 class UpgradeModal extends StatelessWidget {
   final void Function() onUpgradeOne;
+  final void Function() onUpgradeTwo;
   const UpgradeModal({
     super.key,
     required this.onUpgradeOne,
+    required this.onUpgradeTwo
   });
 
   @override
@@ -36,7 +38,7 @@ class UpgradeModal extends StatelessWidget {
                 Expanded(
                   child: PuddingUpgradeBox(
                     onTap: () {
-
+                      onUpgradeTwo();
                     },
                     svgPicture: PuddingAssets.pudding3,
                     star: '2성',

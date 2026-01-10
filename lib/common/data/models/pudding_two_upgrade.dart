@@ -6,15 +6,15 @@ class PuddingTwoUpgrade {
 
   factory PuddingTwoUpgrade.fromJson(Map<String, dynamic> json) {
     return PuddingTwoUpgrade(
-      pudding2: json['pudding2'],
-      pudding3: json['pudding3'],
+      pudding2: json['pudding_2'] ?? 0,
+      pudding3: json['pudding_3'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'pudding2': pudding2,
-      'pudding3': pudding3,
+      'pudding_2': pudding2,
+      'pudding_3': pudding3,
     };
   }
 }

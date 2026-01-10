@@ -10,6 +10,7 @@ import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/data/models/storage_info.dart';
 import 'package:pudding/common/data/service/pudding_make.dart';
 import 'package:pudding/common/data/service/pudding_one_upgrade.dart';
+import 'package:pudding/common/data/service/pudding_two_upgrade.dart';
 import 'package:pudding/views/fridge_page/components/ingredients_item.dart';
 import 'package:pudding/views/fridge_page/components/pudding_star.dart';
 import 'package:pudding/common/constants/api_endpoints.dart';
@@ -156,7 +157,6 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                                   });
                                                   Navigator.pop(context);
                                                 }
-
                                               } catch(e) {
                                                 print(e);
                                                 if (!mounted) return;
@@ -164,7 +164,28 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                                 showDialog(
                                                     context: context,
                                                     builder: (context) {
-                                                      return LackModal(message: '푸딩이 부족합니다.');
+                                                      return LackModal(message: '1성 푸딩이 부족합니다');
+                                                    }
+                                                );
+                                              }
+                                            },
+                                            onUpgradeTwo: () async {
+                                              try {
+                                                await PuddingUpgradeTwo().puddingUpgradeTwo();
+                                                if (mounted) {
+                                                  setState(() {
+                                                    fridgeFuture = FridgeInfo().fridgeInfo();
+                                                  });
+                                                  Navigator.pop(context);
+                                                }
+                                              } catch(e) {
+                                                print(e);
+                                                if (!mounted) return;
+                                                Navigator.pop(context);
+                                                showDialog(
+                                                    context: context, 
+                                                    builder: (context) {
+                                                      return LackModal(message: '2성 푸딩이 부족합니다');
                                                     }
                                                 );
                                               }
