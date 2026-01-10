@@ -20,7 +20,10 @@ class _PuddingLogOutState extends State<PuddingLogOut> {
         message: '로그아웃',
         onConfirm: () async {
           await LogOutApi().logOut();
-          Navigator.of(context,rootNavigator: true).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>const PuddingTitle()),(route)=>false);
+          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const PuddingTitle()),
+            (route) => false,
+          );
         },
         firstTextColor: PuddingColor.gray400,
         secondTextColor: PuddingColor.red,
