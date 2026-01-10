@@ -7,6 +7,9 @@ class LogOutApi {
   Future<String> logOut() async {
     try {
       final accessToken = await Storage.read('accessToken');
+      if(accessToken == null){
+          throw Exception("토큰이 없습니다");
+      }
       final response = await dio.post(
         ApiEndpoints.logout,
         options: Options(headers: {'Authorization': 'Bearer $accessToken'}),
