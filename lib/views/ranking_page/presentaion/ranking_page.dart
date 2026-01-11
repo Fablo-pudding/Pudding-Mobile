@@ -41,9 +41,9 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
         future: _future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData) {
-            final List<GlobalRanking> globalRaking = snapshot.data![0];
+            final List<GlobalRanking> globalRanking = snapshot.data![0];
             final MyRanking myRanking = snapshot.data![1];
             return Column(
               children: [
@@ -56,8 +56,8 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                         child: PuddingHighRanking(
                           ranking: 2,
                           backgroundColor: PuddingColor.blue,
-                          nickName: globalRaking[1].userName,
-                          puddingCounting: globalRaking[1].pudding3,
+                          nickName: globalRanking[1].userName,
+                          puddingCounting: globalRanking[1].pudding3,
                           userImage: null,
                         ),
                       ),
@@ -68,9 +68,9 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                         child: PuddingHighRanking(
                           ranking: 1,
                           backgroundColor: PuddingColor.gold,
-                          nickName: globalRaking[0].userName,
+                          nickName: globalRanking[0].userName,
                           userImage: null,
-                          puddingCounting: globalRaking[0].pudding3,
+                          puddingCounting: globalRanking[0].pudding3,
                           crown: PuddingAssets.crown,
                         ),
                       ),
@@ -81,9 +81,9 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                         child: PuddingHighRanking(
                           ranking: 3,
                           backgroundColor: PuddingColor.orange,
-                          nickName: '${globalRaking[2].userName}',
+                          nickName: '${globalRanking[2].userName}',
                           userImage: null,
-                          puddingCounting: globalRaking[2].pudding3,
+                          puddingCounting: globalRanking[2].pudding3,
                         ),
                       ),
                     ],
@@ -94,15 +94,15 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: globalRaking.length - 3,
+                    itemCount: globalRanking.length - 3,
                     itemBuilder: (BuildContext context, int index) {
                       return Row(
                         children: [
                           Expanded(
                             child: PuddingRanking(
                               ranking: index + 4,
-                              userName: globalRaking[index + 3].userName,
-                              puddingCount: globalRaking[index + 3].pudding3,
+                              userName: globalRanking[index + 3].userName,
+                              puddingCount: globalRanking[index + 3].pudding3,
                               backGroudColor: PuddingColor.background,
                             ),
                           ),
@@ -121,9 +121,10 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
               ],
             );
           } else if (snapshot.hasError) {
-            return Center(child: Text('에러 ${snapshot.error.toString()}'));
+            debugPrint('에러 ${snapshot.error}');
+            return Center(child: Text('다시 시도해주세요'));
           }
-          return Text('에러 ${snapshot.hasError.toString()}');
+          return Text('다시 시도해주세요');
         },
       ),
     );
