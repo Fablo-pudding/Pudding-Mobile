@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class GlobalRanking {
   final int rank;
   final int userId;
@@ -19,7 +21,7 @@ class GlobalRanking {
       'userId': userId,
       'userName': userName,
       'userProfileImageUrl': userProfileImageUrl,
-      'pudding3': pudding3
+      'pudding3': pudding3,
     };
   }
 
@@ -30,6 +32,18 @@ class GlobalRanking {
       userName: json['userName'],
       userProfileImageUrl: json['userProfileImageUrl'],
       pudding3: json['pudding3'],
+    );
+  }
+}
+
+class GlobalRankingList {
+  final List<GlobalRanking> ranking;
+
+  GlobalRankingList({required this.ranking});
+
+  factory GlobalRankingList.fromJson(List<dynamic> json) {
+    return GlobalRankingList(
+      ranking: json.map((i) => GlobalRanking.fromJson(i)).toList(),
     );
   }
 }
