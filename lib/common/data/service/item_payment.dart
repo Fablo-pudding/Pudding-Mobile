@@ -29,7 +29,7 @@ class ItemPaymentApi {
       } else if (e.response!.statusCode == 404) {
         throw Exception('Not Found 재료를 찾을 수 없습니다');
       } else {
-        throw Exception('에러 ${e.response!.statusCode}');
+        throw Exception('에러 ${e.response?.statusCode}');
       }
     }
   }

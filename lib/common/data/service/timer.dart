@@ -30,7 +30,7 @@ class TimerService {
       } else if (e.response?.statusCode == 500) {
         throw Exception('Internal Server Error');
       } else {
-        throw Exception('에러 ${e.response!.statusCode}');
+        throw Exception('에러 ${e.response?.statusCode}');
       }
     }
   }

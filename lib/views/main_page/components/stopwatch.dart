@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/modal/select_modal.dart';
 import 'package:pudding/common/constants/color.dart';
@@ -8,7 +7,7 @@ import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/common/data/service/timer.dart';
 import 'package:pudding/common/data/service/timer_check.dart';
 
-class PuddingStopWatch extends ConsumerStatefulWidget {
+class PuddingStopWatch extends StatefulWidget {
   final void Function(int seconds)? onTick;
 
   const PuddingStopWatch({
@@ -17,17 +16,17 @@ class PuddingStopWatch extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<PuddingStopWatch> createState() => _PuddingStopWatchState();
+  State<PuddingStopWatch> createState() => _PuddingStopWatchState();
 }
 
-class _PuddingStopWatchState extends ConsumerState<PuddingStopWatch> {
+class _PuddingStopWatchState extends State<PuddingStopWatch> {
   bool isRunning = false;
   int _seconds = 0;
   Timer? _timer;
   bool isLoading = false;
   final TimerService _timerService = TimerService();
   final TimerCheck _timerCheck = TimerCheck();
-  final int showModalTime = 5;
+  final int showModalTime = 300;
 
   @override
   void initState() {
@@ -50,7 +49,6 @@ class _PuddingStopWatchState extends ConsumerState<PuddingStopWatch> {
 
   void _start() async {
     if (isLoading) return;
-
     _timer?.cancel();
     setState(() => isLoading = true);
 
