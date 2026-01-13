@@ -17,17 +17,6 @@ class PuddingRankingPage extends StatefulWidget {
 }
 
 class _PuddingRankingPageState extends State<PuddingRankingPage> {
-  late Future<List<dynamic>> _future;
-
-  @override
-  void initState() {
-    super.initState();
-    _future = Future.wait([
-      RankingApi().ranking(),
-      MyRankingApi().myRanking(),
-    ]);
-  }
-
   static const double width = 16;
 
   @override
@@ -38,7 +27,10 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
         title: '랭킹',
       ),
       body: FutureBuilder<List<dynamic>>(
-        future: _future,
+        future: Future.wait([
+          RankingApi().ranking(),
+          MyRankingApi().myRanking(),
+        ]),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

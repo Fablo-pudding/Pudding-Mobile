@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
+import 'package:pudding/common/components/modal/select_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/common/data/service/timer.dart';
@@ -26,6 +27,7 @@ class _PuddingStopWatchState extends ConsumerState<PuddingStopWatch> {
   bool isLoading = false;
   final TimerService _timerService = TimerService();
   final TimerCheck _timerCheck = TimerCheck();
+  final int showModalTime = 5;
 
   @override
   void initState() {
@@ -64,6 +66,17 @@ class _PuddingStopWatchState extends ConsumerState<PuddingStopWatch> {
         setState(() => _seconds++);
         print('$_seconds초');
         widget.onTick?.call(_seconds);
+        if (_seconds == showModalTime) {
+          _timer?.cancel();
+          _stop();
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return const SelectModal();
+            },
+          );
+        }
       });
     } catch (e) {
       debugPrint(e.toString());

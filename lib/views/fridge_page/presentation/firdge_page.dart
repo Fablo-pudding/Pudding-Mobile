@@ -24,16 +24,9 @@ class PuddingFridgePage extends StatefulWidget {
 }
 
 class _PuddingFridgePageState extends State<PuddingFridgePage> {
-  late Future<StorageInfo> fridgeFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    fridgeFuture = FridgeInfo().fridgeInfo();
-  }
-
   @override
   Widget build(BuildContext context) {
+    var fridgeFuture = FridgeInfo().fridgeInfo();
     return Scaffold(
       backgroundColor: PuddingColor.background,
       appBar: PuddingAppBar(title: '냉장고'),
@@ -43,7 +36,6 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
           child: FutureBuilder<StorageInfo>(
             future: fridgeFuture,
             builder: (context, snapshot) {
-
               if (snapshot.hasData) {
                 return Column(
                   children: [
@@ -103,26 +95,27 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                     message: '재료를 사용하여 푸딩을 만드시겠습니까?',
                                     onConfirm: () async {
                                       try {
-
                                         await PuddingMake().puddingMake();
 
                                         if (mounted) {
                                           setState(() {
-                                            fridgeFuture = FridgeInfo().fridgeInfo();
+                                            fridgeFuture = FridgeInfo()
+                                                .fridgeInfo();
                                           });
                                         }
 
                                         Navigator.pop(context);
-
-                                      } catch(e) {
+                                      } catch (e) {
                                         print(e);
                                         if (!mounted) return;
                                         Navigator.pop(context);
                                         showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return LackModal(message: '재료가 부족합니다.');
-                                            }
+                                          context: context,
+                                          builder: (context) {
+                                            return LackModal(
+                                              message: '재료가 부족합니다.',
+                                            );
+                                          },
                                         );
                                       }
                                     },
@@ -150,43 +143,51 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                                           return UpgradeModal(
                                             onUpgradeOne: () async {
                                               try {
-                                                await PuddingUpgradeOne().puddingUpgradeOne();
+                                                await PuddingUpgradeOne()
+                                                    .puddingUpgradeOne();
                                                 if (mounted) {
                                                   setState(() {
-                                                    fridgeFuture = FridgeInfo().fridgeInfo();
+                                                    fridgeFuture = FridgeInfo()
+                                                        .fridgeInfo();
                                                   });
                                                   Navigator.pop(context);
                                                 }
-                                              } catch(e) {
+                                              } catch (e) {
                                                 print(e);
                                                 if (!mounted) return;
                                                 Navigator.pop(context);
                                                 showDialog(
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return LackModal(message: '1성 푸딩이 부족합니다');
-                                                    }
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return LackModal(
+                                                      message: '1성 푸딩이 부족합니다',
+                                                    );
+                                                  },
                                                 );
                                               }
                                             },
                                             onUpgradeTwo: () async {
                                               try {
-                                                await PuddingUpgradeTwo().puddingUpgradeTwo();
+                                                await PuddingUpgradeTwo()
+                                                    .puddingUpgradeTwo();
                                                 if (mounted) {
                                                   setState(() {
-                                                    fridgeFuture = FridgeInfo().fridgeInfo();
+                                                    fridgeFuture = FridgeInfo()
+                                                        .fridgeInfo();
                                                   });
                                                   Navigator.pop(context);
                                                 }
-                                              } catch(e) {
+                                              } catch (e) {
                                                 print(e);
                                                 if (!mounted) return;
                                                 Navigator.pop(context);
                                                 showDialog(
-                                                    context: context, 
-                                                    builder: (context) {
-                                                      return LackModal(message: '2성 푸딩이 부족합니다');
-                                                    }
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return LackModal(
+                                                      message: '2성 푸딩이 부족합니다',
+                                                    );
+                                                  },
                                                 );
                                               }
                                             },
@@ -206,11 +207,9 @@ class _PuddingFridgePageState extends State<PuddingFridgePage> {
                     const Spacer(),
                   ],
                 );
-              }
-              else if (snapshot.hasError) {
+              } else if (snapshot.hasError) {
                 return Center(child: Text(snapshot.error.toString()));
-              }
-              else {
+              } else {
                 return Center(child: CircularProgressIndicator());
               }
             },
