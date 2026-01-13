@@ -1,37 +1,96 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/common/data/service/timer.dart';
+import 'package:pudding/common/data/service/timer_check.dart';
 
-class PuddingStopWatch extends StatefulWidget {
+class PuddingStopWatch extends ConsumerStatefulWidget {
   final void Function(int seconds)? onTick;
 
   const PuddingStopWatch({
-    Key? key,
+    super.key,
     this.onTick,
-  }) : super(key: key);
+  });
 
   @override
-  State<PuddingStopWatch> createState() => _PuddingStopWatchState();
+  ConsumerState<PuddingStopWatch> createState() => _PuddingStopWatchState();
 }
 
-class _PuddingStopWatchState extends State<PuddingStopWatch> {
+class _PuddingStopWatchState extends ConsumerState<PuddingStopWatch> {
   bool isRunning = false;
   int _seconds = 0;
   Timer? _timer;
+  bool isLoading = false;
+  final TimerService _timerService = TimerService();
+  final TimerCheck _timerCheck = TimerCheck();
 
-  void _start() {
-    setState(() => isRunning = true);
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() => _seconds++);
-      widget.onTick?.call(_seconds);
-    });
+  @override
+  void initState() {
+    super.initState();
+    _syncServer();
   }
 
-  void _stop() {
-    setState(() => isRunning = false);
+  Future<void> _syncServer() async {
+    try {
+      final timer = await _timerCheck.timerCheck();
+
+      setState(() {
+        _seconds = timer.totalTime;
+        isRunning = false;
+      });
+    } catch (e) {
+      print('에러 $e');
+    }
+  }
+
+  void _start() async {
+    if (isLoading) return;
+
     _timer?.cancel();
+    setState(() => isLoading = true);
+
+    try {
+      await _timerService.timerCreate(elapsedTime: 0);
+
+      setState(() {
+        isRunning = true;
+        _seconds = 0;
+      });
+
+      _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+        setState(() => _seconds++);
+        print('$_seconds초');
+        widget.onTick?.call(_seconds);
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      if (mounted) setState(() => isLoading = false);
+    }
+  }
+
+  void _stop() async {
+    if (isLoading) return;
+    _timer?.cancel();
+    _timer = null;
+    setState(() {
+      debugPrint('중단 시 totalTime: $_seconds 초');
+      isLoading = true;
+      isRunning = false;
+    });
+
+    try {
+      await _timerCheck.timerCheck();
+    } catch (err) {
+      print(err.toString());
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
