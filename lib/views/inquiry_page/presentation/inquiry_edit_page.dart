@@ -7,7 +7,8 @@ import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 import 'package:pudding/views/inquiry_page/presentation/inquiry_watch_page.dart';
 
 class PuddingInquiryEditPage extends StatefulWidget {
-  const PuddingInquiryEditPage({super.key});
+  final int id;
+  const PuddingInquiryEditPage({super.key,required this.id});
 
   @override
   State<PuddingInquiryEditPage> createState() => _PuddingInquiryWritePageState();
@@ -54,7 +55,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
         ),
         rightText: TextButton(
           onPressed: isEnabledButton ? () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage(id: widget.id,)));
           } : null,
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),

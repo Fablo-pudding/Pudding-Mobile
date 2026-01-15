@@ -112,7 +112,7 @@ class _PuddingAdminInquiryCommentPageState
                             },
                           ),
                         ),
-                        Positioned(right: 0, child: PuddingInquiryEdit()),
+                        Positioned(right: 0, child: PuddingInquiryEdit(id: widget.id,)),
                       ],
                     ),
                   ),

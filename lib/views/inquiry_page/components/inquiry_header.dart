@@ -47,7 +47,8 @@ class PuddingInquiryHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            admin ? PuddingInquiryEdit() : SizedBox(),
+            if (admin && puddingInquiryEdit != null)
+              puddingInquiryEdit!,
           ],
         ),
         const SizedBox(

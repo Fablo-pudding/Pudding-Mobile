@@ -8,7 +8,8 @@ import 'package:pudding/common/data/service/inquiry_admin_check.dart';
 import 'package:pudding/views/inquiry_page/components/inquiry_article.dart';
 
 class PuddingAdminInquiryPage extends StatefulWidget {
-  const PuddingAdminInquiryPage({super.key});
+  final int id;
+  const PuddingAdminInquiryPage({super.key,required this.id});
 
   @override
   State<PuddingAdminInquiryPage> createState() =>
@@ -57,7 +58,7 @@ class _PuddingAdminInquiryPageState extends State<PuddingAdminInquiryPage> {
                         final inquiry = inquiries[index];
                         return PuddingInquiryArticle(
                           title: inquiry.title,
-                          value: true,
+                          value: true, id: widget.id,
                         );
                       },
                     ),
