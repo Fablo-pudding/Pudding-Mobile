@@ -1,9 +1,9 @@
 class CreateResponse {
-  final int postId;
+  final int id;
 
-  CreateResponse({required this.postId});
+  CreateResponse({required this.id});
 
   factory CreateResponse.fromJson(Map<String, dynamic> json) {
-    return CreateResponse(postId: json['postId']);
+    return CreateResponse(id: json['id'] ?? 0);
   }
 }

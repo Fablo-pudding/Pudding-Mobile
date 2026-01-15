@@ -2,31 +2,28 @@ import 'dart:convert';
 
 class FeedCheck {
   final int postId;
-  final int userId;
   final String? profileImgUrl;
+  final String name;
   final String title;
-  final String content;
-  final DateTime createAt;
+  final DateTime createdAt;
   final int commentCount;
 
   FeedCheck({
     required this.postId,
-    required this.userId,
     this.profileImgUrl,
+    required this.name,
     required this.title,
-    required this.content,
-    required this.createAt,
+    required this.createdAt,
     required this.commentCount,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'postId': postId,
-      'userId': userId,
-      'profileImgUrl': profileImgUrl,
+      'profileImageUrl': profileImgUrl,
+      'name': name,
       'title': title,
-      'content': content,
-      'createAt': createAt,
+      'createdAt': createdAt,
       'commentCount': commentCount
     };
   }
@@ -34,11 +31,10 @@ class FeedCheck {
   factory FeedCheck.fromJson(Map<String, dynamic> json) {
     return FeedCheck(
       postId: json['postId'],
-      userId: json['userId'],
-      profileImgUrl: json['profileImgUrl'],
+      profileImgUrl: json['profileImageUrl'],
+      name: json['name'],
       title: json['title'],
-      content: json['content'],
-      createAt: DateTime.parse(json['createAt']),
+      createdAt: DateTime.parse(json['createdAt'] + 'Z').toLocal(),
       commentCount: json['commentCount'],
     );
   }

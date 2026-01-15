@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:pudding/common/components/app_bar/app_bar.dart';
+import 'package:pudding/common/components/modal/lack_modal.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/common/data/models/feed_detail_check.dart';
+import 'package:pudding/common/data/service/feed_check.dart';
+import 'package:pudding/common/data/service/feed_detail_check.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
+import 'package:pudding/common/data/service/feed_edit.dart';
 
 class PuddingFeedEditPage extends StatefulWidget {
-  const PuddingFeedEditPage({super.key});
+  final int postId;
+
+  const PuddingFeedEditPage({super.key, required this.postId});
 
   @override
   State<PuddingFeedEditPage> createState() => _PuddingFeedWritePageState();
@@ -17,9 +24,17 @@ class _PuddingFeedWritePageState extends State<PuddingFeedEditPage> {
   final TextEditingController feedContentController = TextEditingController();
   bool isEnabledButton = false;
   late FocusNode _focusNode;
+  late Future<FeedDetailCheck> postFuture;
 
   @override
   void initState() {
+    postFuture = CheckFeedDetail().feedDetailCheck(widget.postId);
+
+    postFuture.then((post) {
+      feedController.text = post.title ?? '';
+      feedContentController.text = post.content ?? '';
+    });
+
     feedController.addListener(onChangedButton);
     feedContentController.addListener(onChangedButton);
     _focusNode = FocusNode();
@@ -53,9 +68,30 @@ class _PuddingFeedWritePageState extends State<PuddingFeedEditPage> {
           child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
         ),
         rightText: TextButton(
-          onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
-             },
+          onPressed: () async {
+            try {
+              await FeedEdit().feedEdit(
+                  postId: widget.postId,
+                  title: feedController.text,
+                  content: feedContentController.text
+              );
+
+              if (!mounted) return;
+              Navigator.pop(context, true);
+            } catch (e) {
+              print(e);
+              if (!mounted) return;
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return LackModal(
+                    message: '작성자만 수정이 가능합니다.',
+                  );
+                },
+              );
+            }
+          },
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),
       ),

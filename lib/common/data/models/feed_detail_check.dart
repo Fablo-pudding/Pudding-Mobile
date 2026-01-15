@@ -1,28 +1,31 @@
 class FeedDetailCheck {
-  int? postId;
-  int? userId;
-  String? profileImageUrl;
-  String? title;
-  String? content;
-  String? createdAt;
-  List<Comments>? comments;
-  int? commentCount;
+  final int postId;
+  final int userId;
+  final String userName;
+  final String? profileImageUrl;
+  final String title;
+  final String content;
+  final DateTime createdAt;
+  final List<Comments> comments;
+  final int commentCount;
 
   FeedDetailCheck({
-    this.postId,
-    this.userId,
+    required this.postId,
+    required this.userId,
+    required this.userName,
     this.profileImageUrl,
-    this.title,
-    this.content,
-    this.createdAt,
-    this.comments,
-    this.commentCount,
+    required this.title,
+    required this.content,
+    required this.createdAt,
+    required this.comments,
+    required this.commentCount,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'postId': postId,
       'userId': userId,
+      'userName': userName,
       'profileImageUrl': profileImageUrl,
       'title': title,
       'content': content,
@@ -32,43 +35,43 @@ class FeedDetailCheck {
     };
   }
 
-  FeedDetailCheck.fromJson(Map<String, dynamic> json) {
-    postId = json['post_id'];
-    userId = json['user_id'];
-    profileImageUrl = json['profileImageUrl'];
-    title = json['title'];
-    content = json['content'];
-    createdAt = json['created_at'];
-    if (json['comments'] != null) {
-      comments = <Comments>[];
-      json['comments'].forEach((v) {
-        comments!.add(new Comments.fromJson(v));
-      });
-    }
-    commentCount = json['comment_count'];
+  factory FeedDetailCheck.fromJson(Map<String, dynamic> json) {
+    return FeedDetailCheck(
+        postId: json['postId'],
+        userId: json['userId'],
+        userName: json['userName'],
+        profileImageUrl: json['profileImageUrl'],
+        title: json['title'],
+        content: json['content'],
+        createdAt: DateTime.parse(json['createdAt']),
+        comments: (json['comments'] as List).map((e) => Comments.fromJson(e)).toList(),
+        commentCount: json['commentCount']
+    );
   }
 }
 
 class Comments {
-  int? commentId;
-  int? userId;
-  String? profileImageUrl;
-  String? comment;
-  String? createdAt;
+  final int commentId;
+  final int userId;
+  final String? profileImageUrl;
+  final String content;
+  final DateTime createdAt;
 
   Comments({
-    this.commentId,
-    this.userId,
+    required this.commentId,
+    required this.userId,
     this.profileImageUrl,
-    this.comment,
-    this.createdAt,
+    required this.content,
+    required this.createdAt,
   });
 
-  Comments.fromJson(Map<String, dynamic> json) {
-    commentId = json['comment_id'];
-    userId = json['user_id'];
-    profileImageUrl = json['profileImageUrl'];
-    comment = json['comment'];
-    createdAt = json['created_at'];
+  factory Comments.fromJson(Map<String, dynamic> json) {
+    return Comments(
+        commentId: json['commentId'],
+        userId: json['userId'],
+        profileImageUrl: json['profileImageUrl'],
+        content: json['content'],
+        createdAt: DateTime.parse(json['createdAt'])
+    );
   }
 }
