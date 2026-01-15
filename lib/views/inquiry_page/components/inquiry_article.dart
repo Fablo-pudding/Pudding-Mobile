@@ -10,12 +10,14 @@ class PuddingInquiryArticle extends StatefulWidget {
   final String title;
   final bool value;
   final int id;
+  final DateTime created;
 
   const PuddingInquiryArticle({
     super.key,
     required this.title,
     required this.value,
     required this.id,
+    required this.created
   });
 
   @override
@@ -73,7 +75,7 @@ class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
                 const SizedBox(
                   height: 8,
                 ),
-                Text('작성일 $dateTimeFormat'),
+                Text('작성일 ${DateFormat('yyyy-MM-dd').format(widget.created)}'),
               ],
             ),
           ),

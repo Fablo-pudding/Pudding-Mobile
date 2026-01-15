@@ -58,7 +58,9 @@ class _PuddingInquiryPageState extends State<PuddingInquiryPage> {
                         final inquiry = inquiries[index];
                         return PuddingInquiryArticle(
                           title: inquiry.title,
-                          value: false, id: inquiry.id,
+                          value: false,
+                          id: inquiry.id,
+                          created: inquiry.createdAt,
                         );
                       },
                     ),
