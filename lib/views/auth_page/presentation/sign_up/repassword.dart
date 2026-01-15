@@ -67,8 +67,8 @@ class _PuddingRepasswordState extends ConsumerState<PuddingRepassword> {
                   onTap: () => setState(() => pwObsText = !pwObsText),
                   child: Icon(
                     pwObsText == true
-                        ? Symbols.visibility
-                        : Symbols.visibility_off,
+                        ? Symbols.visibility_off
+                        : Symbols.visibility,
                   ),
                 ),
               ),

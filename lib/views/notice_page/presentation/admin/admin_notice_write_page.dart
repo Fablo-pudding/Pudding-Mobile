@@ -84,7 +84,6 @@ class _PuddingAdminNoticeWritePageState
                         message: '작성한 공지 내용을 등록하시겠습니까?',
                         onConfirm: () async {
                           int postId;
-
                           if (widget.postId == null) {
                             final result = await NoticeCreateApi().noticeCreate(
                               title: noticeController.text,
@@ -101,16 +100,15 @@ class _PuddingAdminNoticeWritePageState
                               ),
                             );
                           }
-
                           if (!mounted) return;
-
-                          Navigator.of(context).pop();
+                          Navigator.of(dialogContext).pop();
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) =>
                                   PuddingAdminNoticeWatchPage(postId: postId),
                             ),
                           );
+
                         },
                       );
                     },

@@ -81,8 +81,8 @@ class _PuddingLoginState extends ConsumerState<PuddingLoginPage> {
                             onTap: () => setState(() => pwObsText = !pwObsText),
                             child: Icon(
                               pwObsText
-                                  ? Symbols.visibility
-                                  : Symbols.visibility_off,
+                                  ? Symbols.visibility_off
+                                  : Symbols.visibility,
                             ),
                           ),
                         ),

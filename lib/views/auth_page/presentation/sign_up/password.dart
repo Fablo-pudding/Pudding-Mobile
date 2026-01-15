@@ -70,7 +70,7 @@ class _PuddingPasswordState extends State<PuddingPassword> {
                 suffixIcon: GestureDetector(
                   onTap: () => setState(() => pwObsText = !pwObsText),
                   child: Icon(
-                      pwObsText == true ? Symbols.visibility : Symbols.visibility_off
+                      pwObsText == true ?  Symbols.visibility_off :Symbols.visibility,
                   ),
                 ),
                 validator: (value) {
