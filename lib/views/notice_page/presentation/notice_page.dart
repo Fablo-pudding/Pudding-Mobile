@@ -5,7 +5,9 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/views/notice_page/components/notice_article.dart';
 
 class PuddingNoticePage extends StatefulWidget {
-  const PuddingNoticePage({super.key});
+  final int postId;
+
+  const PuddingNoticePage({super.key, required this.postId});
 
   @override
   State<PuddingNoticePage> createState() => _PuddingNoticePageState();
@@ -37,7 +39,12 @@ class _PuddingNoticePageState extends State<PuddingNoticePage> {
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
-                  return PuddingNoticeArticle(title: '안녕하세요', writeDate: '등록일', admin: false,);
+                  return PuddingNoticeArticle(
+                    title: '안녕하세요',
+                    writeDate: '등록일',
+                    admin: false,
+                    postId: widget.postId,
+                  );
                 },
               ),
             ),

@@ -50,4 +50,5 @@ class ApiEndpoints {
   static const noticeCheck = "/notice/get-list";
   static const update = "/notice/update";
   static const delete = "/notice/delete";
+  static const  noticeDetail = "/notice/read";
 }

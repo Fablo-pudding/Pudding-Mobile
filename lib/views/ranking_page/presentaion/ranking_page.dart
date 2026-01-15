@@ -73,7 +73,7 @@ class _PuddingRankingPageState extends State<PuddingRankingPage> {
                         child: PuddingHighRanking(
                           ranking: 3,
                           backgroundColor: PuddingColor.orange,
-                          nickName: '${globalRanking[2].userName}',
+                          nickName: globalRanking[2].userName,
                           userImage: null,
                           puddingCounting: globalRanking[2].pudding3,
                         ),

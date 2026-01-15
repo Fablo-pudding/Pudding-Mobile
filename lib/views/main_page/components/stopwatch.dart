@@ -26,7 +26,7 @@ class _PuddingStopWatchState extends State<PuddingStopWatch> {
   bool isLoading = false;
   final TimerService _timerService = TimerService();
   final TimerCheck _timerCheck = TimerCheck();
-  final int showModalTime = 300;
+  final int showModalTime = 3;
 
   @override
   void initState() {

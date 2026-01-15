@@ -5,6 +5,7 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 import 'package:pudding/common/data/service/feed_create.dart';
+import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
 
 class PuddingFeedWritePage extends StatefulWidget {
   const PuddingFeedWritePage({super.key});

@@ -69,7 +69,7 @@ class _PuddingFeedPageState extends State<PuddingCommentWrite> {
             //     context,
             //     MaterialPageRoute(builder: (context) => PuddingFeedPreview())
             // );
-            Navigator.pop(context);
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const PuddingFeedPreview()), (route)=>false);
           },
           icon: Icon(Symbols.arrow_back_ios_new),
         ),

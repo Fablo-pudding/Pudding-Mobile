@@ -10,6 +10,7 @@ import 'package:pudding/views/my_page/components/menu.dart';
 import 'package:pudding/views/my_page/components/my_page_ranking.dart';
 import 'package:pudding/views/my_page/components/profile.dart';
 import 'package:pudding/views/my_page/presentation/log_out.dart';
+import 'package:pudding/views/notice_page/presentation/admin/admin_notice_page.dart';
 import 'package:pudding/views/notice_page/presentation/notice_page.dart';
 
 class PuddingMyPage extends ConsumerStatefulWidget {
@@ -37,28 +38,36 @@ class _PuddingMyPageState extends ConsumerState<PuddingMyPage> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: FutureBuilder(
           future: myInfo,
-          builder: (context,snapshot) {
+          builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Column(
                 children: [
-                  const SizedBox(height: 32,),
+                  const SizedBox(
+                    height: 32,
+                  ),
                   PuddingProfile(
                     nickName: snapshot.data!.name,
                   ),
-                  const SizedBox(height: 48,),
-                   Row(
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  Row(
                     children: [
-                      PuddingMyPageRanking(ranking: '${snapshot.data!.ranking}',),
+                      PuddingMyPageRanking(
+                        ranking: '${snapshot.data!.ranking}',
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 48,),
+                  const SizedBox(
+                    height: 48,
+                  ),
                   PuddingMenu(
                     menuName: '공지사항',
                     textColor: PuddingColor.black,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const PuddingNoticePage(),
+                          builder: (context) => const PuddingAdminNoticePage(),
                         ),
                       );
                     },
@@ -101,9 +110,10 @@ class _PuddingMyPageState extends ConsumerState<PuddingMyPage> {
                   ),
                 ],
               );
-            }
-            else if(snapshot.hasError){
-              return Center(child: Text('에러 발생: ${snapshot.error}'),);
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('에러 발생: ${snapshot.error}'),
+              );
             }
             return const Center(child: CircularProgressIndicator());
           },
