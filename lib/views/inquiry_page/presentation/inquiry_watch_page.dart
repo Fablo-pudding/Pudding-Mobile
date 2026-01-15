@@ -8,7 +8,8 @@ import 'package:pudding/views/feed_page/components/comment_header.dart';
 import 'package:pudding/views/inquiry_page/components/inquiry_header.dart';
 
 class PuddingInquiryWatchPage extends StatefulWidget {
-  const PuddingInquiryWatchPage({super.key});
+  final int id;
+  const PuddingInquiryWatchPage({super.key, required this.id});
 
   @override
   State<PuddingInquiryWatchPage> createState() =>

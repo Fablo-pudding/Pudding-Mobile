@@ -5,8 +5,8 @@ class InquiryCheck {
   final String? userProfileImageUrl;
   final String title;
   final String content;
-  final DateTime createAt;
-  final String reply;
+  final DateTime createdAt;
+  final String? reply;
 
   InquiryCheck({
     required this.id,
@@ -15,8 +15,8 @@ class InquiryCheck {
     this.userProfileImageUrl,
     required this.title,
     required this.content,
-    required this.createAt,
-    required this.reply,
+    required this.createdAt,
+    this.reply,
   });
 
   Map<String, dynamic> toJson() {
@@ -27,22 +27,20 @@ class InquiryCheck {
       'userProfileImageUrl': userProfileImageUrl,
       'title': title,
       'content': content,
-      'createAt': createAt,
+      'createdAt': createdAt,
       'reply': reply
     };
   }
 
   factory InquiryCheck.fromJson(Map<String, dynamic> json) {
     return InquiryCheck(
-      id: json['id'],
-      userId: json['userId'],
-      userName: json['userName'],
+      id: json['id'] ?? 0,
+      userId: json['userId'] ?? 0,
+      userName: json['userName'] ?? '',
       userProfileImageUrl: json['userProfileImageUrl'],
-      title: json['title'],
-      content: json['content'],
-      createAt: DateTime.parse(
-        json['createAt'],
-      ),
+      title: json['title'] ?? '',
+      content: json['content'] ?? '',
+      createdAt: json['createdAt'] != null ? DateTime.parse(json['createdAt']) : DateTime.now(),
       reply: json['reply'],
     );
   }

@@ -53,13 +53,13 @@ class _PuddingInquiryArticleState extends State<PuddingInquiryArticle> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) =>
-                                  PuddingAdminInquiryCommentPage(),
+                                  PuddingAdminInquiryCommentPage(id: ,),
                             ),
                           );
                         } else {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => PuddingInquiryWatchPage(),
+                              builder: (context) => PuddingInquiryWatchPage(id: ,),
                             ),
                           );
                         }

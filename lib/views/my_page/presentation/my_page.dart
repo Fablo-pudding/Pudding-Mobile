@@ -5,6 +5,7 @@ import 'package:pudding/common/components/app_bar/app_bar.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/data/models/my_info.dart';
 import 'package:pudding/common/data/service/my_info.dart';
+import 'package:pudding/views/inquiry_page/presentation/admin/admin_inquiry_page.dart';
 import 'package:pudding/views/inquiry_page/presentation/inquiry_page.dart';
 import 'package:pudding/views/my_page/components/menu.dart';
 import 'package:pudding/views/my_page/components/my_page_ranking.dart';
