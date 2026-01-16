@@ -82,7 +82,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryWrite> {
 
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => PuddingInquiryWatchPage(id: postId),
+                                builder: (context) => PuddingInquiryCommentPage(id: postId),
                               ),
                             );
                           } catch(e) {

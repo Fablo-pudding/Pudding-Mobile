@@ -85,7 +85,7 @@ class _PuddingMyPageState extends ConsumerState<PuddingMyPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  PuddingAdminInquiryPage(),
+                          builder: (context) =>  PuddingInquiryPage(),
                         ),
                       );
                     },

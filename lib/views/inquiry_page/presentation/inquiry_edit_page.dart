@@ -55,7 +55,7 @@ class _PuddingInquiryWritePageState extends State<PuddingInquiryEditPage> {
         ),
         rightText: TextButton(
           onPressed: isEnabledButton ? () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryWatchPage(id: widget.id,)));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PuddingInquiryCommentPage(id: widget.id,)));
           } : null,
           child: Text("수정",style: PuddingTextStyle.heading3,),
         ),
