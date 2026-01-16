@@ -28,7 +28,7 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
                 alignment: Alignment.centerLeft,
                 child: leading,
               )
-            : SizedBox(width: 70),
+            : const SizedBox(width: 70),
         title: Text(
           title,
           style: PuddingTextStyle.lotteriaChab.copyWith(
@@ -41,7 +41,7 @@ class PuddingAppBar extends StatelessWidget implements PreferredSizeWidget {
                   alignment: Alignment.centerRight,
                   child: rightText,
                 )
-              : SizedBox(width: 70),
+              : const SizedBox(width: 70),
         ],
       ),
     );

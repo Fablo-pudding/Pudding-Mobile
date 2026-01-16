@@ -4,7 +4,7 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 
 class PuddingIdPage extends StatefulWidget {
-  final void Function()? next;
+  final void Function(String)? next;
 
   const PuddingIdPage({super.key, required this.next});
 
@@ -69,7 +69,7 @@ class _PuddingIdPageState extends State<PuddingIdPage> {
                     child: PuddingElevatedButton(
                       onPressed: isEnabledButton ? (){
                         if(_formKey.currentState!.validate()) {
-                          widget.next?.call();
+                          widget.next?.call(_idController.text);
                         }
                       } : null,
                       child: Text('다음'),

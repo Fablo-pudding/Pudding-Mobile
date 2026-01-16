@@ -4,6 +4,7 @@ import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/auth_page/presentation/sign_in/login_page.dart';
 import 'package:pudding/views/auth_page/presentation/sign_up/page_view.dart';
 
+
 class PuddingTab extends StatefulWidget {
   const PuddingTab({super.key});
 

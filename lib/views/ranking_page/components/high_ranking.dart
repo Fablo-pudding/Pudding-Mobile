@@ -52,7 +52,7 @@ class PuddingHighRanking extends StatelessWidget {
                               height: 40,
                             ),
                       const SizedBox(height: 8),
-                      Text(nickName, style: PuddingTextStyle.label1),
+                      Text(nickName, style: PuddingTextStyle.label1,overflow: TextOverflow.ellipsis,),
                       const SizedBox(height: 20,),
                     ],
                   ),

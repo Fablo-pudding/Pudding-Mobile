@@ -4,6 +4,8 @@ import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 import 'package:pudding/views/feed_page/presentation/comment_write.dart';
+import 'package:pudding/common/data/service/feed_create.dart';
+import 'package:pudding/views/feed_page/presentation/feed_preview.dart';
 
 class PuddingFeedWritePage extends StatefulWidget {
   const PuddingFeedWritePage({super.key});
@@ -53,10 +55,22 @@ class _PuddingFeedWritePageState extends State<PuddingFeedWritePage> {
           child: Text("뒤로",style: PuddingTextStyle.heading3.copyWith(color: PuddingColor.gray400,),),
         ),
         rightText: TextButton(
-          onPressed: isEnabledButton ? () {
-            Navigator.of(
-              context,
-            ).push(MaterialPageRoute(builder: (context) => PuddingCommentWrite()));
+          onPressed: isEnabledButton ? () async {
+            try {
+              final postId = await FeedCreate().feedCreate(
+                  title: feedController.text,
+                  content: feedContentController.text
+              );
+
+              if (!mounted) return;
+
+              await Navigator.of(
+                context,
+              ).push(MaterialPageRoute(
+                  builder: (context) => PuddingCommentWrite(postId: postId,)));
+            } catch(e) {
+              print(e);
+            }
           } : null,
           child: Text("게시",style: PuddingTextStyle.heading3,),
         ),

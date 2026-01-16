@@ -31,9 +31,7 @@ class ApiEndpoints {
   static const make = "/storage/make";
   static const upgradeOne = "/storage/upgrade-one";
   static const upgradeTwo = "/storage/upgrade-two";
-  static const milk = "/storage/get-milk";
-  static const egg = "/storage/get-egg";
-  static const sugar = "/storage/get-sugar";
+  static const ingredient = "/storage/get-ingredient";
 
   /// timer
   static const createTimer = _timerBaseUrl;
@@ -52,4 +50,5 @@ class ApiEndpoints {
   static const noticeCheck = "/notice/get-list";
   static const update = "/notice/update";
   static const delete = "/notice/delete";
+  static const  noticeDetail = "/notice/read";
 }
