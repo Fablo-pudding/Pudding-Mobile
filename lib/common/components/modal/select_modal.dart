@@ -4,16 +4,18 @@ import 'package:pudding/common/components/modal/item_modal.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/common/data/service/item_payment.dart';
 
 class SelectModal extends StatelessWidget {
   const SelectModal({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final payment = ItemPaymentApi();
     return Dialog(
       backgroundColor: PuddingColor.background,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(const Radius.circular(8)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -34,26 +36,29 @@ class SelectModal extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
-                onTap: (){
-                  Navigator.of(context).pop();
+                onTap: () async {
+                  await payment.itemPayment('EGG');
+                  Navigator.of(context).pop(true);
                  showDialog(context: context, builder: (BuildContext context){
-                   return ItemModal(svgPath: PuddingAssets.egg);
+                   return const ItemModal(svgPath: PuddingAssets.egg);
                  });
                 },
                   child: SvgPicture.asset(PuddingAssets.egg)),
               GestureDetector(
-                onTap: (){
-                  Navigator.of(context).pop();
+                onTap: () async {
+                  await payment.itemPayment('MILK');
+                  Navigator.of(context).pop(true);
                   showDialog(context: context, builder: (BuildContext context){
-                    return ItemModal(svgPath: PuddingAssets.milk);
+                    return const ItemModal(svgPath: PuddingAssets.milk);
                   });
                 },
                   child: SvgPicture.asset(PuddingAssets.milk)),
               GestureDetector(
-                onTap: (){
-                  Navigator.of(context).pop();
+                onTap: () async {
+                  await payment.itemPayment('SUGAR');
+                  Navigator.of(context).pop(true);
                   showDialog(context: context, builder: (BuildContext context){
-                    return ItemModal(svgPath: PuddingAssets.sugar);
+                    return const ItemModal(svgPath: PuddingAssets.sugar,);
                   });
                 },
                   child: SvgPicture.asset(PuddingAssets.sugar)),

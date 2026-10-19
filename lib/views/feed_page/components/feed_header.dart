@@ -6,7 +6,8 @@ import 'package:pudding/views/feed_page/components/writing_edit.dart';
 
 class PuddingFeedHeader extends StatelessWidget {
   final String? title;
-  final String userId;
+  final int postId;
+  final String? userId;
   final String userImage;
   final String? content;
   final String? date;
@@ -14,11 +15,12 @@ class PuddingFeedHeader extends StatelessWidget {
   final double? height;
   final double? width;
   final PuddingFeedEdit? puddingFeedEdit;
+  final void Function() onEdited;
 
   const PuddingFeedHeader({
     super.key,
     this.title,
-    required this.userId,
+    this.userId,
     required this.userImage,
     this.content,
     this.date,
@@ -26,6 +28,8 @@ class PuddingFeedHeader extends StatelessWidget {
     this.height,
     this.width,
     this.puddingFeedEdit,
+    required this.postId,
+    required this.onEdited
   });
 
   @override
@@ -45,7 +49,10 @@ class PuddingFeedHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            PuddingFeedEdit(),
+            PuddingFeedEdit(
+              postId: postId,
+              onEdited: onEdited,
+            ),
           ],
         ),
         const SizedBox(height: 13,),
@@ -64,7 +71,7 @@ class PuddingFeedHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  userId,
+                  userId!,
                   style: PuddingTextStyle.heading2,
                 ),
                 Text(

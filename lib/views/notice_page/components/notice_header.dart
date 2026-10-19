@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/pudding_assets.dart';
 import 'package:pudding/common/constants/text_style.dart';
+import 'package:pudding/common/data/models/notice_edit.dart';
 import 'package:pudding/views/notice_page/components/notice_edit.dart';
 
 class PuddingNoticeHeader extends StatelessWidget {
@@ -14,6 +15,8 @@ class PuddingNoticeHeader extends StatelessWidget {
   final double? width;
   final PuddingNoticeEdit? puddingNoticeEdit;
   final bool edit;
+  final int postId;
+  final int? noticeId;
 
   const PuddingNoticeHeader({
     super.key,
@@ -25,6 +28,8 @@ class PuddingNoticeHeader extends StatelessWidget {
     this.width,
     this.puddingNoticeEdit,
     required this.edit,
+    required this.postId,
+    this.noticeId,
   });
 
   @override
@@ -46,6 +51,8 @@ class PuddingNoticeHeader extends StatelessWidget {
               ),
             PuddingNoticeEdit(
               edit: edit,
+              postId: postId,
+              notice: NoticeEdit( title: title ?? '', content: content ?? ''),
             ),
           ],
         ),
@@ -86,8 +93,7 @@ class PuddingNoticeHeader extends StatelessWidget {
         if (content != null)
           Text(
             content!,
-            style: PuddingTextStyle.body1.
-            copyWith(color: PuddingColor.black),
+            style: PuddingTextStyle.body1.copyWith(color: PuddingColor.black),
           ),
       ],
     );

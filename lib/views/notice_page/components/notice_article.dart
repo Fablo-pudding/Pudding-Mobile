@@ -10,21 +10,23 @@ class PuddingNoticeArticle extends StatelessWidget {
   final String title;
   final String writeDate;
   final bool admin;
+  final int postId;
 
   const PuddingNoticeArticle({
     super.key,
     required this.title,
     required this.writeDate,
     required this.admin,
+    required this.postId,
   });
 
   @override
   Widget build(BuildContext context) {
     final DateTime writeDate = DateTime.now();
 
-   final String dateTimeFormat = DateFormat('yyyy.MM.dd').format(writeDate);
+    final String dateTimeFormat = DateFormat('yyyy.MM.dd').format(writeDate);
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: PuddingColor.background,
       ),
       child: Column(
@@ -37,10 +39,12 @@ class PuddingNoticeArticle extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      title,
-                      style: PuddingTextStyle.heading2.copyWith(
-                        color: PuddingColor.black,
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: PuddingTextStyle.heading2.copyWith(
+                          color: PuddingColor.black,
+                        ),
                       ),
                     ),
                     GestureDetector(
@@ -48,14 +52,17 @@ class PuddingNoticeArticle extends StatelessWidget {
                         if (admin) {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) =>
-                                 const PuddingAdminNoticeWatchPage(),
+                              builder: (context) => PuddingAdminNoticeWatchPage(
+                                postId: postId,
+                              ),
                             ),
                           );
                         } else {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const PuddingNoticeWatchPage(),
+                              builder: (context) => PuddingNoticeWatchPage(
+                                postId: postId,
+                              ),
                             ),
                           );
                         }

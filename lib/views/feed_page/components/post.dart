@@ -7,20 +7,24 @@ import 'package:pudding/views/feed_page/presentation/comment_write.dart';
 
 class PuddingPost extends StatelessWidget {
   final String username;
+  final int postId;
   final String time;
   final String title;
   final int commentCount;
   final String profileImg;
   final double? width;
+  void Function()? onTap;
 
-  const PuddingPost({
+  PuddingPost({
     super.key,
     required this.username,
+    required this.postId,
     required this.time,
     required this.title,
     required this.commentCount,
     required this.profileImg,
     this.width,
+    required this.onTap,
   });
 
   @override
@@ -86,9 +90,7 @@ class PuddingPost extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
                 child: GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
-                  },
+                  onTap: onTap,
                   child: Text(
                     title,
                     style: PuddingTextStyle.heading3.copyWith(
@@ -112,7 +114,7 @@ class PuddingPost extends StatelessWidget {
                 const SizedBox(width: 6),
                 GestureDetector(
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PuddingCommentWrite(postId: postId,)));
                   },
                   child: Text(
                     '댓글 $commentCount',

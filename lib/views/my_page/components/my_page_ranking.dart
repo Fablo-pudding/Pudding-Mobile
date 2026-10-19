@@ -3,7 +3,7 @@ import 'package:pudding/common/constants/color.dart';
 import 'package:pudding/common/constants/text_style.dart';
 
 class PuddingMyPageRanking extends StatelessWidget {
-  final int ranking;
+  final Object ranking;
 
   const PuddingMyPageRanking({
     super.key,
@@ -14,7 +14,7 @@ class PuddingMyPageRanking extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 24),
         decoration: BoxDecoration(
           color: PuddingColor.main,
           borderRadius: BorderRadius.circular(12),
@@ -23,7 +23,7 @@ class PuddingMyPageRanking extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('👑랭킹', style: PuddingTextStyle.heading2),
-            Text('$ranking개', style: PuddingTextStyle.heading2),
+            Text('$ranking등', style: PuddingTextStyle.heading2),
           ],
         ),
       ),

@@ -10,13 +10,11 @@ import 'package:material_symbols_icons/symbols.dart';
 
 class PuddingProfile extends StatefulWidget {
   final String nickName;
-  final String explanation;
   final File? image;
 
   const PuddingProfile({
     super.key,
     required this.nickName,
-    required this.explanation,
     this.image,
   });
 
@@ -39,13 +37,6 @@ class _PuddingProfileState extends State<PuddingProfile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(widget.nickName, style: PuddingTextStyle.heading2),
-            const SizedBox(height: 9),
-            Text(
-              widget.explanation,
-              style: PuddingTextStyle.heading3.copyWith(
-                color: PuddingColor.gray400,
-              ),
-            ),
           ],
         ),
       ],

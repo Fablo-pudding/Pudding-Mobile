@@ -3,37 +3,48 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:pudding/common/components/button/elevated_button.dart';
 import 'package:pudding/common/components/text_form_field.dart';
 import 'package:pudding/common/constants/color.dart';
+import 'package:pudding/common/provider/auth.dart';
 import 'package:pudding/views/main_app.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/src/framework.dart';
 
-class PuddingLoginPage extends StatefulWidget {
-  final VoidCallback? onNext;
-  const PuddingLoginPage({super.key, this.onNext});
+class PuddingLoginPage extends ConsumerStatefulWidget {
+
+  const PuddingLoginPage({
+    super.key,
+  });
+
   @override
-  State<PuddingLoginPage> createState() => _PuddingLoginState();
+  ConsumerState<PuddingLoginPage> createState() => _PuddingLoginState();
 }
-class _PuddingLoginState extends State<PuddingLoginPage> {
+
+class _PuddingLoginState extends ConsumerState<PuddingLoginPage> {
   TextEditingController idController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isEnabledButton = false;
   bool pwObsText = true;
+
   @override
   void initState() {
     idController.addListener(_onChangedButton);
     passwordController.addListener(_onChangedButton);
     super.initState();
   }
+
   @override
   void dispose() {
     idController.dispose();
     passwordController.dispose();
     super.dispose();
   }
+
   void _onChangedButton() {
     setState(() {
       isEnabledButton =
           idController.text.isNotEmpty && passwordController.text.length >= 8;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,12 +78,11 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
                           title: '비밀번호',
                           maxLines: 1,
                           suffixIcon: GestureDetector(
-                            onTap: () =>
-                                setState(() => pwObsText = !pwObsText),
+                            onTap: () => setState(() => pwObsText = !pwObsText),
                             child: Icon(
                               pwObsText
-                                  ? Symbols.visibility
-                                  : Symbols.visibility_off,
+                                  ? Symbols.visibility_off
+                                  : Symbols.visibility,
                             ),
                           ),
                         ),
@@ -82,16 +92,23 @@ class _PuddingLoginState extends State<PuddingLoginPage> {
                             Expanded(
                               child: PuddingElevatedButton(
                                 onPressed: isEnabledButton
-                                    ? () {
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                      const PuddingMainApp(),
-                                    ),
-                                        (route) => false,
-                                  );
-                                }
+                                    ? () async {
+                                        final auth = ref.read(authProvider);
+                                        final succes = await auth.signIn(
+                                          name: idController.text,
+                                          password: passwordController.text,
+                                        );
+                                        if (succes) {
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const PuddingMainApp(),
+                                            ),
+                                            (route) => false,
+                                          );
+                                        }
+                                      }
                                     : null,
                                 child: const Text('로그인'),
                               ),

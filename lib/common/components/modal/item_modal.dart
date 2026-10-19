@@ -15,8 +15,8 @@ class ItemModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: PuddingColor.background,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(const Radius.circular(8)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -34,12 +34,12 @@ class ItemModal extends StatelessWidget {
           ),
           SvgPicture.asset(svgPath),
           const SizedBox(height: 20),
-          Divider(color: PuddingColor.gray400, thickness: 1),
+          const Divider(color: PuddingColor.gray400, thickness: 1),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 13),
             child: GestureDetector(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
               child: Text(
                 '확인',
